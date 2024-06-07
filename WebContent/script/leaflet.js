@@ -30,8 +30,8 @@ const leafletLine = function(startLat, startLng, goalLat, goalLng, callbackRrout
 };
 
 //すでに登録されているマーカーを表示（緯度経度はDBから読み込まれる？？）
-const marker1 = L.marker([35.61946, 139.72091]).addTo(leafletMap);
-const marker2 = L.marker([35.61917, 139.72155]).addTo(leafletMap);
+L.marker([35.61946, 139.72091]).addTo(leafletMap);
+L.marker([35.61917, 139.72155]).addTo(leafletMap);
 //すでに登録されている2つのマーカーでルートを表示（緯度経度はDBから読み込まれる？？）
 L.polyline([
 	[35.61946, 139.72091],
