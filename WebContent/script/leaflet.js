@@ -18,12 +18,19 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(leafletMap);
 
 //ルート探索処理の関数
+//@reference: https://www.liedman.net/leaflet-routing-machine/api/
 const leafletLine = function(startLatLng, goalLatLng, callbackRoutesfound) {
 	const line = L.Routing.control({
 		waypoints: [startLatLng, goalLatLng],
 		draggableWaypoints: false,
 		addWaypoints: false,
-		lineOptions: { styles: [{ color: "red", weight: 8, opacity: 0.5 }] }
+		router: new L.Routing.OSRMv1({
+			//デモサーバーなので発表までに時間があればバイナリベクターを作ろうかな
+			serviceUrl:"https://router.project-osrm.org/route/v1",
+			//移動方法をdrivingからwalkingに変更
+			profile:"walking"
+		}),
+		lineOptions: { styles: [{ color:"red", weight:8, opacity:0.5 }] }
 	}).on('routesfound', function(e) {
 		callbackRoutesfound(e);
 	});
