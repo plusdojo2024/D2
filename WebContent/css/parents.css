@@ -31,8 +31,9 @@ h2, h3, p{
 
 .childprofile_setting{
 	text-align:center;
-	padding:20px;
-	max-width:530px;
+	padding:30px;
+	min-width:500px;
+	max-width:500px;
 	max-height:180px;
 	background-color:#FFFFBA;
 	color:#1C82B0;

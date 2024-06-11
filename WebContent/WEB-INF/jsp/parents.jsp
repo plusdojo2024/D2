@@ -12,14 +12,18 @@
 <body>
 
 <header>
-		<nav>
-			<ul>
-				<li><a href="/D2/MenuServlet">ホーム</a></li>
-				<li><a href="/D2/SearchServlet">カレンダー</a></li>
-				<li><a href="/D2/RegistServlet">設定</a></li>
-				<li><a href="/D2/LogoutServlet">ログアウト</a></li>
-			</ul>
-		</nav>
+		<div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <div class="menu-content">
+      <ul>
+        <li><a href="">ホーム</a></li>
+        <li><a href="">カレンダー</a></li>
+        <li><a href="">設定</a></li>
+        <li><a href="">ログアウト</a></li>
+      </ul>
+    </div>
+  </div>
 	</header>
 	<main>
 		<h1>保護者設定ページ</h1>
