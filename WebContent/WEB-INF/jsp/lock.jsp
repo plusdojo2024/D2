@@ -6,8 +6,19 @@
 <meta charset="UTF-8">
 <title>親のログイン</title>
 <link rel="stylesheet" type="text/css" href="/D2/css/all.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/lock.css">
 </head>
 <body>
+<header>
+<nav>
+<ul>
+<li><a href="/D2/MenuServlet">ホーム</a></li>
+<li><a href="/D2/SearchServlet">カレンダー</a></li>
+<li><a href="/D2/RegistServlet">設定</a></li>
+<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+</ul>
+</nav>
+</header>
 <div class="wrapper">
 
   <!-- ヘッダー（ここから） -->
@@ -17,11 +28,12 @@
 
   <!-- ヘッダー（ここまで） -->
   <!-- メイン（ここから） -->
-  <h2>おうちのひとに、がめんをみせてね！</h2>
+  <h2><img src="/D2/img/big.png" width="100" height="100"alt="ビックリマーク">おうちのひとに、がめんをみせてね！</h2>
+  <div class="box_css">
     <table>
       <tr>
         <td>
-          <label>パスワード<br>
+          <label><img src="/D2/img/key.png" width="25" height="25"alt="鍵">パスコード<br>
           <input type="password" name="pw">
           </label>
         </td>
@@ -33,6 +45,7 @@
         <td>
        </tr>
     </table>
+   </div>
 <script>
 'use strict';
 

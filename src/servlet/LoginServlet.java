@@ -10,20 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.IdpwDao;
+import model.Idpw;
+
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,9 +41,30 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 
+		// ログイン処理を行う
+		IdpwDao iDao = new IdpwDao();
+		if (iDao.isLoginOK(new Idpw(id, pw))) { // ログイン成功
+			// セッションスコープにIDを格納する
+			HttpSession session = request.getSession();
+			session.setAttribute("id", new User(id));
+
+			// メニューサーブレットにリダイレクトする
+			response.sendRedirect("/simpleBC/HomeServlet");
+		} else { // ログイン失敗
+			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			//request.setAttribute("result",
+					//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/D2/LoginServlet"));
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			dispatcher.forward(request, response);
+		}
+	}
 }

@@ -1,1 +1,24 @@
 @charset "UTF-8";
+
+body{
+	margin: 0 auto 0 auto;	/* 中央揃え */
+ 	width: 700px;			/* 幅を固定 */
+}
+
+.child_acount{
+	padding:30px;
+	max-width:260px;
+	min-height:210px;
+	background-color:#FF8585;
+	color:#000000;
+	border-radius:30px;
+}
+
+.housework{
+	padding:40px;
+	max-width:600px;
+	min-height:200px;
+	background-color:#FFFFBA;
+	color:#000000;
+	border-radius:30px;
+}
