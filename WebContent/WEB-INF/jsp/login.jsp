@@ -12,12 +12,12 @@
 <div class="wrapper">
   <!-- メイン（ここから） -->
    <div class="box_css">
-  <h1>おてつだいアプリ</h1>
+  <h1>家事おてつだい</h1>
   <form id="login_form" method="post" action="/D2/LoginServlet">
     <table>
       <tr>
         <td>
-          <label>ID　　　　
+          <label>ID
           <input type="text" name="id">
           </label>
         </td>
@@ -33,18 +33,13 @@
         <td colspan="2">
           <input type="submit" name="submit" value="ログイン">
           <input type="reset" name="reset" value="リセット">
-          <span id="error_message"></span>
+          <br><span id="error_message"></span>
         <td>
       </tr>
     </table>
   </form>
   </div>
   <!-- メイン（ここまで） -->
-  <!-- フッター（ここから） -->
-  <div id="footer">
-    <p>&copy;D2</p>
-  </div>
-  <!-- フッター（ここまで） -->
 </div>
 <!-- JavaScript（ここから） -->
 <script>

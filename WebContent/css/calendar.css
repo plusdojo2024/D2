@@ -1,58 +1,80 @@
 @charset "UTF-8";
-.calendar-wrap {
-  margin: 0 auto;
-  max-width: 1110px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+.wrapper {
+  margin: 15px auto;
+  max-width: 700px;
 }
-@media (max-width: 767.98px) {
-  .calendar-wrap {
-    display: flex;
-    flex-direction: column;
-  }
-}
-.calendar {
+.container-calendar {
+  background: #ffffff;
+  padding: 15px;
   width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+.button-container-calendar button {
+  cursor: pointer;
+  display: inline-block;
+  zoom: 1;
+  background: #00a2b7;
+  color: #fff;
+  border: 1px solid #0aa2b5;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+.table-calendar {
   border-collapse: collapse;
+  width: 100%;
 }
-.calendar th,
-.calendar td {
-  border: 1px solid #000;
-  text-align: center;
+.table-calendar th,
+.table-calendar td{
   padding: 10px;
-  font-size: 14px;
+  border: 1px solid #e2e2e2;
+  text-align: center;
+  vertical-align: top;
+}
+.date-picker.selected {
   font-weight: bold;
+  color: #fff;
+  background: #cc0000;
 }
-.calendar th {
-  padding: 6px 10px;
+.date-picker.selected span {
+  border-bottom: 2px solid currentColor;
 }
-.calendar td {}
-@media (max-width: 767.98px) {
-  .calendar th,
-  .calendar td {
-    padding: 6px;
-    font-size: 12px;
-  }
-  .calendar th {
-    padding: 3px 6px;
-  }
+/* 日曜 */
+.date-picker:nth-child(1) {
+color: red;
 }
-
-.calendar .sun {
-  color: #e17f7e;
-  background-color: #f8e4e2;
+/* 土曜 */
+.date-picker:nth-child(7) {
+color: blue;
 }
-.calendar .sat {
-  color: #7ab6f3;
-  background-color: #e7f6fd;
+#monthAndYear {
+  text-align: center;
+  margin-top: 0;
 }
-.calendar .mute {
-  color: #aaa;
+.button-container-calendar {
+  position: relative;
+  margin-bottom: 1em;
+  overflow: hidden;
+  clear: both;
 }
-.calendar .today {
-  background-color: #7d7d7d;
+#previous {
+  float: left;
 }
-.calendar .off {
-  background-color: #fadcdb;
+#next {
+  float: right;
+}
+.footer-container-calendar {
+  margin-top: 1em;
+  border-top: 1px solid #dadada;
+  padding: 10px 0;
+}
+.footer-container-calendar select {
+  cursor: pointer;
+  display: inline-block;
+  zoom: 1;
+  background: #ffffff;
+  color: #454545;
+  border: 1px solid #bfc5c5;
+  border-radius: 3px;
+  padding: 5px 1em;
 }
