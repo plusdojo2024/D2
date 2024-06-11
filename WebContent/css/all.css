@@ -1,7 +1,7 @@
 @charset "UTF-8";
-boby{
+body{
 
-background-image: url('background.png');
+background-image:url('background.png');
     /* 背景画像の表示方法を設定します。 */
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
