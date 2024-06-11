@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>ログイン | おてつだいアプリ</title>
 <link rel="stylesheet" type="text/css" href="/D2/css/all.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/login.css">
 </head>
 <body>
 <div class="wrapper">
