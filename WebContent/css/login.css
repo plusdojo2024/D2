@@ -7,7 +7,7 @@ body {
   margin: 0 0 0 0;	/* マージンなし（後で個別に設定） */
   padding: 0 0 0 0;	/* パディングなし（後で個別に設定） */
   color: black;
-  font-size: 20px;
+  font-size: 30px;
   /*background-color: #3cc;
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.1) 40%, transparent 40%),
@@ -43,12 +43,13 @@ body {
 }
 /* h1タグを付けたページの見出し */
 h1 {
-  font-size: 40px;
-  color: blue;
+  font-size: 50px;
+  color: #2BE993;
   text-align: center;
-  overflow: hidden;/*アニメーション*/
+  /*overflow: hidden;/*アニメーション
   white-space: nowrap;
-  animation: midashi 2s linear forwards;
+  animation: midashi 2s linear forwards;*/
+  margin: 80px 0 0 0;
 }
  @keyframes midashi {
     0% {
@@ -202,6 +203,21 @@ form {
   color: black;
 }
 
+input[name=id]{
+ width:9em;
+ height:3em;
+ margin: 0 0 0 185px;
+ padding: 0px 150px 0px 0px;
+ font-size:20px;
+}
+
+input[name=pw]{
+ width:20em;
+ height:3em;
+ padding: 0px 0px 0px 0px;
+ margin: 20px 0 0 70px;
+ font-size:20px;
+}
 input[name=name] {
   width: 16em;
 }
@@ -268,7 +284,7 @@ input[name=remarks]{
 input[type="submit"]{
   width: 180px;
   padding: 20px 0 20px 0;
-  margin:40px 0 0 0;
+  margin:50px 0 0 220px;
   background-color: #C1E5F5;
   color: #1C82B0;
   font-size: 1em;
@@ -276,11 +292,10 @@ input[type="submit"]{
   border-radius:7px;
 }
 
-
 input[type="reset"]{
   width: 180px;
   padding: 20px 0 20px 0;
-  margin:40px 0 0 0;
+  margin:40px 0 0 50px;
   background-color: #C1E5F5;
   color: #1C82B0;
   font-size: 1em;
@@ -396,14 +411,14 @@ table#list th, table#list td {
   }
 .box_css{
 
-width:700px;
+width:900px;
 
 margin: 5em;
 
 border: solid 3px #000000;
 
-background-color: yellow;
+background-color: #FFFFBA;
 border: none;
-border-radius:15px;
+border-radius:30px;
 
 }
