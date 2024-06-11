@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>親のログイン</title>
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 </head>
 <body>
 <div class="wrapper">
