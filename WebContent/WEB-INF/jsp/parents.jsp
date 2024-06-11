@@ -130,9 +130,8 @@
 		<p>子供のプロフィール設定を行います。</p>
 		
 			<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet">
-				
-				<div class = childprofile_setting>
 				<h3>新規登録</h3>
+				<div class = childprofile_setting>
 				<table>
 					<tr>
 						<td>
@@ -157,10 +156,12 @@
 			</form>
 			<br>
 			<!-- アカウント情報更新 -->
+			<h3>アカウント情報更新</h3>
+			<p>登録済みアカウントの情報更新ができます。</p>
 			<c:forEach var="e" items="" >
 			<form id="childprofile_form" method="post" action="/D2/ParentsServlet">
 			<div class = childprofile_setting>
-				<h3>アカウント情報更新</h3>
+				
 				
 				<table>
 					<tr>
