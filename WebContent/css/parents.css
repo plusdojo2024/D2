@@ -29,6 +29,17 @@ h2, p{
 	border-radius:30px;
 }
 
+.childprofile_setting{
+	text-align:center;
+	padding:20px;
+	max-width:530px;
+	max-height:180px;
+	background-color:#FFFFBA;
+	color:#1C82B0;
+	border-radius:30px;
+}
+
+
 .housework_setting{
  	max-width:250px;
 	max-height:200px;

@@ -126,6 +126,65 @@
 				</form>
 			</c:forEach>
 		
+		<h2>こどもアカウント設定</h2>
+		<p>子供のプロフィール設定を行います。</p>
+		
+			<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet">
+				
+				<div class = childprofile_setting>
+				<h3>新規登録</h3>
+				<table>
+					<tr>
+						<td>
+							<label>プロフィール画像<br>
+								<input type="file" name="child_image">
+							</label>
+						</td>
+						<td>
+							<label>なまえ
+								<input type="text" name="child_name">
+							</label>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div class = button>
+					<input type="submit" id="regist" name="childprofile_submit" value="登録">
+					<input type="reset" name="reset" value="リセット">
+					<span id="error_message"></span><br>
+				</div>
+				</div>
+			</form>
+			<br>
+			<!-- アカウント情報更新 -->
+			<c:forEach var="e" items="" >
+			<form id="childprofile_form" method="post" action="/D2/ParentsServlet">
+			<div class = childprofile_setting>
+				<h3>アカウント情報更新</h3>
+				
+				<table>
+					<tr>
+						<td>
+							<label>プロフィール画像<br>
+								<input type="file" name="child_image">
+							</label>
+						</td>
+						<td>
+							<label>なまえ
+								<input type="text" name="child_name">
+							</label>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<div class = button>
+					<input type="submit" id="regist" name="comment_submit" value="更新">
+					<input type="submit" name="childprofile_delete" value="削除">
+					<span id="error_message"></span><br>
+				</div>
+				</div>
+			</form>
+			</c:forEach>
 	</main>
 </body>
 </html>
