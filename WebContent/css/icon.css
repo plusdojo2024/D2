@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+<<<<<<< HEAD
 body {
   margin: 0 0 0 0;	/* マージンなし（後で個別に設定） */
   padding: 0 0 0 0;	/* パディングなし（後で個別に設定） */
@@ -67,6 +68,8 @@ h1 {
   opacity: 80%;
 }
 
+=======
+>>>>>>> 6048763260a4199fade272e4048608a30c55397b
 .menu-btn {
   position: fixed;
   top: 10px;
