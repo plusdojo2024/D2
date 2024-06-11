@@ -25,9 +25,7 @@ input[name=pw] {
   font-family: Tahoma;
 }
 
-input[type="pw"]{
-	font-size: 200px;
-}
+
 
 input[type="submit"]{
   width: 150px;

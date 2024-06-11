@@ -9,6 +9,16 @@
 <link rel="stylesheet" type="text/css" href="/D2/css/lock.css">
 </head>
 <body>
+<header>
+<nav>
+<ul>
+<li><a href="/D2/MenuServlet">ホーム</a></li>
+<li><a href="/D2/SearchServlet">カレンダー</a></li>
+<li><a href="/D2/RegistServlet">設定</a></li>
+<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+</ul>
+</nav>
+</header>
 <div class="wrapper">
 
   <!-- ヘッダー（ここから） -->
