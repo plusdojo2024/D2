@@ -266,23 +266,26 @@ input[name=remarks]{
 }
 
 input[type="submit"]{
-  border: none;
-  padding:20px 0 20px 0;
-  margin:40px 0 0 0;
-  width:180px;
-  background-color: #253958;
-  color: #FFFFFF;
-  font-size: 1em;
-}
-
-input[type="reset"]{
-  border: none;
+  width: 180px;
   padding: 20px 0 20px 0;
   margin:40px 0 0 0;
-  width:180px;
-  background-color: #253958;
-  color: #FFFFFF;
+  background-color: #C1E5F5;
+  color: #1C82B0;
   font-size: 1em;
+  border: none;
+  border-radius:7px;
+}
+
+
+input[type="reset"]{
+  width: 180px;
+  padding: 20px 0 20px 0;
+  margin:40px 0 0 0;
+  background-color: #C1E5F5;
+  color: #1C82B0;
+  font-size: 1em;
+  border: none;
+  border-radius:7px;
 }
 button[type="upload"]{
 border: none;
@@ -400,5 +403,7 @@ margin: 5em;
 border: solid 3px #000000;
 
 background-color: yellow;
+border: none;
+border-radius:15px;
 
 }
