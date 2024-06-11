@@ -36,7 +36,7 @@ public class LockServlet extends HttpServlet {
 		if ("/LoginServlet".equals(servletPath)
 				&& login != null) {
 			// すでにログインしているので
-			response.sendRedirect("./HomeServlet");
+			response.sendRedirect("./ParentsServlet");
 		} else {
 			// ログインページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
