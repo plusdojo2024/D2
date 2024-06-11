@@ -41,6 +41,10 @@
 		</ul>
 	</div>
 
+ <div class="icon">
+   <p>アイコン</p>
+ </div>
+
 
 </body>
 
