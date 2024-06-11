@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#my_balloon {
+	position: relative;
+}
+#my_xy ul {
+	list-style-type: none;
+}
+#my_xy ul li {
+	float: left;
+	width: 33%;
+	height:100px;
+}
+.balloon {
+  position: relative;
+}
+.balloon:hover .balloon_contents {
+  display: inline-block;
+}
+.balloon_contents {
+  position: absolute;
+  display: none;
+  padding: 25px;
+  background-color: #a0a0af;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  left : 225px;
+  top : 0;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+.balloon_contents:after{
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: -20px;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-right: 10px solid #a0a0af;
+}
