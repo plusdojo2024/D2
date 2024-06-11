@@ -44,7 +44,7 @@ body {
 /* h1タグを付けたページの見出し */
 h1 {
   font-size: 40px;
-  font-family:serif;
+  color: blue;
   text-align: center;
   overflow: hidden;/*アニメーション*/
   white-space: nowrap;
@@ -173,7 +173,7 @@ png {
 }
 
 
-/* id="footer" */
+/* id="footer"
 #footer {
   background-color: #00CC33
   background-repeat: repeat-x;
@@ -181,7 +181,7 @@ png {
   padding: 20px 0px 20px 0px;
   font-size: smaller;
   color: black;
-}
+}*/
 .footer design {
   width: 450px;
   height: 200px;
@@ -391,3 +391,14 @@ table#list th, table#list td {
   input[name="email"] {
     width: 200px; /* 適切な幅に設定 */
   }
+.box_css{
+
+width:700px;
+
+margin: 5em;
+
+border: solid 3px #000000;
+
+background-color: yellow;
+
+}
