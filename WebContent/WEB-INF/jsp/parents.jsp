@@ -27,9 +27,8 @@
 		
 		<h2>報酬設定</h2>
 		<p>報酬の表示に関する設定を行います。</p>
-		<div class = reward_setting>
 			<form id="reward_form" method="post" action="/D2/ParentsServlet">
-				<br>
+			<div class = reward_setting>
 				<table>
 					<tr>
 						<td>
@@ -53,49 +52,49 @@
 							<br>
 						</td>
 					</tr>
-					
-					<tr>
-						<td colspan = "2">
-							<input type="submit" id="regist" name="reword_submit" value="登録">
-							<span id="error_message"></span><br>
-							<br>
-						</td>
-					</tr>
 				</table>
+				<br>
+				<div class = button>
+					<input type="submit" id="regist" name="reword_submit" value="登録">
+					<span id="error_message"></span><br>
+				</div>
+			</div>
 			</form>
-		</div>
+		
 		
 		<h2>コメント設定</h2>
 		<p>毎日の「ありがとうコメント」を設定できます。</p>
-		<div class = comment_setting>
+		
 			<form id="comment_form" method="post" action="/D2/ParentsServlet">
+				<div class = comment_setting>
 				<table>
 					<tr>
 						<td>
-							<label>表示する文章
+							<label>コメント
 								<input type="text" name="reword_paragraph">
 							</label>
 						<td>
 					</tr>
-					<tr>
-						<td>
-							<input type="submit" id="regist" name="comment_submit" value="登録">
-							<input type="reset" name="reset" value="リセット">
-							<span id="error_message"></span><br>
-						<td>
-					</tr>
 				</table>
+				<br>
+				<div class = button>
+					<input type="submit" id="regist" name="comment_submit" value="登録">
+					<input type="reset" name="reset" value="リセット">
+					<span id="error_message"></span><br>
+				</div>
+				</div>
 			</form>
-		</div>
+		
 		
 		<h2>家事設定</h2>
 		<p>家事に関する設定を行います。</p>
-		<div class = housework_setting>
+		
 		
 		<c:forEach var="e" items="" >
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
+				<div class = housework_setting>
 				<div class = delete>
-					<input type="submit" name="submit" value="削除">
+					<input id = delete type="submit" name="submit" value=削除>
 				</div>
 				<table>
 					<tr>
@@ -103,7 +102,6 @@
 							家事の名前：
 						</td>
 					</tr>
-					<br>
 					<tr>
 						<td>
 							<label>家事の内容
@@ -111,7 +109,6 @@
 							</label>
 						</td>
 					</tr>
-					<br>
 					<tr>
 						<td>
 							<label>難しさ
@@ -121,11 +118,14 @@
 					</tr>
 				</table>
 				<br>
+				<div class = button>
 				<input type="submit" name="housework_submit" value="更新">
 				<input type="reset" name="reset" value="リセット">
+				</div>
+				</div>
 				</form>
 			</c:forEach>
-		</div>
+		
 	</main>
 </body>
 </html>

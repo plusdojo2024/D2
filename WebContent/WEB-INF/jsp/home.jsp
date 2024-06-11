@@ -5,7 +5,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>ホーム｜おてつだいアプリ</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/D2/css/home.css">
 </head>
 <body>
 	<header>
@@ -20,16 +21,32 @@
 	</header>
 	<main>
 		<div class = childprofile>
-			<p>子供のプロフィール</p>
+			<!--子供のプロフィール-->
 			<c:forEach>
-			
+				<div class = child_acount>
+				<table>
+					<tr>
+						<td>
+							<img src = /D2/img/icon_setting.png width = 60px height = 60px>
+						</td>
+						<td>
+							<p>なまえ</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan = "2">
+							<p>ほしのかず</p>
+						</td>
+					</tr>
+				</table>
+				</div>
 			</c:forEach>
 		</div>
-		
+		<br>
 		<div class = housework>
 			<p>おてつだい</p>
 			<c:forEach>
-			
+			<p>残りの手伝い</p>
 			</c:forEach>
 		</div>
 			

@@ -28,7 +28,7 @@ for (const controlXY of controlXYArray) {
 }
 
 // 初期設定値をDBから読み込んで配列としてサーブレットから連携？（画像２が設定済の時の例）
-const xyArray = [{ x:-1, y:-1 }, { x:50, y:50 }, { x:-1, y:-1 }];
+const xyArray = [{ x:1215, y:155 }, { x:1321, y:155 }, { x:1215, y:260 }];
 // 初期設定値をレイアウト
 for (let i = 0; i < xyArray.length; i++) {
 	const xyData = xyArray[i];
