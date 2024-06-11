@@ -7,6 +7,7 @@
 
 <title>カレンダー</title>
 <link rel="stylesheet" type="text/css" href="/D2/css/calendar.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 </head>
 <body>
 <header>
