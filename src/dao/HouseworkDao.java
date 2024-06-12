@@ -26,7 +26,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Housework" ;
+			String sql ="SELECT * FROM Housework WHERE houseworkName = ? AND houseworkContents = ? AND houseworkPoint = ? AND icon = ? AND iconDone = ? AND userId = ? AND iconX = ? AND iconY = ?" ;
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
