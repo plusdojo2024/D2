@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 
 <title>間取り</title>
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/housework.css">
 </head>
 <body>
  <!-- ヘッダー（ここから） -->

@@ -1,10 +1,16 @@
 @charset "UTF-8";
+body {
+	background-image: url('../img/background.png');
+    /* 背景画像の表示方法を設定します。 */
+    background-size: cover; /* 画面全体に広がるように調整 */
+    background-position: center; /* 画像を中央に配置 */
+    /* 必要に応じて、背景の他のスタイルを追加できます。 */
+}
 .wrapper {
   margin: 15px auto;
   max-width: 700px;
 }
 .container-calendar {
-  background: #ffffff;
   padding: 15px;
   width: 100%;
   margin: 0 auto;
@@ -27,7 +33,7 @@
 .table-calendar th,
 .table-calendar td{
   padding: 10px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid black;
   text-align: center;
   vertical-align: top;
 }
