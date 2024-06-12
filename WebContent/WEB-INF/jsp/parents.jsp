@@ -26,7 +26,7 @@
 	<main>
 		<h1>保護者設定ページ</h1>
 		<p class = a>各種設定や登録を行えます。</p>
-		
+
 		<h2>報酬設定</h2>
 		<p>報酬の表示に関する設定を行います。</p>
 			<form id="reward_form" method="post" action="/D2/ParentsServlet">
@@ -62,11 +62,11 @@
 				</div>
 			</div>
 			</form>
-		
-		
+
+
 		<h2>コメント設定</h2>
 		<p>毎日の「ありがとうコメント」を設定できます。</p>
-		
+
 			<form id="comment_form" method="post" action="/D2/ParentsServlet">
 				<div class = comment_setting>
 				<table>
@@ -86,12 +86,12 @@
 				</div>
 				</div>
 			</form>
-		
-		
+
+
 		<h2>家事設定</h2>
 		<p>家事に関する設定を行います。</p>
-		
-		
+
+
 		<c:forEach var="e" items="" >
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 				<div class = housework_setting>
@@ -134,10 +134,10 @@
 				</div>
 				</form>
 			</c:forEach>
-		
+
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
-		
+
 			<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet">
 				<h3>新規登録</h3>
 				<div class = childprofile_setting>
@@ -170,8 +170,8 @@
 			<c:forEach var="e" items="" >
 			<form id="childprofile_form" method="post" action="/D2/ParentsServlet">
 			<div class = childprofile_setting>
-				
-				
+
+
 				<table>
 					<tr>
 						<td>
@@ -197,7 +197,8 @@
 			</c:forEach>
 	</main>
 	<script>
-	let fixedStars = 0; 
+	const somestars = document.getElementsByClassName('star');
+	let fixedStars = 0;
 	// 固定された星の数を保持する変数
 	const starValueInput = document.getElementById('star-value');
 
