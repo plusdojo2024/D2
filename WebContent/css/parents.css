@@ -2,7 +2,7 @@
 
 body{
 	background-image: url('../img/background_p.png');
-	margin: 0 auto 0 auto;	/* 中央揃え */
+	margin: 0 auto 70px auto;	/* 中央揃え */
  	width: 700px;			/* 幅を固定 */
 }
 
@@ -100,4 +100,9 @@ input[name=reword_paragraph]{
 input[name=housework_contents]{
   width: 10em;
   height:4em;
+}
+
+#somestars{
+	display:inline-block;
+	font-size:30px;
 }

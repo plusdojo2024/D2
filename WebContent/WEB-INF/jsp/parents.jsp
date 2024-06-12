@@ -2,10 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>設定</title>
 	<meta charset="UTF-8">
-	<title>保護者設定ページ</title>
+	<title>保護者設定ページ｜おてつだいアプリ</title>
 	<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 	<link rel="stylesheet" type="text/css" href="/D2/css/parents.css">
 </head>
@@ -103,7 +101,7 @@
 				<table>
 					<tr>
 						<td >
-							家事の名前：
+							家事の名前：$
 						</td>
 					</tr>
 					<tr>
@@ -115,13 +113,20 @@
 					</tr>
 					<tr>
 						<td>
-							<label>難しさ
-								<input type="text" name="housework_difficulty">
-							</label>
+							<nobr>
+							<label>重要度
+							<div id="somestars">
+									 <span class="star" data-star="1">☆</span>
+									 <span class="star" data-star="2">☆</span>
+									 <span class="star" data-star="3">☆</span>
+							</div>
+							 	<input type="hidden" name="stars" id="star-value">
+							 <!-- <input type="text" name="stars"> -->
+							 </label>
+							 </nobr>
 						</td>
 					</tr>
 				</table>
-				<br>
 				<div class = button>
 				<input type="submit" name="housework_submit" value="更新">
 				<input type="reset" name="reset" value="リセット">
@@ -191,5 +196,40 @@
 			</form>
 			</c:forEach>
 	</main>
+	<script>
+	let fixedStars = 0; 
+	// 固定された星の数を保持する変数
+	const starValueInput = document.getElementById('star-value');
+
+	// 星マークにマウスオーバーした時のイベント
+	const starMouseover = (e) => {
+	    const index = Number(e.target.getAttribute('data-star'));
+	    for (let j = 0; j < somestars.length; j++) {
+	        somestars[j].textContent = j < index ? '★' : '☆';
+	    }
+	}
+
+	// 星マークからマウスが離れた時のイベント
+	const starMouseout = (e) => {
+	    for (let j = 0; j < somestars.length; j++) {
+	        somestars[j].textContent = j < fixedStars ? '★' : '☆';
+	    }
+	}
+
+	// 星マークをクリックした時のイベント
+	const starClick = (e) => {
+	    fixedStars = Number(e.target.getAttribute('data-star'));
+	    starValueInput.value = fixedStars; // hidden inputの値を更新
+	    for (let j = 0; j < somestars.length; j++) {
+	        somestars[j].textContent = j < fixedStars ? '★' : '☆';
+	    }
+	}
+
+	for (let i = 0; i < somestars.length; i++) {
+	    somestars[i].addEventListener('mouseover', starMouseover);
+	    somestars[i].addEventListener('mouseout', starMouseout);
+	    somestars[i].addEventListener('click', starClick);
+	}
+	</script>
 </body>
 </html>
