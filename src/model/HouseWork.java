@@ -6,36 +6,36 @@ public class HouseWork implements Serializable {
 	private String houseworkContents;//家事内容
 	private String houseworkPoint;//お手伝いポイント
 	private String icon;//未処理のアイコン
-	private String ionDone;//処理済みのアイコン
+	private String iconDone;//処理済みのアイコン
 	private String userId;//ログインID
 	private String iconX;//移動したアイコンのX座標
 	private String iconY;	// 移動したアイコンのY座標
 
 
 
-	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, String icon, String ionDone,
+	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, String icon, String iconDone,
 			String userId, String iconX, String iconY) {
 		this.houseworkName = houseworkName;
 		this.houseworkContents = houseworkContents;
 		this.houseworkPoint = houseworkPoint;
 		this.icon = icon;
-		this.ionDone = ionDone;
+		this.iconDone = iconDone;
 		this.userId = userId;
 		this.iconX = iconX;
 		this.iconY = iconY;
 	}
 
 
-	public HouseWork() {
+	/*public HouseWork() {
 		this.houseworkName =  "";
 		this.houseworkContents =  "";
 		this.houseworkPoint =  "";
 		this.icon =  "";
-		this.ionDone =  "";
+		this.iconDone =  "";
 		this.userId = "";
 		this.iconX =  "";
 		this.iconY =  "";
-	}
+	}*/
 
 
 	public String getHouseworkName() {
@@ -78,13 +78,13 @@ public class HouseWork implements Serializable {
 	}
 
 
-	public String getIonDone() {
-		return ionDone;
+	public String getIconDone() {
+		return iconDone;
 	}
 
 
-	public void setIonDone(String ionDone) {
-		this.ionDone = ionDone;
+	public void setIconDone(String iconDone) {
+		this.iconDone = iconDone;
 	}
 
 
