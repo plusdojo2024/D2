@@ -62,3 +62,7 @@ label {
   left: 300px;
 }
 
+label.menu-btn {
+  position: relative;
+  margin-left: 1150px;
+}
