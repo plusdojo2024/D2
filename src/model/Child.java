@@ -15,10 +15,6 @@ public class Child implements Serializable {
 	private String RewardText;	// 報酬文章
 
 
-	//引数がないコンストラクタ(豆の仕様で必須)
-	public Child() {
-
-	}
 
 
 	public Child(String childId, String childName, String childPicture, String childAge, String childFavorite,

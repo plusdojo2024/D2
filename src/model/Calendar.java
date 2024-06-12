@@ -13,9 +13,6 @@ public class Calendar implements Serializable{
 		this.HouseworkName = HouseworkName;
 	}
 
-	public Calendar() {
-
-	}
 
 	public Calendar() {
 		this.date = "";

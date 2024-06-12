@@ -11,9 +11,6 @@ public class HouseWork implements Serializable {
 	private String IconX;//移動したアイコンのX座標
 	private String IconY;	// 移動したアイコンのY座標
 
-	public HouseWork() {
-
-	}
 
 
 	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, String icon, String ionDone,
