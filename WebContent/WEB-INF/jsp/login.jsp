@@ -11,7 +11,8 @@
 <body>
 <div class="wrapper">
   <!-- メイン（ここから） -->
-  <h1>おてつだいアプリ</h1>
+   <div class="box_css">
+  <h1>家事おてつだい</h1>
   <form id="login_form" method="post" action="/D2/LoginServlet">
     <table>
       <tr>
@@ -32,17 +33,13 @@
         <td colspan="2">
           <input type="submit" name="submit" value="ログイン">
           <input type="reset" name="reset" value="リセット">
-          <span id="error_message"></span>
+          <br><span id="error_message"></span>
         <td>
       </tr>
     </table>
   </form>
-  <!-- メイン（ここまで） -->
-  <!-- フッター（ここから） -->
-  <div id="footer">
-    <p>&copy;D2</p>
   </div>
-  <!-- フッター（ここまで） -->
+  <!-- メイン（ここまで） -->
 </div>
 <!-- JavaScript（ここから） -->
 <script>
