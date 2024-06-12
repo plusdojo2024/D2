@@ -15,10 +15,10 @@
     <label for="menu-btn-check" class="menu-btn"><span></span></label>
     <div class="menu-content">
       <ul>
-        <li><a href="">ホーム</a></li>
-        <li><a href="">カレンダー</a></li>
-        <li><a href="">設定</a></li>
-        <li><a href="">ログアウト</a></li>
+        <li><a href="/D2/HomeServlet">ホーム</a></li>
+        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
+        <li><a href="/D2/ParentsServlet">設定</a></li>
+        <li><a href="/D2/LoginServletServlet">ログアウト</a></li>
       </ul>
     </div>
   </div>
@@ -39,8 +39,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan = "2">
+						<td>
 							<p>ほしのかず</p>
+						</td>
+						<td>
 						</td>
 					</tr>
 				</table>
