@@ -13,6 +13,10 @@ background-image: url('../img/background.png');
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
 
 }
+
+h1 {
+	margin: 300px 0 0 0;
+}
 .wrapper {
  /* margin: 0 auto 0 auto;	/* 中央揃え
   width: 920px;			/* 幅を固定 */
