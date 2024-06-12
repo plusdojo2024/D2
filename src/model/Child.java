@@ -4,11 +4,13 @@ import java.io.Serializable;
 
 public class Child implements Serializable {
 	private String ChildId;//子どものID
-	private String ChildName;//子どもの名前
 	private String ChildPicture;//子どもの写真
+	private String ChildName;//子どもの名前
+	/*
 	private String ChildAge;//子どもの年齢
 	private String ChildFavorite;//子どもの好きな物
 	private String ChildSchool;//子どもの学校
+	*/
 	private String UserId;//ユーザーID
 	private String RewardUmu;//報酬の有無
 	private String RewardJouken;//報酬条件(☆の数)
@@ -17,14 +19,16 @@ public class Child implements Serializable {
 
 
 
-	public Child(String childId, String childName, String childPicture, String childAge, String childFavorite,
-			String childSchool, String userId, String rewardUmu, String rewardJouken, String rewardText) {
+	public Child(String childId, String childPicture, String childName, /*String childAge, String childFavorite,
+			String childSchool, */String userId, String rewardUmu, String rewardJouken, String rewardText) {
 		this.ChildId = childId;
 		this.ChildName = childName;
 		this.ChildPicture = childPicture;
+		/*
 		this.ChildAge = childAge;
 		this.ChildFavorite = childFavorite;
 		this.ChildSchool = childSchool;
+		*/
 		this.UserId = userId;
 		this.RewardUmu = rewardUmu;
 		this.RewardJouken = rewardJouken;
@@ -33,11 +37,13 @@ public class Child implements Serializable {
 
 	public Child() {
 		this.ChildId = "";
-		this.ChildName = "";
 		this.ChildPicture = "";
+		this.ChildName = "";
+		/*
 		this.ChildAge = "";
 		this.ChildFavorite = "";
 		this.ChildSchool = "";
+		*/
 		this.UserId = "";
 		this.RewardUmu ="";
 		this.RewardJouken = "";
@@ -52,14 +58,6 @@ public class Child implements Serializable {
 		this.ChildId = childId;
 	}
 
-	public String getChildName() {
-		return ChildName;
-	}
-
-	public void setChildName(String childName) {
-		this.ChildName = childName;
-	}
-
 	public String getChildPicture() {
 		return ChildPicture;
 	}
@@ -67,7 +65,17 @@ public class Child implements Serializable {
 	public void setChildPicture(String childPicture) {
 		this.ChildPicture = childPicture;
 	}
+	
+	public String getChildName() {
+		return ChildName;
+	}
 
+	public void setChildName(String childName) {
+		this.ChildName = childName;
+	}
+	
+	
+/*
 	public String getChildAge() {
 		return ChildAge;
 	}
@@ -91,6 +99,7 @@ public class Child implements Serializable {
 	public void setChildSchool(String childSchool) {
 		this.ChildSchool = childSchool;
 	}
+*/
 
 	public String getUserId() {
 		return UserId;
