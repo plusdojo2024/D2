@@ -17,7 +17,7 @@
       <ul>
         <li><a href="/D2/HomeServlet">ホーム</a></li>
         <li><a href="/D2/CalendarServlet">カレンダー</a></li>
-        <li><a href="/D2/ParentsServlet">設定</a></li>
+        <li><a href="/D2/LockServlet">設定</a></li>
         <li><a href="/D2/LogoutServlet">ログアウト</a></li>
       </ul>
     </div>
