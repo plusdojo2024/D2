@@ -10,14 +10,14 @@ body{
 	margin-left: 12%;
 	margin-top: 4%;
 	position: absolute;
-	z-index: 0;
+
 }
 
 #my_form{
 	position: absolute;
 	top: 600px;
 	left: 320px;
-	z-index: 2;
+
 }
 
 input[type="text"] {
@@ -28,8 +28,7 @@ input[type="text"] {
 #my_xy {
 
 	height: 750px;
-	width: 100%px;
-	position: absolute;
+	width: 1500px;
 
 }
 #my_xy::after {
@@ -40,6 +39,7 @@ input[type="text"] {
 #my_xy div {
 	float: left;
 	width: 100%;
+	position: absolute;
 }
 #my_xy ul {
 	float: right;
