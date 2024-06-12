@@ -1,0 +1,51 @@
+議事録2024/6/12(水)
+
+全体の確認事項
+
+
+本日のチーム目標
+進捗確認のルールを定める
+分からないところをグループで質問するタイミングと先生に質問するタイミングを決める
+質問がある場合は先生をメンションして質問チャンネルにきく
+
+
+個人目標
+田中→わからないことがあったらすぐ確認して解決を行う
+
+
+藤井→担当箇所を責任をもって仕上げる
+
+
+飯田→定期的に進捗を報告する
+
+
+和気→効率よく作業を行う
+
+
+政久→進捗報告などのルールを決める。
+
+
+
+
+今日の内容
+
+☆Daoとmodeの担当l振り分け
+大門・・・Dao:Idpw&Usar
+	  model:Idpw&lock&Usar&child
+	　Servlet:Login&Lock
+
+飯田・・・Dao:Calendar
+	  model:Calendar&CalendarPoint
+          servlet:Calendar
+
+・・・Dao:Child
+	  model:Child
+
+・・・Dao:Comment
+	  model:CalendarComment
+
+・・・Dao:housework
+	  model:適宜
+
+
+
