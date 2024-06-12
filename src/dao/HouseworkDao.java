@@ -251,7 +251,7 @@ public class HouseworkDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
 			String sql = "UPDATE Bc SET houseworkContents=?, houseworkPoint=?,icon=?, iconDone=?, userId=?, iconX=?,iconY=? WHERE houseworkName=?";
@@ -340,7 +340,7 @@ public class HouseworkDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する(何番目のレコードかを見る)
 			String sql = "DELETE FROM Housework WHERE houseworkName=?";
