@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>親のログイン</title>
-<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 <link rel="stylesheet" type="text/css" href="/D2/css/lock.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 </head>
 <body>
 <div class="hamburger-menu">
@@ -49,18 +49,6 @@
     </table>
    </div>
 </div>
-<script>
-'use strict';
 
-const now = new Date();
-const year = now.getFullYear();
-const month = now.getMonth();
-const date = now.getDate();
-const hour = now.getHours();
-const min = now.getMinutes();
-
-const output = `${year}/${month + 1}/${date} ${hour}:${min}`;
-document.getElementById('time').textContent = output;
-</script>
 </body>
 </html>
