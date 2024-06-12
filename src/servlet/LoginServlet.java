@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.IdpwDao;
-import model.Idpw;
+import dao.UserDao;
+import model.User;
 
 /**
  * Servlet implementation class LoginServlet
@@ -49,11 +49,13 @@ public class LoginServlet extends HttpServlet {
 		String pw = request.getParameter("pw");
 
 		// ログイン処理を行う
-		IdpwDao iDao = new IdpwDao();
-		if (iDao.isLoginOK(new Idpw(id, pw))) { // ログイン成功
+		UserDao userDao = new UserDao();
+		User loginUser = userDao.select(id);
+		if (loginUser != null
+				&& loginUser.getPassword().equals(pw)) { // ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new User(id));
+			session.setAttribute("id", loginUser);
 
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/simpleBC/HomeServlet");
