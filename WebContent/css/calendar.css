@@ -11,7 +11,6 @@ body {
   max-width: 700px;
 }
 .container-calendar {
-  background: #ffffff;
   padding: 15px;
   width: 100%;
   margin: 0 auto;
@@ -34,7 +33,7 @@ body {
 .table-calendar th,
 .table-calendar td{
   padding: 10px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid black;
   text-align: center;
   vertical-align: top;
 }

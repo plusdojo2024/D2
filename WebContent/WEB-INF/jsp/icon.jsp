@@ -21,7 +21,6 @@
       </ul>
     </div>
   </div>
-
 <form id="my_form" action="" method="post">
 		<label></label>
 		<input type="text" name="my_x1" id="my_x1">
@@ -35,9 +34,6 @@
 		<input type="submit" name="my_submit" value="リセット">
 	</form>
 	<div id='my_xy'>
-		<div>
-		<img src="./img/housework_back.png" style="width:100%;">
-		</div>
 		<ul>
 		    <li><img id="my_xy1" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
 		    <li><img id="my_xy2" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
