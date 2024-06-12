@@ -12,7 +12,7 @@
 <div class="wrapper">
   <!-- メイン（ここから） -->
    <div class="box_css">
-  <h1>家事おてつだい</h1>
+  <h1>　　　家事おてつだい　<img src="/D2/img/family_kaji_tetsudai.png" width="150" height="150"alt=""></h1>
   <form id="login_form" method="post" action="/D2/LoginServlet">
     <table>
       <tr>
