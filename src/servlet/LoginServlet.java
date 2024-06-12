@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", loginUser);
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/simpleBC/HomeServlet");
+			response.sendRedirect("./HomeServlet");
 		} else { // ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			//request.setAttribute("result",
