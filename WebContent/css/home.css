@@ -1,23 +1,47 @@
 @charset "UTF-8";
-
 body{
-	margin: 0 auto 0 auto;	/* 中央揃え */
+	background-image: url('../img/background.png');
+	background-size: cover;
+	background-position: center; 
+	margin: 40px auto 0 auto;	/* 中央揃え */
  	width: 700px;			/* 幅を固定 */
 }
 
+.b {
+	font-size:30px;
+	color:#9DF5CD;
+}
+
+.child_name{
+	font-size:30px;
+	text-align:right;
+}
+
 .child_acount{
+	
 	padding:30px;
 	max-width:260px;
 	min-height:210px;
 	background-color:#FF8585;
 	color:#000000;
-	border-radius:30px;
+	border-radius:30px; 
+}
+
+ .child_acount a{
+  display: block;
+  text-decoration: none;
+  color:#000000;
+}
+
+.child_acount:hover {
+  transform:scale(1.05, 1.05);
+  cursor: pointer;
 }
 
 .housework{
-	padding:40px;
+	padding:10px;
 	max-width:600px;
-	min-height:200px;
+	min-height:260px;
 	background-color:#FFFFBA;
 	color:#000000;
 	border-radius:30px;

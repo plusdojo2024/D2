@@ -26,15 +26,16 @@
 	<main>
 		<div class = childprofile>
 			<!--子供のプロフィール-->
-			<c:forEach>
-				<div class = child_acount>
+			<c:forEach >
+			<div class = child_acount>
+			<a href="/D2/HouseworkServlet">
 				<table>
 					<tr>
 						<td>
 							<img src = /D2/img/icon_setting.png width = 60px height = 60px>
 						</td>
 						<td>
-							<p>なまえ</p>
+							<p class = child_name>なまえ</p>
 						</td>
 					</tr>
 					<tr>
@@ -43,14 +44,14 @@
 						</td>
 					</tr>
 				</table>
+				</a>
 				</div>
 			</c:forEach>
 		</div>
 		<br>
 		<div class = housework>
-			<p>おてつだい</p>
+			<p class = b>おてつだい</p>
 			<c:forEach>
-			<p>残りの手伝い</p>
 			</c:forEach>
 		</div>
 			
