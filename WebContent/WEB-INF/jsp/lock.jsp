@@ -9,16 +9,18 @@
 <link rel="stylesheet" type="text/css" href="/D2/css/lock.css">
 </head>
 <body>
-<header>
-<nav>
-<ul>
-<li><a href="/D2/MenuServlet">ホーム</a></li>
-<li><a href="/D2/SearchServlet">カレンダー</a></li>
-<li><a href="/D2/RegistServlet">設定</a></li>
-<li><a href="/D2/LogoutServlet">ログアウト</a></li>
-</ul>
-</nav>
-</header>
+<div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <div class="menu-content">
+      <ul>
+        <li><a href="">ホーム</a></li>
+        <li><a href="">カレンダー</a></li>
+        <li><a href="">設定</a></li>
+        <li><a href="">ログアウト</a></li>
+      </ul>
+    </div>
+  </div>
 <div class="wrapper">
 
   <!-- ヘッダー（ここから） -->
@@ -46,6 +48,7 @@
        </tr>
     </table>
    </div>
+</div>
 <script>
 'use strict';
 
