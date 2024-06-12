@@ -56,7 +56,7 @@
 			<c:forEach>
 			</c:forEach>
 		</div>
-			
+
 	</main>
 </body>
 </html>
