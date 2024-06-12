@@ -5,19 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>間取り設定</title>
-<<<<<<< HEAD
-
-<link rel="stylesheet" href="/D2/css/icon.css" />
-</head>
-<body>
-  <div class="hamburger-menu">
-=======
 <link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 <link rel="stylesheet" type="text/css" href="/D2/css/icon.css">
 </head>
 <body>
- <div class="hamburger-menu">
->>>>>>> 6048763260a4199fade272e4048608a30c55397b
+  <div class="hamburger-menu">
     <input type="checkbox" id="menu-btn-check">
     <label for="menu-btn-check" class="menu-btn"><span></span></label>
     <div class="menu-content">
@@ -29,7 +21,6 @@
       </ul>
     </div>
   </div>
-<<<<<<< HEAD
 
 <form id="my_form" action="" method="post">
 		<label></label>
@@ -53,12 +44,6 @@
 		    <li><img id="my_xy3" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
 		</ul>
 	</div>
-
-
-
-
-=======
->>>>>>> 6048763260a4199fade272e4048608a30c55397b
 </body>
 
 <script src="/D2/script/controlXY.js"></script>
