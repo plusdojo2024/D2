@@ -6,14 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Calendar;
 
 public class CalendarDao {
-	// ログインできるならtrueを返す
-	public List<Calendar> isLoginOK(Calendar calendar) {
+	// 引数paramで検索項目を指定し、検索結果のリストを返す
+	//データ型List<Calendar>、メソッド名select、引数型Calendar、引数名card
+	public List<Calendar> select(Calendar dates) {
 		Connection conn = null;
-		List<Calendar> CalendarList =new ArrayList<Calendar>();
+		List<Calendar> datesList = new ArrayList<Calendar>();
 
 try {
 	// JDBCドライバを読み込む
@@ -26,9 +28,9 @@ try {
 	String sql = "SELECT * FROM CALENDAR  WHERE date =? and child_id=? and	housework_name=?";
 	PreparedStatement pStmt = conn.prepareStatement(sql);
 
-	pStmt.setString(1, calendar.getDate());
-	pStmt.setString(2,calendar.getChildId());
-	pStmt.setString(3,calendar.getHouseworkName());
+	pStmt.setString(1, dates.getDate());
+	pStmt.setString(2,dates.getChildId());
+	pStmt.setString(3,dates.getHouseworkName());
 
 	// SELECT文を実行し、結果表を取得する
 	ResultSet rs = pStmt.executeQuery();
@@ -41,16 +43,16 @@ try {
 		rs.getString ("HouseworkName")
 
 		);
-		CalendarList .add(record);
+		datesList .add(record);
 	}
 }
 catch (SQLException e) {
 	e.printStackTrace();
-	CalendarList = false;
+	datesList = null;
 }
 catch (ClassNotFoundException e) {
 	e.printStackTrace();
-	CalendarList = false;
+	datesList = null;
 }
 finally {
 	// データベースを切断
@@ -60,12 +62,11 @@ finally {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			CalendarList = false;
+			datesList = null;
 		}
 	}
 }
-
 // 結果を返す
-return CalendarList;
+return datesList;
 }
 }

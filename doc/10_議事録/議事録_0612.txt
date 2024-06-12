@@ -38,14 +38,14 @@
 	  model:Calendar&CalendarPoint
           servlet:Calendar
 
-・・・Dao:Child
+藤井・・・Dao:Child
 	  model:Child
 
-・・・Dao:Comment
+田中・・・Dao:Comment
 	  model:CalendarComment
 
-・・・Dao:housework
-	  model:適宜
+政久、和気・・・Dao:housework
+	  	　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　		　model:適宜
 
 
 
