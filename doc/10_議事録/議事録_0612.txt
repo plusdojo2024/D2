@@ -44,8 +44,7 @@
 田中・・・Dao:Comment
 	  model:CalendarComment
 
-政久、和気・・・Dao:housework
-	  	　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　		　model:適宜
+政久、和気・・・Dao:housework　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　		　model:適宜
 
 
 
