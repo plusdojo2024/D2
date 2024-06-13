@@ -122,9 +122,10 @@ public class ParentsServlet extends HttpServlet {
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
 		HouseworkDao hDao = new HouseworkDao();
-		List<HouseWork> userList = hDao.select(new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, userId, iconX,iconY));
+		List<HouseWork> userList2 = hDao.select(new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, userId, iconX,iconY));
 
 		request.setAttribute("userList", userList);
+		request.setAttribute("userList2", userList2);
 
 		// 更新または削除を行う
 				ChildDao dDao = new ChildDao();
