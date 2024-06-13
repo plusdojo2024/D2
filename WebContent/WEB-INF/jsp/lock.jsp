@@ -14,19 +14,19 @@
     <label for="menu-btn-check" class="menu-btn"><span></span></label>
     <div class="menu-content">
       <ul>
-        <li><a href="">ホーム</a></li>
-        <li><a href="">カレンダー</a></li>
-        <li><a href="">設定</a></li>
-        <li><a href="">ログアウト</a></li>
+        <li><a href="/D2/HomeServlet">ホーム</a></li>
+        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
+        <li><a href="/D2/LockServlet">設定</a></li>
+        <li><a href="/D2/LogoutServlet">ログアウト</a></li>
       </ul>
     </div>
   </div>
-<div class="wrapper">
+  <main>
+  <div class="wrapper">
 
   <!-- ヘッダー（ここから） -->
-  <h1>
-  保護者専用ページにログイン
-  </h1>
+
+  <h1>保護者専用ページにログイン</h1>
 
   <!-- ヘッダー（ここまで） -->
   <!-- メイン（ここから） -->
@@ -48,7 +48,8 @@
        </tr>
     </table>
    </div>
-</div>
 
+  </div>
+  </main>
 </body>
 </html>
