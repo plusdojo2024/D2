@@ -55,7 +55,7 @@
 		<p>家事に関する設定を行います。</p>
 
 
-		<c:forEach var="e" items="" >
+		<c:forEach var="e" items="${}" >
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 				<div class = housework_setting>
 				<div class = delete>
@@ -64,31 +64,27 @@
 				<table>
 					<tr>
 						<td >
-							家事の名前：$
+							家事の名前：
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<label>家事の内容
-								<input type="text" name="housework_contents">
+								<input type="text" name="housework_contents" value = "${}">
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<nobr>
+							
 							<label>重要度 </label>
-							<div id="somestars">
-								<span class= star-rating>
-									<input type= "radio" name="answer [111]" value="1" required="required">
-									<i></i>
-									<input type= "radio" name="answer [111]" value="2" required="required">
-									<i></i>
-									<input type= "radio" name="answer [111]" value="3" required="required">
-									<i></i>
+							<nobr>
+								<span class = "stars">
+									<input id="3" type="radio" name="dufficulty" value = "3"><label for="3">★</label>
+									<input id="2" type="radio" name="dufficulty" value = "2"><label for="2">★</label>
+									<input id="1" type="radio" name="dufficulty" value = "1"><label for="1">★</label>
 								</span>
-							</div>
-							 </nobr>
+							</nobr>
 						</td>
 					</tr>
 				</table>
@@ -216,41 +212,5 @@
 			</form>
 			</c:forEach>
 	</main>
-	<script>
-	const somestars = document.getElementsByClassName('star');
-	let fixedStars = 0;
-	// 固定された星の数を保持する変数
-	const starValueInput = document.getElementById('star-value');
-
-	// 星マークにマウスオーバーした時のイベント
-	const starMouseover = (e) => {
-	    const index = Number(e.target.getAttribute('data-star'));
-	    for (let j = 0; j < somestars.length; j++) {
-	        somestars[j].textContent = j < index ? '★' : '☆';
-	    }
-	}
-
-	// 星マークからマウスが離れた時のイベント
-	const starMouseout = (e) => {
-	    for (let j = 0; j < somestars.length; j++) {
-	        somestars[j].textContent = j < fixedStars ? '★' : '☆';
-	    }
-	}
-
-	// 星マークをクリックした時のイベント
-	const starClick = (e) => {
-	    fixedStars = Number(e.target.getAttribute('data-star'));
-	    starValueInput.value = fixedStars; // hidden inputの値を更新
-	    for (let j = 0; j < somestars.length; j++) {
-	        somestars[j].textContent = j < fixedStars ? '★' : '☆';
-	    }
-	}
-
-	for (let i = 0; i < somestars.length; i++) {
-	    somestars[i].addEventListener('mouseover', starMouseover);
-	    somestars[i].addEventListener('mouseout', starMouseout);
-	    somestars[i].addEventListener('click', starClick);
-	}
-	</script>
 </body>
 </html>
