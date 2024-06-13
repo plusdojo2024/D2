@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.ChildDao;
 import model.Child;
+import model.Result;
 import model.User;
 
 /**
@@ -34,6 +36,19 @@ public class ParentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//ログインしてなかったら戻る
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/D2/LoginServlet");
+			return;
+		}
+		
+		ChildDao cDao = new ChildDao();
+		List<Child> userList = cDao.select(new Child());
+		
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("userList", userList);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -58,6 +73,44 @@ public class ParentsServlet extends HttpServlet {
 				"ダミー"
 		);
 		childDao.insert(childac);
+		
+		request.setCharacterEncoding("UTF-8");
+		int childId = Integer.parseInt(request.getParameter("childId"));
+		String childPicture = request.getParameter("childPicture");
+		String childName= request.getParameter("childName");
+		String userId= request.getParameter("userId");
+		String rewardUmu= request.getParameter("rewardUmu");
+		String rewardJouken= request.getParameter("rewardJouken");
+		String rewardText= request.getParameter("rewardText");
+		
+		ChildDao cDao = new ChildDao();
+		List<Child> userList = cDao.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
+		
+		request.setAttribute("userList", userList);
+		
+		// 更新または削除を行う
+				ChildDao dDao = new ChildDao();
+				if (request.getParameter("submit").equals("更新")) {
+					if (dDao.update(new Child(childId, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText))) {	// 更新成功
+						request.setAttribute("result",
+						new Result("更新成功！"));
+					}
+					else {												// 更新失敗
+						request.setAttribute("result",
+						new Result("更新失敗！"));
+					}
+				}
+				else {
+					if (dDao.delete(childId)) {	// 削除成功
+						request.setAttribute("result",
+						new Result("削除成功！"));
+					}
+					else {						// 削除失敗
+						request.setAttribute("result",
+						new Result("削除失敗！"));
+					}
+				}
+		
 		doGet(request, response);
 	}
 

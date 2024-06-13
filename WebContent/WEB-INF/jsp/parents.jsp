@@ -100,6 +100,8 @@
 
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
+		
+		<p>${result.message}</p>
 
 			<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet">
 				<h3>新規登録</h3>
