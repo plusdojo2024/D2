@@ -104,3 +104,37 @@ input[name=housework_contents]{
 	display:inline-block;
 	font-size:30px;
 }
+#somestars{
+	font-size: 0;
+    white-space: nowrap;
+    display: inline-block;
+    width: 150px;
+    height: 29px;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    background: url(../img/normal_star.png);
+    background-image: url(../img/normal_star.png);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-size: contain;
+}
+
+.star-rating input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    opacity: 0;
+    display: inline-block;
+    width: 15%;
+    height: 100%;
+    padding: 0;
+    z-index: 2;
+    position: relative;
+}
