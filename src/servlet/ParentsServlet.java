@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import dao.ChildDao;
 import dao.CommentDao;
+import dao.HouseworkDao;
 import model.Child;
+import model.HouseWork;
 import model.Result;
 import model.User;
 /**
@@ -134,17 +136,18 @@ public class ParentsServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	HouseworkDao hDao = new HouseworkDao();
+	   HouseworkDao wDao = new HouseworkDao();
 	if (request.getParameter("submit").equals("更新")) {
 
-	  if (HouseWoekDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, iconX ,iconY)))  {
+	  if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
+			  icon, iconDone, iconX ,iconY)))  {
 
 					request.setAttribute("result",
 					new Result("更新成功！", "/D2/ParentsServlet"));
 				}
 
 			else {
-				if (bDao.delete(houseworkName)) {	// 削除成功
+				if (wDao.delete(houseworkName)) {	// 削除成功
 					request.setAttribute("result",
 					new Result("削除成功！", "/D2/ParentsServlet"));
 				}
