@@ -1,45 +1,40 @@
 package model;
 import java.io.Serializable;
+import java.util.Date;
 
 public class CalendarComment implements Serializable{
-	private String Date;//日付
-	private String ChildId;//子どものID
-	private String Comment ;// コメント
-
-	public CalendarComment(String date, String childId, String comment) {
-		this.Date = date;
-		this.ChildId = childId;
-		this.Comment = comment;
+	private Date date;//日付
+	private String childId;//子どものID
+	private String comment ;// コメント
+	public CalendarComment(Date date, String childId, String comment) {
+		super();
+		this.date = date;
+		this.childId = childId;
+		this.comment = comment;
 	}
-
 	public CalendarComment() {
-		this.Date = "";
-		this.ChildId = "";
-		this.Comment = "";
+		super();
+		this.date = null;
+		this.childId = "";
+		this.comment = "";
 	}
-
-	public String getDate() {
-		return Date;
+	public Date getDate() {
+		return date;
 	}
-
-	public void setDate(String date) {
-		this.Date = date;
+	public void setDate(Date date) {
+		this.date = date;
 	}
-
 	public String getChildId() {
-		return ChildId;
+		return childId;
 	}
-
 	public void setChildId(String childId) {
-		this.ChildId = childId;
+		this.childId = childId;
 	}
-
 	public String getComment() {
-		return Comment;
+		return comment;
 	}
-
 	public void setComment(String comment) {
-		this.Comment = comment;
+		this.comment = comment;
 	}
 
 

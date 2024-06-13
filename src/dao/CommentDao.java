@@ -2,6 +2,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,13 +13,23 @@ import java.util.List;
 import model.CalendarComment;
 
 public class CommentDao {
-    private static final String SELECT_ALL_COMMENT_SQL = "SELECT * FROM comment";
+    private static final String SELECT_ALL_COMMENT_SQL =
+    		"SELECT * FROM comment WHERE user_id=? AND date < ? "
+    		+ " date >= ? ";
 
-    public List<CalendarComment> getAllComments() {
+    public List<CalendarComment> getAllComments(String userId, int year ,int month) {
         List<CalendarComment> commentList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        int nextYear = year;
+        int nextMonth = month;
+        if(nextMonth == 12) {
+        	nextYear += 1;
+        	nextMonth = 1;
+        }else {
+        	nextMonth += 1;
+        }
 
         try {
             // JDBCドライバを読み込む
@@ -29,6 +40,9 @@ public class CommentDao {
 
             // SQL文を準備する
             stmt = conn.prepareStatement(SELECT_ALL_COMMENT_SQL);
+			stmt.setString(1, userId);
+			stmt.setDate(2, Date.valueOf(nextYear+"-"+nextMonth+"-1"));
+			stmt.setDate(3, Date.valueOf(year+"-"+month+"-1"));//yyyy-mm-1
 
             // SQL文を実行し、結果表を取得する
             rs = stmt.executeQuery();
@@ -36,8 +50,8 @@ public class CommentDao {
             // 結果表をコレクションにコピーする
             while (rs.next()) {
                 CalendarComment comment = new CalendarComment(
-                    rs.getString("date"),
-                    rs.getString("child_id"),
+                    rs.getDate("date"),
+                    rs.getString("user_id"),
                     rs.getString("comment")
                 );
                 commentList.add(comment);
@@ -47,20 +61,6 @@ public class CommentDao {
             // 例外処理が必要
         } finally {
             // リソースを解放する
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
             if (conn != null) {
                 try {
                     conn.close();
