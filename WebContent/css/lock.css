@@ -15,7 +15,7 @@ background-image: url('../img/background.png');
 }
 
 h1 {
-	margin: 300px 0 0 0;
+	margin: 150px 0 0 0;
 }
 .wrapper {
  /* margin: 0 auto 0 auto;	/* 中央揃え
@@ -62,3 +62,7 @@ label {
   left: 300px;
 }
 
+label.menu-btn {
+  position: relative;
+  margin: 0 0 0 1150px;
+}

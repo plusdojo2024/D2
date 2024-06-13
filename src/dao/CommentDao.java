@@ -12,7 +12,7 @@ import java.util.List;
 import model.CalendarComment;
 
 public class CommentDao {
-    private static final String SELECT_ALL_COMMENTS_SQL = "SELECT * FROM comment";
+    private static final String SELECT_ALL_COMMENT_SQL = "SELECT * FROM comment";
 
     public List<CalendarComment> getAllComments() {
         List<CalendarComment> commentList = new ArrayList<>();
@@ -28,7 +28,7 @@ public class CommentDao {
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
             // SQL文を準備する
-            stmt = conn.prepareStatement(SELECT_ALL_COMMENTS_SQL);
+            stmt = conn.prepareStatement(SELECT_ALL_COMMENT_SQL);
 
             // SQL文を実行し、結果表を取得する
             rs = stmt.executeQuery();
