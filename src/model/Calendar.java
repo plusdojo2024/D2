@@ -1,13 +1,14 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Calendar implements Serializable{
-	private String date;	// 日付
+	private Date date;	// 日付
 	private String childId;	// 子どもの識別ID
 	private String houseworkName;//家事の名前
 
-	public Calendar(String date, String childId, String houseworkName ) {
+	public Calendar(Date date, String childId, String houseworkName ) {
 		this.date = date;
 		this.childId = childId;
 		this.houseworkName = houseworkName;
@@ -15,16 +16,16 @@ public class Calendar implements Serializable{
 
 
 	public Calendar() {
-		this.date = "";
+		this.date = null;
 		this.childId = "";
 		this.houseworkName = "";
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

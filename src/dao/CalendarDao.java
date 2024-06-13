@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ try {
 	String sql = "SELECT * FROM CALENDAR  WHERE date =? and child_id=? and	housework_name=?";
 	PreparedStatement pStmt = conn.prepareStatement(sql);
 
-	pStmt.setString(1, dates.getDate());
+	pStmt.setDate(1, (Date) dates.getDate());
 	pStmt.setString(2,dates.getChildId());
 	pStmt.setString(3,dates.getHouseworkName());
 
@@ -38,7 +39,7 @@ try {
 	// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
 	while (rs.next()) {
 		Calendar record = new Calendar(
-		rs.getString ("date"),
+		rs.getDate ("date"),
 		rs.getString ("ChildId"),
 		rs.getString ("HouseworkName")
 
@@ -69,4 +70,9 @@ finally {
 // 結果を返す
 return datesList;
 }
+
+	public static void insert(Calendar calendardm) {
+		// TODO 自動生成されたメソッド・スタブ
+
+	}
 }
