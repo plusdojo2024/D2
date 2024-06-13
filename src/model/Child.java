@@ -3,7 +3,7 @@ package model;
 import java.io.Serializable;
 
 public class Child implements Serializable {
-	private String ChildId;//子どものID
+	private int ChildId;//子どものID
 	private String ChildPicture;//子どもの写真
 	private String ChildName;//子どもの名前
 	/*
@@ -19,7 +19,7 @@ public class Child implements Serializable {
 
 
 
-	public Child(String childId, String childPicture, String childName, /*String childAge, String childFavorite,
+	public Child(int childId, String childPicture, String childName, /*String childAge, String childFavorite,
 			String childSchool, */String userId, String rewardUmu, String rewardJouken, String rewardText) {
 		this.ChildId = childId;
 		this.ChildName = childName;
@@ -36,25 +36,14 @@ public class Child implements Serializable {
 	}
 
 	public Child() {
-		this.ChildId = "";
-		this.ChildPicture = "";
-		this.ChildName = "";
-		/*
-		this.ChildAge = "";
-		this.ChildFavorite = "";
-		this.ChildSchool = "";
-		*/
-		this.UserId = "";
-		this.RewardUmu ="";
-		this.RewardJouken = "";
-		this.RewardText = "";
+		
 	}
 
-	public String getChildId() {
+	public int getChildId() {
 		return ChildId;
 	}
 
-	public void setChildId(String childId) {
+	public void setChildId(int childId) {
 		this.ChildId = childId;
 	}
 

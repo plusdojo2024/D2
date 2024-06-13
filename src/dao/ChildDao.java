@@ -24,12 +24,12 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Child WHERE ChildId LIKE AND ChildPicture LIKE ? AND ChildName LIKE? AND UserId LIKE? AND RewardUmu LIKE? AND RewardJouken LIKE?  AND RewardText LIKE?";
+			String sql ="SELECT * FROM Child WHERE ChildPicture LIKE ? AND ChildName LIKE? AND UserId LIKE? AND RewardUmu LIKE? AND RewardJouken LIKE?  AND RewardText LIKE? ORDER BY ChildId";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
-			if (childac.getChildId() != null) {
-				pStmt.setString(1, "%" + childac.getChildId() + "%");
+			if (childac.getChildName() != null) {
+				pStmt.setString(1, "%" + childac.getChildName() + "%");
 			}
 			else {
 				pStmt.setString(1, "%");
@@ -42,7 +42,7 @@ public class ChildDao{
 			// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
 			while (rs.next()) {
 				Child record = new Child(
-				rs.getString ("ChildId"),
+				rs.getInt ("ChildId"),
 				rs.getString ("ChildPicture"),
 				rs.getString ("ChildName"),
 				rs.getString ("UserId"),
@@ -90,52 +90,46 @@ public class ChildDao{
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
-			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Bc VALUES (null,?,?,?,?,?,?)";
+			// SQL文を準備する（AUTO_INCREMENTのChildId列にはNULLを指定する）
+			String sql = "INSERT INTO Bc VALUES (NULL,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (childac.getChildId() != null && !childac.getChildId().equals("")) {
-				pStmt.setString(1, childac.getChildId());
+			if (childac.getChildPicture() != null && !childac.getChildPicture().equals("")) {
+				pStmt.setString(1, childac.getChildPicture());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			if (childac.getChildPicture() != null && !childac.getChildPicture().equals("")) {
-				pStmt.setString(2, childac.getChildPicture());
+			if (childac.getChildName() != null && !childac.getChildName().equals("")) {
+				pStmt.setString(2, childac.getChildName());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (childac.getChildName() != null && !childac.getChildName().equals("")) {
-				pStmt.setString(3, childac.getChildName());
+			if (childac.getUserId() != null && !childac.getUserId().equals("")) {
+				pStmt.setString(3, childac.getUserId());
 			}
 			else {
-				pStmt.setString(3, "（未設定）");
+				pStmt.setString(3, "");
 			}
-			if (childac.getUserId() != null && !childac.getUserId().equals("")) {
-				pStmt.setString(4, childac.getUserId());
+			if (childac.getRewardUmu() != null && !childac.getRewardUmu().equals("")) {
+				pStmt.setString(4, childac.getRewardUmu());
 			}
 			else {
 				pStmt.setString(4, "");
 			}
-			if (childac.getRewardUmu() != null && !childac.getRewardUmu().equals("")) {
-				pStmt.setString(5, childac.getRewardUmu());
+			if (childac.getRewardJouken() != null && !childac.getRewardJouken().equals("")) {
+				pStmt.setString(5, childac.getRewardJouken());
 			}
 			else {
 				pStmt.setString(5, "");
 			}
-			if (childac.getRewardJouken() != null && !childac.getRewardJouken().equals("")) {
-				pStmt.setString(6, childac.getRewardJouken());
+			if (childac.getRewardText() != null && !childac.getRewardText().equals("")) {
+				pStmt.setString(6, childac.getRewardText());
 			}
 			else {
 				pStmt.setString(6, "");
-			}
-			if (childac.getRewardText() != null && !childac.getRewardText().equals("")) {
-				pStmt.setString(7, childac.getRewardText());
-			}
-			else {
-				pStmt.setString(7, "");
 			}
 
 			// SQL文を実行する
@@ -182,51 +176,45 @@ public class ChildDao{
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (childac.getChildId() != null && !childac.getChildId().equals("")) {
-				pStmt.setString(1, childac.getChildId());
+			if (childac.getChildPicture() != null && !childac.getChildPicture().equals("")) {
+				pStmt.setString(1, childac.getChildPicture());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (childac.getChildPicture() != null && !childac.getChildPicture().equals("")) {
-				pStmt.setString(2, childac.getChildPicture());
+			if (childac.getChildName() != null && !childac.getChildName().equals("")) {
+				pStmt.setString(2, childac.getChildName());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			if (childac.getChildName() != null && !childac.getChildName().equals("")) {
-				pStmt.setString(3, childac.getChildName());
+			if (childac.getUserId() != null && !childac.getUserId().equals("")) {
+				pStmt.setString(3, childac.getUserId());
 			}
 			else {
 				pStmt.setString(3, null);
 			}
-			if (childac.getUserId() != null && !childac.getUserId().equals("")) {
-				pStmt.setString(4, childac.getUserId());
+			if (childac.getRewardUmu() != null && !childac.getRewardUmu().equals("")) {
+				pStmt.setString(4, childac.getRewardUmu());
 			}
 			else {
 				pStmt.setString(4, null);
 			}
-			if (childac.getRewardUmu() != null && !childac.getRewardUmu().equals("")) {
-				pStmt.setString(5, childac.getRewardUmu());
+			if (childac.getRewardJouken() != null && !childac.getRewardJouken().equals("")) {
+				pStmt.setString(5, childac.getRewardJouken());
 			}
 			else {
 				pStmt.setString(5, null);
 			}
-			if (childac.getRewardJouken() != null && !childac.getRewardJouken().equals("")) {
-				pStmt.setString(6, childac.getRewardJouken());
+			if (childac.getRewardText() != null && !childac.getRewardText().equals("")) {
+				pStmt.setString(6, childac.getRewardText());
 			}
 			else {
 				pStmt.setString(6, null);
 			}
-			if (childac.getRewardText() != null && !childac.getRewardText().equals("")) {
-				pStmt.setString(7, childac.getRewardText());
-			}
-			else {
-				pStmt.setString(7, null);
-			}
 			
 			//自動採番の際は使用
-			/*pStmt.setInt(7, card.getNumber());*/
+			pStmt.setInt(7, childac.getChildId());
 
 			// SQL文を実行する(更新は都度1件だけなのでそれをチェックする)
 			if (pStmt.executeUpdate() == 1) {
@@ -255,24 +243,24 @@ public class ChildDao{
 		return result;
 	}
 
-	// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
-	public boolean delete(String childName) {
+	// 引数childIdで指定されたレコードを削除し、成功したらtrueを返す
+	public boolean delete(int childId) {
 		Connection conn = null;
 		boolean result = false;
 
 		try {
-			// JDBCドライバを読み込む(削除するお)
+			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する(何番目のレコードかを見る)
-			String sql = "DELETE FROM Bc WHERE number=?";
+			String sql = "DELETE FROM Child WHERE childId=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setString(1, childName);
+			pStmt.setInt(1, childId);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
