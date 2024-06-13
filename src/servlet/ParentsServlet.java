@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ChildDao;
+import dao.CommentDao;
+import dao.HouseworkDao;
 import model.Child;
+import model.HouseWork;
 import model.Result;
 import model.User;
-
 /**
  * Servlet implementation class ParentsServlet
  */
@@ -42,13 +45,13 @@ public class ParentsServlet extends HttpServlet {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
 		}
-		
+
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(new Child());
-		
+
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("userList", userList);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -58,7 +61,7 @@ public class ParentsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		HttpSession session = request.getSession();
 		User loginUser = (User)session.getAttribute("id");
 		String userID = loginUser.getUserId();
@@ -73,7 +76,7 @@ public class ParentsServlet extends HttpServlet {
 				"ダミー"
 		);
 		childDao.insert(childac);
-		
+
 		request.setCharacterEncoding("UTF-8");
 		int childId = Integer.parseInt(request.getParameter("childId"));
 		String childPicture = request.getParameter("childPicture");
@@ -82,12 +85,31 @@ public class ParentsServlet extends HttpServlet {
 		String rewardUmu= request.getParameter("rewardUmu");
 		String rewardJouken= request.getParameter("rewardJouken");
 		String rewardText= request.getParameter("rewardText");
-		
+        String comment = request.getParameter("comment");
+	    Date date = new Date();
+	    String houseworkName = request.getParameter("houseworkName");
+	    String houseworkContents = request.getParameter("houseworkContets");
+	    String houseworkPoint = request.getParameter("houseworkPoint");
+	    String icon = request.getParameter("icon");
+	    String iconDone = request.getParameter("iconDone");
+	    String iconX = request.getParameter("iconX");
+	    String iconY = request.getParameter("iconY");
+
+	        // 親ページからのコメントの登録処理
+	    CommentDao coDao = new CommentDao();
+	        if (coDao.insert(date,0,comment)) {
+	            request.setAttribute("commentSuccess", true);
+	        } else {
+	            request.setAttribute("commentSuccess", false);
+	        }
+
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
-		
+		HouseworkDao hDao = new HouseworkDao();
+		List<HouseWork> userList = hDao.select(new HouseWork(houseworkName, houseworkContents, houseworkPoint, icon, iconDone, userId, iconX,iconY));
+
 		request.setAttribute("userList", userList);
-		
+
 		// 更新または削除を行う
 				ChildDao dDao = new ChildDao();
 				if (request.getParameter("submit").equals("更新")) {
@@ -110,11 +132,27 @@ public class ParentsServlet extends HttpServlet {
 						new Result("削除失敗！"));
 					}
 				}
-		
+
 		doGet(request, response);
 	}
 
+	   HouseworkDao wDao = new HouseworkDao();
+	if (request.getParameter("submit").equals("更新")) {
 
+	  if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
+			  icon, iconDone, iconX ,iconY)))  {
+
+					request.setAttribute("result",
+					new Result("更新成功！", "/D2/ParentsServlet"));
+				}
+
+			else {
+				if (wDao.delete(houseworkName)) {	// 削除成功
+					request.setAttribute("result",
+					new Result("削除成功！", "/D2/ParentsServlet"));
+				}
+
+			}
 
 
 

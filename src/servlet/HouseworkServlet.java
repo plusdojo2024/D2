@@ -60,6 +60,7 @@ public class HouseworkServlet extends HttpServlet {
 		"ダミー",
 		"ダミー"
      );
+    houseworkDao.insert(HW);
     doGet(request, response);
 }
 
