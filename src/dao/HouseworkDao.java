@@ -124,7 +124,7 @@ public class HouseworkDao {
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	/*public boolean insert(Bc card) {
+	public boolean insert(HouseWork HW ) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -133,62 +133,62 @@ public class HouseworkDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Bc VALUES (NULL, ?, ?,?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Housework VALUES ( ?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getCompany() != null && !card.getCompany().equals("")) {
-				pStmt.setString(1, card.getCompany());
+			if (HW.getHouseworkName() != null && !HW.getHouseworkName().equals("")) {
+				pStmt.setString(1, HW.getHouseworkName());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			if (card.getDepartment() != null && !card.getDepartment().equals("")) {
-				pStmt.setString(2, card.getDepartment());
+			if (HW.getHouseworkContents() != null && !HW.getHouseworkContents().equals("")) {
+				pStmt.setString(2, HW.getHouseworkContents());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (card.getPosition() != null && !card.getPosition().equals("")) {
-				pStmt.setString(3, card.getPosition());
+			if (HW.getHouseworkPoint() != null && !HW.getHouseworkPoint().equals("")) {
+				pStmt.setString(3, HW.getHouseworkPoint());
 			}
 			else {
 				pStmt.setString(3, "（未設定）");
 			}
-			if (card.getName() != null && !card.getName().equals("")) {
-				pStmt.setString(4, card.getName());
+			if (HW.getIcon() != null && !HW.getIcon().equals("")) {
+				pStmt.setString(4, HW.getIcon());
 			}
 			else {
 				pStmt.setString(4, "（未設定）");
 			}
-			if (card.getFurigana() != null && !card.getFurigana().equals("")) {
-				pStmt.setString(5, card.getFurigana());
+			if (HW.getIconDone() != null && !HW.getIconDone().equals("")) {
+				pStmt.setString(5, HW.getIconDone());
 			}
 			else {
 				pStmt.setString(5, "（未設定）");
 			}
-			if (card.getPost() != null && !card.getPost().equals("")) {
-				pStmt.setString(6, card.getPost());
+			if (HW.getUserId() != null && !HW.getUserId().equals("")) {
+				pStmt.setString(6, HW.getUserId());
 			}
 			else {
 				pStmt.setString(6, "（未設定）");
 			}
-			if (card.getAddress() != null && !card.getAddress().equals("")) {
-				pStmt.setString(7, card.getAddress());
+			if (HW.getIconX() != null && !HW.getIconX().equals("")) {
+				pStmt.setString(7, HW.getIconX());
 			}
 			else {
 				pStmt.setString(7, "（未設定）");
 			}
-			if (card.getPhone() != null && !card.getPhone().equals("")) {
-				pStmt.setString(8, card.getPhone());
+			if (HW.getIconY() != null && !HW.getIconY().equals("")) {
+				pStmt.setString(8, HW.getIconY());
 			}
 			else {
 				pStmt.setString(8, "（未設定）");
 			}
-			if (card.getFax() != null && !card.getFax().equals("")) {
+			/*if (card.getFax() != null && !card.getFax().equals("")) {
 				pStmt.setString(9, card.getFax());
 			}
 			else {
@@ -212,7 +212,7 @@ public class HouseworkDao {
 			}
 			else {
 				pStmt.setString(12, "（未設定）");
-			}
+			}*/
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -239,7 +239,7 @@ public class HouseworkDao {
 
 		// 結果を返す
 		return result;
-	}*/
+	}
 
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(HouseWork card) {
