@@ -88,7 +88,7 @@ public class ParentsServlet extends HttpServlet {
         String comment = request.getParameter("comment");
 	    Date date = new Date();
 	    String houseworkName = request.getParameter("houseworkName");
-	    String houseworkContents = request.getParameter("houseworkContets");
+	    String houseworkContets = request.getParameter("houseworkContets");
 	    String houseworkPoint = request.getParameter("houseworkPoint");
 	    String icon = request.getParameter("icon");
 	    String iconDone = request.getParameter("iconDone");
@@ -103,10 +103,26 @@ public class ParentsServlet extends HttpServlet {
 	            request.setAttribute("commentSuccess", false);
 	        }
 
+	        HouseworkDao wDao = new HouseworkDao(); {
+
+	        	if (request.getParameter("submit").equals("更新")) {
+
+	        			if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
+	        		            icon, iconDone, userId, iconX ,iconY)))  {
+	        		        request.setAttribute("message", "更新成功！");
+	        		    } else {
+	        		        if (wDao.delete(houseworkName)) {    // 削除成功
+	        		            request.setAttribute("message", "削除成功！");
+	        		        }
+	        		    }
+	        	   }
+
+	        	   }
+
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
 		HouseworkDao hDao = new HouseworkDao();
-		List<HouseWork> userList = hDao.select(new HouseWork(houseworkName, houseworkContents, houseworkPoint, icon, iconDone, userId, iconX,iconY));
+		List<HouseWork> userList = hDao.select(new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, userId, iconX,iconY));
 
 		request.setAttribute("userList", userList);
 
@@ -136,27 +152,10 @@ public class ParentsServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	   HouseworkDao wDao = new HouseworkDao();
-	if (request.getParameter("submit").equals("更新")) {
-
-	  if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
-			  icon, iconDone, iconX ,iconY)))  {
-
-					request.setAttribute("result",
-					new Result("更新成功！", "/D2/ParentsServlet"));
-				}
-
-			else {
-				if (wDao.delete(houseworkName)) {	// 削除成功
-					request.setAttribute("result",
-					new Result("削除成功！", "/D2/ParentsServlet"));
-				}
-
-			}
-
-
 
 }
+
+
 
 
 
