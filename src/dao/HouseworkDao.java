@@ -30,7 +30,7 @@ public class HouseworkDao {
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
-			if (HW.getHouseworkName() != null) {
+			/*if (HW.getHouseworkName() != null) {
 				pStmt.setString(1, "%" + HW.getHouseworkName() + "%");
 			}
 			else {
@@ -59,14 +59,14 @@ public class HouseworkDao {
 			}
 			else {
 				pStmt.setString(5, "%");
-			}
+			}*/
 			if (HW.getUserId() != null) {
 				pStmt.setString(6, "%" + HW.getUserId() + "%");
 			}
 			else {
 				pStmt.setString(6, "%");
 			}
-			if (HW.getIconX() != null) {
+			/*if (HW.getIconX() != null) {
 				pStmt.setString(7, "%" + HW.getIconX() + "%");
 			}
 			else {
@@ -77,7 +77,7 @@ public class HouseworkDao {
 			}
 			else {
 				pStmt.setString(8, "%");
-			}
+			}*/
 
 
 			// SQL文を実行し、結果表を取得する
@@ -247,7 +247,7 @@ public class HouseworkDao {
 		boolean result = false;
 
 		try {
-			// JDBCドライバを読み込む(更新するお)
+			// JDBCドライバを読み込む(更新する)
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
