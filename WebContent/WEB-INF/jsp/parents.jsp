@@ -54,8 +54,11 @@
 
 		<h2>家事設定</h2>
 		<p>家事に関する設定を行います。</p>
-
-
+		
+		<c:if test="${empty houseList}">
+			<p>一致するデータはありません。</p>
+		</c:if>
+		
 		<c:forEach var="e" items="${houseList}">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 				<div class=housework_setting>
