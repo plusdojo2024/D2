@@ -46,8 +46,8 @@ h2, h3, p{
 	background-color:#FFFFBA;
 	background-clip:padding-box;
 	color:#1C82B0;
-	border-radius:30px;
-	border:10px solid transparent;
+	border-radius:40px;
+	border:15px solid transparent;
  }
  
  .children{
