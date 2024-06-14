@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.ChildDao;
 import model.Child;
+import model.User;
 
 /**
  * Servlet implementation class HomeServlet
@@ -20,7 +21,7 @@ import model.Child;
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -39,17 +40,19 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
 		}
-		
+		User loginUser = (User)session.getAttribute("id");
+
 		ChildDao cDao = new ChildDao();
-		List<Child> userList = cDao.select(new Child());
-		
+		List<Child> userList = cDao.select(loginUser.getUserId());
+		request.setAttribute("userList", userList);
+
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("userList", userList);
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 			dispatcher.forward(request, response);
 	}
-	
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -61,10 +64,10 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
 		}
-		
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 			dispatcher.forward(request, response);
-		
+
 		doGet(request, response);
 	}
 
