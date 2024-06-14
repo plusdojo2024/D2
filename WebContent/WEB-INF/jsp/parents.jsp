@@ -78,9 +78,9 @@
 							<td><label>重要度 </label> 
 								<nobr>
 									<span class="stars"> 
-										<input id="3" type="radio" name="dufficulty" value="3"><label for="3">★</label> 
-										<input id="2" type="radio" name="dufficulty" value="2"><label for="2">★</label>
-										<input id="1" type="radio" name="dufficulty" value="1"><label for="1">★</label>
+										<input id="3" type="radio" name="dufficulty" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>><label for="3">★</label> 
+										<input id="2" type="radio" name="dufficulty" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>><label for="2">★</label>
+										<input id="1" type="radio" name="dufficulty" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>><label for="1">★</label>
 									</span>
 								</nobr>
 							</td>
@@ -164,7 +164,7 @@
 									type="radio" name="reword_display" value="${e.rewardText}">しない
 							</label></td>
 							<td><br> <label>☆ <input type="text"
-									name="reword_star"> 個で表示
+									name="reword_star" value="${e.rewardJouken}"> 個で表示
 							</label></td>
 						</tr>
 						<tr>

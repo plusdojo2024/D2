@@ -24,7 +24,7 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Child WHERE  UserId = ? ORDER BY ChildId";
+			String sql ="SELECT * FROM Child WHERE  User_Id = ? ORDER BY Child_Id";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, userId);
@@ -40,7 +40,7 @@ public class ChildDao{
 				rs.getString ("child_picture"),
 				rs.getString ("child_name"),
 				rs.getString ("user_id"),
-				rs.getString ("reward_umu "),
+				rs.getString ("reward_umu"),
 				rs.getString ("reward_jouken"),
 				rs.getString ("reward_text")
 				);

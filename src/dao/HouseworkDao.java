@@ -26,7 +26,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Housework WHERE userId = ? ORDER BY housework_name";
+			String sql ="SELECT * FROM Housework WHERE user_Id = ? ORDER BY housework_name";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, userId);
