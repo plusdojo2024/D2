@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ChildDao;
+import dao.HouseworkDao;
 import model.Child;
+import model.HouseWork;
 import model.User;
 
 /**
@@ -45,9 +47,10 @@ public class HomeServlet extends HttpServlet {
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("userList", userList);
+		
+		HouseworkDao hDao = new HouseworkDao();
+		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
+		request.setAttribute("houseList", houseList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home.jsp");
 			dispatcher.forward(request, response);
