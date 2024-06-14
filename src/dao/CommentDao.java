@@ -36,7 +36,7 @@ public class CommentDao {
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
             // SQL文を準備する
-            String sql ="SELECT * FROM comment WHERE user_id=? ORDER BY date";
+            String sql ="SELECT * FROM comment WHERE user_id = ? ORDER BY date";
             stmt = conn.prepareStatement(sql);
 			stmt.setString(1, userId);
 			stmt.setDate(2, Date.valueOf(nextYear+"-"+nextMonth+"-1"));
