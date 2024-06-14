@@ -32,11 +32,12 @@
   <!-- メイン（ここから） -->
   <h2><img src="/D2/img/big.png" width="100" height="100"alt="ビックリマーク">おうちのひとに、がめんをみせてね！</h2>
   <div class="box_css">
+  <form id="login_form" method="post" action="/D2/LockServlet">
     <table>
       <tr>
         <td>
           <label><img src="/D2/img/key.png" width="25" height="25"alt="鍵">パスコード<br>
-          <input type="password" name="pc">
+          <input type="passcord" name="pc">
           </label>
         </td>
       </tr>
@@ -47,6 +48,7 @@
         <td>
        </tr>
     </table>
+    </form>
    </div>
 
   </div>

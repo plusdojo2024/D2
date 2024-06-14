@@ -17,10 +17,10 @@
 				for="menu-btn-check" class="menu-btn"><span></span></label>
 			<div class="menu-content">
 				<ul>
-					<li><a href="">ホーム</a></li>
-					<li><a href="">カレンダー</a></li>
-					<li><a href="">設定</a></li>
-					<li><a href="">ログアウト</a></li>
+					<li><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><a href="/D2/ParentsServlet">設定</a></li>
+					<li><a href="/D2/LogoutServlet">ログアウト</a></li>
 				</ul>
 			</div>
 		</div>
@@ -108,32 +108,47 @@
 			<div class=childprofile_setting>
 				<table>
 					<tr>
-						<td><label>プロフィール画像<br> <input type="file"
-								name="child_image">
-						</label></td>
-						<td><label>なまえ <input type="text" name="child_name">
-						</label></td>
+						<td>
+							<label>プロフィール画像<br> 
+								<input type="file" name="child_image">
+							</label>
+						</td>
+						<td>
+							<label>なまえ 
+								<input type="text" name="child_name">
+							</label>
+						</td>
 					</tr>
 					<tr>
-						<td><br> <label>報酬を表示 <input type="radio"
-								name="reword_display" value="true" checked>する <input
-								type="radio" name="reword_display" value="false">しない
-						</label></td>
-						<td><br> <label>☆ <input type="text"
-								name="reword_star"> 個で表示
-						</label></td>
+						<td>
+							<br> 
+							<label>報酬を表示 
+								<input type="radio" name="reword_display" value="true" checked>する 
+								<input type="radio" name="reword_display" value="false">しない
+							</label>
+						</td>
+						<td>
+							<br> 
+							<label>☆ 
+								<input type="text"name="reword_star"> 個で表示
+							</label>
+						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><label>表示する文章 <input type="text"
-								name="reword_paragraph">
-						</label> <br></td>
+						<td colspan="2">
+							<label>表示する文章 
+								<input type="text" name="reword_paragraph">
+							</label> 
+							<br>
+						</td>
 					</tr>
 				</table>
 				<br>
 				<div class=button>
-					<input type="submit" id="regist" name="childprofile_submit"
-						value="登録"> <input type="reset" name="reset" value="リセット">
-					<span id="error_message"></span><br>
+					<input type="submit" id="regist" name="childprofile_submit" value="登録"> 
+					<input type="reset" name="reset" value="リセット">
+					<span id="error_message"></span>
+					<br>
 				</div>
 			</div>
 		</form>
@@ -154,26 +169,36 @@
 				<div class=childprofile_setting>
 					<table>
 						<tr>
-							<td><label>プロフィール画像<br> <input type="file"
-									name="child_image" value="${e.childPicture}">
-							</label></td>
-							<td><label>なまえ <input type="text" name="child_name"
-									value="${e.childName}">
-							</label></td>
+							<td>
+								<label>プロフィール画像<br> 
+									<input type="file" name="child_image" value="${e.childPicture}">
+								</label>
+							</td>
+							<td>
+								<label>なまえ 
+									<input type="text" name="child_name" value="${e.childName}">
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td><br> <label>報酬を表示 <input type="radio"
-									name="reword_display" value="${e.rewardText}">する <input
-									type="radio" name="reword_display" value="${e.rewardText}">しない
+							<td><br> <label>報酬を表示 
+								<input type="radio" name="reword_display" value="yes"<c:if test = "${e.rewardUmu == 'yes'}">checked</c:if>>する 
+								<input type="radio" name="reword_display" value="no"<c:if test = "${e.rewardUmu == 'no'}">checked</c:if>>しない
 							</label></td>
-							<td><br> <label>☆ <input type="text"
-									name="reword_star" value="${e.rewardJouken}"> 個で表示
-							</label></td>
+							<td>
+							<br> 
+								<label>☆ 
+									<input type="text" name="reword_star" value="${e.rewardJouken}"> 個で表示
+								</label>
+							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><label>表示する文章 <input type="text"
-									name="reword_paragraph" value="${e.rewardText}">
-							</label> <br></td>
+							<td colspan="2">
+								<label>表示する文章 
+									<input type="text" name="reword_paragraph" value="${e.rewardText}">
+								</label> 
+							<br>
+							</td>
 						</tr>
 					</table>
 					<br>
