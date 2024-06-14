@@ -14,7 +14,7 @@ import model.HouseWork;
 
 public class HouseworkDao {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<HouseWork> select(HouseWork HW) {
+	public List<HouseWork> select(String userId) {
 		Connection conn = null;
 		List<HouseWork> cardList = new ArrayList<HouseWork>();
 
@@ -26,58 +26,11 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Housework WHERE houseworkName = ? AND houseworkContents = ? AND houseworkPoint = ? AND icon = ? AND iconDone = ? AND userId = ? AND iconX = ? AND iconY = ?" ;
+			String sql ="SELECT * FROM Housework WHERE userId = ? ORDER BY housework_name";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			// SQL文を完成させる
-			/*if (HW.getHouseworkName() != null) {
-				pStmt.setString(1, "%" + HW.getHouseworkName() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
-			if (HW.getHouseworkContents() != null) {
-				pStmt.setString(2, "%" + HW.getHouseworkContents() + "%");
-			}
-			else {
-				pStmt.setString(2, "%");
-			}
-			if (HW.getHouseworkPoint() != null) {
-				pStmt.setString(3, "%" + HW.getHouseworkPoint() + "%");
-			}
-			else {
-				pStmt.setString(3, "%");
-			}
-			if (HW.getIcon() != null) {
-				pStmt.setString(4, "%" + HW.getIcon() + "%");
-			}
-			else {
-				pStmt.setString(4, "%");
-			}
-			if (HW.getIconDone() != null) {
-				pStmt.setString(5, "%" + HW.getIconDone() + "%");
-			}
-			else {
-				pStmt.setString(5, "%");
-			}*/
-			if (HW.getUserId() != null) {
-				pStmt.setString(6, "%" + HW.getUserId() + "%");
-			}
-			else {
-				pStmt.setString(6, "%");
-			}
-			/*if (HW.getIconX() != null) {
-				pStmt.setString(7, "%" + HW.getIconX() + "%");
-			}
-			else {
-				pStmt.setString(7, "%");
-			}
-			if (HW.getIconY() != null) {
-				pStmt.setString(8, "%" + HW.getIconY() + "%");
-			}
-			else {
-				pStmt.setString(8, "%");
-			}*/
+			pStmt.setString(1, userId);
+
 
 
 			// SQL文を実行し、結果表を取得する
@@ -86,14 +39,14 @@ public class HouseworkDao {
 			// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
 			while (rs.next()) {
 				HouseWork record = new HouseWork(
-				rs.getString ("houseworkName"),
-				rs.getString ("houseworkContents"),
-				rs.getString ("houseworkPoint"),
+				rs.getString ("housework_name"),
+				rs.getString ("housework_contents"),
+				rs.getString ("housework_point"),
 				rs.getString ("icon"),
-				rs.getString("iconDone"),
-				rs.getString ("userId"),
-				rs.getString ("iconX"),
-				rs.getString("iconY")
+				rs.getString("icon_done"),
+				rs.getString ("user_id"),
+				rs.getString ("icon_x"),
+				rs.getString("icon_y")
 				);
 				cardList.add(record);
 			}

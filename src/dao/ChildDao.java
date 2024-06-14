@@ -12,7 +12,7 @@ import model.Child;
 
 public class ChildDao{
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<Child> select(Child childac) {
+	public List<Child> select(String userId) {
 		Connection conn = null;
 		List<Child> userList = new ArrayList<Child>();
 
@@ -24,16 +24,10 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql ="SELECT * FROM Child WHERE ChildPicture LIKE ? AND ChildName LIKE? AND UserId LIKE? AND RewardUmu LIKE? AND RewardJouken LIKE?  AND RewardText LIKE? ORDER BY ChildId";
+			String sql ="SELECT * FROM Child WHERE  UserId = ? ORDER BY ChildId";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			// SQL文を完成させる
-			if (childac.getChildName() != null) {
-				pStmt.setString(1, "%" + childac.getChildName() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
+			pStmt.setString(1, userId);
 
 
 			// SQL文を実行し、結果表を取得する
@@ -42,13 +36,13 @@ public class ChildDao{
 			// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
 			while (rs.next()) {
 				Child record = new Child(
-				rs.getInt ("ChildId"),
-				rs.getString ("ChildPicture"),
-				rs.getString ("ChildName"),
-				rs.getString ("UserId"),
-				rs.getString ("RewardUmu "),
-				rs.getString ("RewardJouken"),
-				rs.getString ("RewardText")
+				rs.getInt ("child_id"),
+				rs.getString ("child_picture"),
+				rs.getString ("child_name"),
+				rs.getString ("user_id"),
+				rs.getString ("reward_umu "),
+				rs.getString ("reward_jouken"),
+				rs.getString ("reward_text")
 				);
 				userList.add(record);
 			}
@@ -212,7 +206,7 @@ public class ChildDao{
 			else {
 				pStmt.setString(6, null);
 			}
-			
+
 			//自動採番の際は使用
 			pStmt.setInt(7, childac.getChildId());
 
