@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,21 +27,22 @@
 	<main>
 		<div class = childprofile>
 			<!--子供のプロフィール-->
-			<c:forEach >
+			<c:forEach var="e" items="${userList}">
 			<div class = child_acount>
 			<a href="/D2/HouseworkServlet">
 				<table>
 					<tr>
 						<td>
-							<img src = /D2/img/icon_setting.png width = 60px height = 60px>
+							<img src = "${e.childPicture}" width = 60px height = 60px>
 						</td>
 						<td>
-							<p class = child_name>なまえ</p>
+							<p class = child_name>${e.childName}</p>
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<p>ほしのかず</p>
+							<p>こ</p>
 						</td>
 						<td>
 						</td>
@@ -53,7 +55,7 @@
 		<br>
 		<div class = housework>
 			<p class = b>おてつだい</p>
-			<c:forEach>
+			<c:forEach var = "e" items = "${houselist}">
 			</c:forEach>
 		</div>
 
