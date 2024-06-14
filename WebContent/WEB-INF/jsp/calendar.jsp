@@ -56,7 +56,7 @@
     </div>
 
     <c:if test="${empty CalendarComment}">
-    <p>一致するデータはありません。</p>
+    <p></p>
 </c:if>
 
     <c:forEach var="e" items="${CalendarComment}">

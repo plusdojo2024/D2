@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,101 +13,86 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CalendarDao;
+import dao.ChildDao;
+import dao.CommentDao;
 import model.Calendar;
-import model.Result;
+import model.CalendarComment;
+import model.Child;
+import model.User;
 
 /**
  * Servlet implementation class CalendarServlet
  */
 @WebServlet("/CalendarServlet")
 public class CalendarServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public CalendarServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-		HttpSession session = request.getSession();
-		String servletPath = request.getServletPath(); //今表示しようとしているサーブレット名
-		Object login = session.getAttribute("id"); //doPostのログインOKで設定したセッションデータ
-		if ("/LoginServlet".equals(servletPath)
-				&& login != null) {
-			// すでにログインしているので
-			response.sendRedirect("./HomeServlet");
-		} else {
-			// ログインページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-			dispatcher.forward(request, response);
-		}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        //ログインしてなかったら戻る
+        HttpSession session = request.getSession();
 
-		/**
-		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-		 */
+        if (session.getAttribute("id") == null) {
+            response.sendRedirect("/D2/LoginServlet");
+            return;
+        }
+        User loginUser = (User) session.getAttribute("id");
 
-		CalendarDao cDao = new CalendarDao();
-		List<Calendar> calendarList = cDao.select(new Calendar());
+        ChildDao cDao = new ChildDao();
+        List<Child> userList = cDao.select(loginUser.getUserId());
+        request.setAttribute("userList", userList);
 
+        CommentDao coDao = new CommentDao();
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId());
+        request.setAttribute("commentList", commentList);
 
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
+        dispatcher.forward(request, response);
+    }
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
-		dispatcher.forward(request, response);
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
 
-		HttpSession session = request.getSession();
-		//User loginUser = (User)session.getAttribute("id");
-		//String userID = loginUser.getUserId();
-		CalendarDao childDao = new CalendarDao();
-		Calendar calendardm = new Calendar(
-				//自動採番の際は0に変更(int)
-				null,
-				"ダミー",
-				"ダミー"
-		);
-		CalendarDao.insert(calendardm);
+        HttpSession session = request.getSession();
+        //User loginUser = (User)session.getAttribute("id");
+        //String userID = loginUser.getUserId();
+        CalendarDao childDao = new CalendarDao();
+        Calendar calendardm = new Calendar(
+                //自動採番の際は0に変更(int)
+                null,
+                "ダミー",
+                "ダミー"
+        );
+        CalendarDao.insert(calendardm);
 
-		// リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
-				String date = request.getParameter("date");
-				String address = request.getParameter("childId");
-				String company = request.getParameter("houseworkName");
+        request.setCharacterEncoding("UTF-8");
+        int childId = Integer.parseInt(request.getParameter("childId"));
+        String userId = request.getParameter("userId");
+        String comment = request.getParameter("comment");
+        Date date = new Date();
+        String houseworkPoint = request.getParameter("houseworkPoint");
 
-				CalendarDao clDao = new CalendarDao();
-				List<Calendar> userList = clDao.select(new Calendar(date,childId,houseworkName));
-
-				//request.setAttribute("userList", userList);
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("calendarList", calendarList);
-
-		// 更新または削除を行う
-		CalendarDao dDao = new CalendarDao();
-		if (request.getParameter("submit").equals("登録")) {
-			if (dDao.update(new Calendar(date,childId,houseworkName))) {
-				// 更新成功
-				request.setAttribute("result",
-				new Result("登録成功！"));
-			}
-			else {
-				// 更新失敗
-				request.setAttribute("result",
-				new Result("登録失敗！"));
-			}
-		}
-		/*else {
-			if (dDao.delete(childId)) {	// 削除成功
-				request.setAttribute("result",
-				new Result("削除成功！"));
-			}
-			else {						// 削除失敗
-				request.setAttribute("result",
-				new Result("削除失敗！"));
-			}
-		}*/
-	}
-
-
-
-
-
-
+        CommentDao coDao = new CommentDao();
+        if (coDao.insert(date, 0, comment)) {
+            request.setAttribute("commentSuccess", true);
+        } else {
+            request.setAttribute("commentSuccess", false);
+        }
+    }
 }

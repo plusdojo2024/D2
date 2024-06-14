@@ -14,8 +14,7 @@ import model.CalendarComment;
 
 public class CommentDao {
     private static final String SELECT_ALL_COMMENT_SQL =
-    		"SELECT * FROM comment WHERE user_id=? AND date < ? "
-    		+ " date >= ? ";
+    		"SELECT * FROM comment WHERE user_id=? ORDER BY date ";
 
     public List<CalendarComment> getAllComments(String userId, int year ,int month) {
         List<CalendarComment> commentList = new ArrayList<>();

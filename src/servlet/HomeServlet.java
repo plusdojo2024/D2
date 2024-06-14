@@ -15,9 +15,7 @@ import dao.ChildDao;
 import model.Child;
 import model.User;
 
-/**
- * Servlet implementation class HomeServlet
- */
+
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
