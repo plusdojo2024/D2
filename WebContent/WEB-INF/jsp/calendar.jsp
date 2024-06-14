@@ -55,6 +55,31 @@
           </div>
     </div>
 
+    <c:if test="${empty CalendarComment}">
+    <p>一致するデータはありません。</p>
+</c:if>
+
+    <c:forEach var="e" items="${CalendarComment}">
+        <div class="comment">
+            <div class="commentDay">
+
+                    <form class="form" method="post" action="/D2/ParentsServlet" onsubmit="return confirmDelete();">
+                        <div class="data-row">
+                            <label>日付</label>
+                            <input type="text" name="date" value="${e.date}" readonly="readonly">
+                        </div>
+                        <div class="data-row">
+                            <label>コメント</label>
+                            <input type="text" name="comment" value="${e.comment}" readonly="readonly">
+                        </div>
+
+                    </form>
+
+            </div>
+        </div>
+    </c:forEach>
+
+
     <script>
     function generate_year_range(start, end) {
     	  var years = "";

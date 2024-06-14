@@ -19,6 +19,7 @@ import model.Child;
 import model.HouseWork;
 import model.Result;
 import model.User;
+
 /**
  * Servlet implementation class ParentsServlet
  */
@@ -26,31 +27,36 @@ import model.User;
 public class ParentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ParentsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ParentsServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//ログインしてなかったら戻る
 		HttpSession session = request.getSession();
+
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
 		}
+		User loginUser = (User)session.getAttribute("id");
 
 		ChildDao cDao = new ChildDao();
-		List<Child> userList = cDao.select(new Child());
-
-		// 検索結果をリクエストスコープに格納する
+		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
+
+		HouseworkDao hDao = new HouseworkDao();
+		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
+		request.setAttribute("houseList", houseList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
 		dispatcher.forward(request, response);
@@ -59,11 +65,12 @@ public class ParentsServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
 		HttpSession session = request.getSession();
-		User loginUser = (User)session.getAttribute("id");
+		User loginUser = (User) session.getAttribute("id");
 		String userID = loginUser.getUserId();
 		ChildDao childDao = new ChildDao();
 		Child childac = new Child(
@@ -73,91 +80,83 @@ public class ParentsServlet extends HttpServlet {
 				userID,
 				"ダミー",
 				"ダミー",
-				"ダミー"
-		);
+				"ダミー");
 		childDao.insert(childac);
 
 		request.setCharacterEncoding("UTF-8");
 		int childId = Integer.parseInt(request.getParameter("childId"));
 		String childPicture = request.getParameter("childPicture");
-		String childName= request.getParameter("childName");
-		String userId= request.getParameter("userId");
-		String rewardUmu= request.getParameter("rewardUmu");
-		String rewardJouken= request.getParameter("rewardJouken");
-		String rewardText= request.getParameter("rewardText");
-        String comment = request.getParameter("comment");
-	    Date date = new Date();
-	    String houseworkName = request.getParameter("houseworkName");
-	    String houseworkContets = request.getParameter("houseworkContets");
-	    String houseworkPoint = request.getParameter("houseworkPoint");
-	    String icon = request.getParameter("icon");
-	    String iconDone = request.getParameter("iconDone");
-	    String iconX = request.getParameter("iconX");
-	    String iconY = request.getParameter("iconY");
+		String childName = request.getParameter("childName");
+		String userId = request.getParameter("userId");
+		String rewardUmu = request.getParameter("rewardUmu");
+		String rewardJouken = request.getParameter("rewardJouken");
+		String rewardText = request.getParameter("rewardText");
+		String comment = request.getParameter("comment");
+		Date date = new Date();
+		String houseworkName = request.getParameter("houseworkName");
+		String houseworkContets = request.getParameter("houseworkContets");
+		String houseworkPoint = request.getParameter("houseworkPoint");
+		String icon = request.getParameter("icon");
+		String iconDone = request.getParameter("iconDone");
+		String iconX = request.getParameter("iconX");
+		String iconY = request.getParameter("iconY");
 
-	        // 親ページからのコメントの登録処理
-	    CommentDao coDao = new CommentDao();
-	        if (coDao.insert(date,0,comment)) {
-	            request.setAttribute("commentSuccess", true);
-	        } else {
-	            request.setAttribute("commentSuccess", false);
-	        }
+		// 親ページからのコメントの登録処理
+		CommentDao coDao = new CommentDao();
+		if (coDao.insert(date, 0, comment)) {
+			request.setAttribute("commentSuccess", true);
+		} else {
+			request.setAttribute("commentSuccess", false);
+		}
 
-	        HouseworkDao wDao = new HouseworkDao(); {
+		HouseworkDao wDao = new HouseworkDao();
+		{
 
-	        	if (request.getParameter("submit").equals("更新")) {
+			if (request.getParameter("submit").equals("更新")) {
 
-	        			if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
-	        		            icon, iconDone, userId, iconX ,iconY)))  {
-	        		        request.setAttribute("message", "更新成功！");
-	        		    } else {
-	        		        if (wDao.delete(houseworkName)) {    // 削除成功
-	        		            request.setAttribute("message", "削除成功！");
-	        		        }
-	        		    }
-	        	   }
+				if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
+						icon, iconDone, userId, iconX, iconY))) {
+					request.setAttribute("message", "更新成功！");
+				} else {
+					if (wDao.delete(houseworkName)) { // 削除成功
+						request.setAttribute("message", "削除成功！");
+					}
+				}
+			}
 
-	        	   }
-
+		}
+/*
 		ChildDao cDao = new ChildDao();
-		List<Child> userList = cDao.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
+		List<Child> userList = cDao
+				.select(new Child(0, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText));
 		HouseworkDao hDao = new HouseworkDao();
-		List<HouseWork> userList2 = hDao.select(new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, userId, iconX,iconY));
+		List<HouseWork> userList2 = hDao.select(
+				new HouseWork(houseworkName, houseworkContets, houseworkPoint, icon, iconDone, userId, iconX, iconY));
 
 		request.setAttribute("userList", userList);
 		request.setAttribute("userList2", userList2);
-
+*/
 		// 更新または削除を行う
-				ChildDao dDao = new ChildDao();
-				if (request.getParameter("submit").equals("更新")) {
-					if (dDao.update(new Child(childId, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText))) {	// 更新成功
-						request.setAttribute("result",
+		ChildDao dDao = new ChildDao();
+		if (request.getParameter("submit").equals("更新")) {
+			if (dDao.update(new Child(childId, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText))) { // 更新成功
+				request.setAttribute("result",
 						new Result("更新成功！"));
-					}
-					else {												// 更新失敗
-						request.setAttribute("result",
+			} else { // 更新失敗
+				request.setAttribute("result",
 						new Result("更新失敗！"));
-					}
-				}
-				else {
-					if (dDao.delete(childId)) {	// 削除成功
-						request.setAttribute("result",
+			}
+		} else {
+			if (dDao.delete(childId)) { // 削除成功
+				request.setAttribute("result",
 						new Result("削除成功！"));
-					}
-					else {						// 削除失敗
-						request.setAttribute("result",
+			} else { // 削除失敗
+				request.setAttribute("result",
 						new Result("削除失敗！"));
-					}
-				}
+			}
+		}
 
 		doGet(request, response);
 	}
 
-
 }
-
-
-
-
-
-
