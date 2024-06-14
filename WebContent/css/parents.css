@@ -44,8 +44,15 @@ h2, h3, p{
 	max-height:220px;
 	padding: 30px;
 	background-color:#FFFFBA;
+	background-clip:padding-box;
 	color:#1C82B0;
 	border-radius:30px;
+	border:10px solid transparent;
+ }
+ 
+ .children{
+  display:flex;
+  flex-wrap:wrap;
  }
  
 input[type="reset"]{

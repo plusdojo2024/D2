@@ -59,6 +59,7 @@
 			<p>一致するデータはありません。</p>
 		</c:if>
 		
+		<div class = children>
 		<c:forEach var="e" items="${houseList}">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 				<div class=housework_setting>
@@ -67,7 +68,7 @@
 					</div>
 					<table>
 						<tr>
-							<td>家事の名前：</td>
+							<td>家事の名前：${e.houseworkName}</td>
 						</tr>
 						<tr>
 							<td><label>家事の内容 <input type="text"
@@ -92,7 +93,9 @@
 					</div>
 				</div>
 			</form>
+			<br>
 		</c:forEach>
+		</div>
 
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
