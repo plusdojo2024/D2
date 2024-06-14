@@ -18,14 +18,19 @@ body{
 }
 
 .child_acount{
-	
 	padding:30px;
-	max-width:260px;
+	max-width:220px;
+	min-width:220px;
 	min-height:210px;
-	background-color:#FF8585;
+	background-clip:padding-box;
 	color:#000000;
-	border-radius:30px; 
+	border-radius:60px; 
+	border:20px solid transparent;
 }
+
+ .childprofile{
+  display:flex;
+ }
 
  .child_acount a{
   display: block;

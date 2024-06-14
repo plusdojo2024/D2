@@ -27,9 +27,14 @@
 	<main>
 		<div class = childprofile>
 			<!--子供のプロフィール-->
-			<c:forEach var="e" items="${userList}">
-			<div class = child_acount>
-			<a href="/D2/HouseworkServlet">
+			<c:forEach var="e" items="${userList}" varStatus="loop">
+				<div class="child_acount" style="background-color:#FF8585;">
+					<a href="/D2/HouseworkServlet">
+				<form>
+							<input type="radio" name="color" value="#FF8585" onchange="changeBackgroundColor(this.value, ${loop.index})" checked>あか 
+							<input type="radio" name="color" value="#D9F2D0" onchange="changeBackgroundColor(this.value, ${loop.index})">みどり
+							<input type="radio" name="color" value="#C1E5F5" onchange="changeBackgroundColor(this.value, ${loop.index})">あお
+						</form>
 				<table>
 					<tr>
 						<td>
@@ -56,9 +61,15 @@
 		<div class = housework>
 			<p class = b>おてつだい</p>
 			<c:forEach var = "e" items = "${houselist}">
+			<p></p>
 			</c:forEach>
 		</div>
-
 	</main>
+	<script>
+		function changeBackgroundColor(color, index) {
+			var childAccounts = document.querySelectorAll('.child_acount');
+			childAccounts[index].style.backgroundColor = color;
+		}
+	</script>
 </body>
 </html>
