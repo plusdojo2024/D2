@@ -72,14 +72,15 @@
 							</label></td>
 						</tr>
 						<tr>
-							<td><label>重要度 </label> <nobr>
-									<span class="stars"> <input id="3" type="radio"
-										name="dufficulty" value="3"><label for="3">★</label> <input
-										id="2" type="radio" name="dufficulty" value="2"><label
-										for="2">★</label> <input id="1" type="radio" name="dufficulty"
-										value="1"><label for="1">★</label>
+							<td><label>重要度 </label> 
+								<nobr>
+									<span class="stars"> 
+										<input id="3" type="radio" name="dufficulty" value="3"><label for="3">★</label> 
+										<input id="2" type="radio" name="dufficulty" value="2"><label for="2">★</label>
+										<input id="1" type="radio" name="dufficulty" value="1"><label for="1">★</label>
 									</span>
-								</nobr></td>
+								</nobr>
+							</td>
 						</tr>
 					</table>
 					<div class=button>

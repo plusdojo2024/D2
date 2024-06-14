@@ -36,7 +36,7 @@
       <tr>
         <td>
           <label><img src="/D2/img/key.png" width="25" height="25"alt="鍵">パスコード<br>
-          <input type="password" name="pw">
+          <input type="password" name="pc">
           </label>
         </td>
       </tr>
