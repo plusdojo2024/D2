@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,11 +56,11 @@
           </div>
     </div>
 
-    <c:if test="${empty CalendarComment}">
+    <c:if test="${empty commentList}">
     <p></p>
 </c:if>
 
-    <c:forEach var="e" items="${CalendarComment}">
+    <c:forEach var="e" items="${commentList}">
         <div class="comment">
             <div class="commentDay">
 

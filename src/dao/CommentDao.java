@@ -13,10 +13,8 @@ import java.util.List;
 import model.CalendarComment;
 
 public class CommentDao {
-    private static final String SELECT_ALL_COMMENT_SQL =
-    		"SELECT * FROM comment WHERE user_id=? ORDER BY date ";
 
-    public List<CalendarComment> getAllComments(String userId, int year ,int month) {
+    public List<CalendarComment> select(String userId, int year ,int month) {
         List<CalendarComment> commentList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -38,7 +36,8 @@ public class CommentDao {
             conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
             // SQL文を準備する
-            stmt = conn.prepareStatement(SELECT_ALL_COMMENT_SQL);
+            String sql ="SELECT * FROM comment WHERE user_id=? ORDER BY date";
+            stmt = conn.prepareStatement(sql);
 			stmt.setString(1, userId);
 			stmt.setDate(2, Date.valueOf(nextYear+"-"+nextMonth+"-1"));
 			stmt.setDate(3, Date.valueOf(year+"-"+month+"-1"));//yyyy-mm-1
