@@ -35,7 +35,7 @@ h2, h3, p{
 	max-height:300px;
 	background-color:#FFFFBA;
 	color:#1C82B0;
-	border-radius:30px;
+	border-radius:50px;
 }
 
 
@@ -46,8 +46,8 @@ h2, h3, p{
 	background-color:#FFFFBA;
 	background-clip:padding-box;
 	color:#1C82B0;
-	border-radius:40px;
-	border:15px solid transparent;
+	border-radius:60px;
+	border:25px solid transparent;
  }
  
  .children{
