@@ -34,8 +34,8 @@ public class LockServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		if (session.getAttribute("pc") == null) {
-			response.sendRedirect("/D2/LockServlet");
+		if (session.getAttribute("pc") != null) {
+			response.sendRedirect("./LockServlet");
 			return;
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
