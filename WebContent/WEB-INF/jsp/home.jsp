@@ -30,16 +30,15 @@
 			<c:forEach var="e" items="${userList}" varStatus="loop">
 				<div class="child_acount" style="background-color:#FF8585;">
 					<a href="/D2/HouseworkServlet">
-				<form>
-							<input type="radio" name="color" value="#FF8585" onchange="changeBackgroundColor(this.value, ${loop.index})" checked>あか 
-							<input type="radio" name="color" value="#D9F2D0" onchange="changeBackgroundColor(this.value, ${loop.index})">みどり
-							<input type="radio" name="color" value="#C1E5F5" onchange="changeBackgroundColor(this.value, ${loop.index})">あお
-						</form>
+					<form>
+						<input type="radio" name="color" value="#F7DDF1" onchange="changeBackgroundColor(this.value, ${loop.index})"> ぴんく
+						<input type="radio" name="color" value="#D9F2D0" onchange="changeBackgroundColor(this.value, ${loop.index})"> みどり
+						<input type="radio" name="color" value="#C1E5F5" onchange="changeBackgroundColor(this.value, ${loop.index})"> あお
+					</form>
 				<table>
 					<tr>
 						<td>
-							<img src = "${e.childPicture}" width = 60px height = 60px>
-						</td>
+							<img src = "${e.childPicture}">
 						<td>
 							<p class = child_name>${e.childName}</p>
 						</td>
@@ -66,10 +65,24 @@
 		</div>
 	</main>
 	<script>
-		function changeBackgroundColor(color, index) {
-			var childAccounts = document.querySelectorAll('.child_acount');
-			childAccounts[index].style.backgroundColor = color;
-		}
+	function changeBackgroundColor(color, index) {
+		var childAccounts = document.querySelectorAll('.child_acount');
+		childAccounts[index].style.backgroundColor = color;
+		// 色をローカルストレージに保存
+		localStorage.setItem('childAccountColor_' + index, color);
+	}
+
+	// ページ読み込み時にローカルストレージから色を復元
+	document.addEventListener('DOMContentLoaded', function() {
+		var childAccounts = document.querySelectorAll('.child_acount');
+		childAccounts.forEach(function(childAccount, index) {
+			var savedColor = localStorage.getItem('childAccountColor_' + index);
+			if (savedColor) {
+				childAccount.style.backgroundColor = savedColor;
+			}
+		});
+	});
+</script>
 	</script>
 </body>
 </html>

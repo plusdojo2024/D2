@@ -51,3 +51,27 @@ body{
 	color:#000000;
 	border-radius:30px;
 }
+
+/* ラジオボタンのラベルのスタイル */
+        .radio-label {
+            display: inline-block;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            background-color: #e0e0e0; /* デフォルトの背景色 */
+        }
+
+        /* ラジオボタンの隠し部分（opacity: 0;） */
+        .radio-input {
+            display: none;
+        }
+
+        /* ラジオボタンがチェックされたときのラベルのスタイル */
+        .radio-input:checked + .radio-label {
+            background-color: #a0a0a0; /* チェックされた時の背景色 */
+        }
+
+        /* ラジオボタンのラベルにホバーしたときのスタイル */
+        .radio-label:hover {
+            background-color: #c0c0c0; /* ホバー時の背景色 */
+        }
