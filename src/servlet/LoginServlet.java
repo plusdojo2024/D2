@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UserDao;
+import model.Result;
 import model.User;
 
 /**
@@ -61,11 +62,11 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("./HomeServlet");
 		} else { // ログイン失敗
 			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			//request.setAttribute("result",
-					//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/D2/LoginServlet"));
+			request.setAttribute("result",
+					new Result("失敗...","IDまたはPWに間違いがあるよ。", "/D2/LoginServlet"));
 
 			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
