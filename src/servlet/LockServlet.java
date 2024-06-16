@@ -32,12 +32,6 @@ public class LockServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		HttpSession session = request.getSession();
-		if (session.getAttribute("pc") == null) {
-			response.sendRedirect("/D2/LockServlet");
-			return;
-		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
 		dispatcher.forward(request, response);
 	}
