@@ -5,7 +5,7 @@ body {
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
-    margin: 0 100px 0 100px;
+    margin: 0 200px 0 200px;
 }
 h1{
 	color:#1C82B0;
