@@ -34,9 +34,12 @@ public class Child implements Serializable {
 		this.RewardJouken = rewardJouken;
 		this.RewardText = rewardText;
 	}
+	public Child(String userId) {
+		this.UserId = userId;
+	}
 
 	public Child() {
-		
+
 	}
 
 	public int getChildId() {
@@ -54,7 +57,7 @@ public class Child implements Serializable {
 	public void setChildPicture(String childPicture) {
 		this.ChildPicture = childPicture;
 	}
-	
+
 	public String getChildName() {
 		return ChildName;
 	}
@@ -62,8 +65,8 @@ public class Child implements Serializable {
 	public void setChildName(String childName) {
 		this.ChildName = childName;
 	}
-	
-	
+
+
 /*
 	public String getChildAge() {
 		return ChildAge;
@@ -132,7 +135,7 @@ public class Child implements Serializable {
 		public Result( String message) {
 			this.message = message;
 		}
-		
+
 		public String getMessage() {
 			return message;
 		}
