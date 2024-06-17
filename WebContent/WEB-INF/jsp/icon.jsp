@@ -27,8 +27,8 @@
   </div>
 
     <form id="my_form" action="" method="post">
-		<label></label>
-		<input type="text" name="my_x1" id="my_x1">
+		<label>aaaa</label>
+		<input type="text" name="my_x1" value="/D2/${e.iconX}" >
 		<input type="text" name="my_y1" id="my_y1">
 		<label></label>
 		<input type="text" name="my_x2" id="my_x2">
@@ -65,9 +65,7 @@
 
 	<div id='my_xy'>
 		<ul>
-		    <li><img id="my_xy1" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
-		    <li><img id="my_xy2" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
-		    <li><img id="my_xy3" class="controlXY" src="/D2/img/icon_gomi1.png" ></li>
+		    <li><img id="my_xy1" class="controlXY" src="/D2/icon/${e.icon}" ></li>
 		</ul>
 	</div>
 

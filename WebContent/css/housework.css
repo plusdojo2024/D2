@@ -22,3 +22,9 @@ body {
 	position: absolute;
 	z-index: 2;
 }
+
+img{
+	width: 125px;
+	position: absolute;
+	z-index: 3;
+	}

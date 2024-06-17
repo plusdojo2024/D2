@@ -9,8 +9,32 @@
 <title>カレンダー</title>
 </head>
 <body>
-<h1>カレンダー</h1>
-<div class="container-calendar">
+
+  <header>
+		<div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <div class="menu-content">
+      <ul>
+        <li><a href="/D2/HomeServlet">ホーム</a></li>
+        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
+        <li><a href="/D2/LockServlet">設定</a></li>
+        <li><a href="/D2/LogoutServlet">ログアウト</a></li>
+      </ul>
+    </div>
+        </div>
+   </header>
+   <div id='my_balloon'>
+		<ul>
+		    	<div class="balloon_contents">
+		    		<span>吹き出し1</span>
+		    	</div>
+		</ul>
+	</div>
+	<main>
+      <h1>カレンダー</h1>
+      <p class=a>やり終えた家事を見ることができます。</p>
+        <div class="container-calendar">
 
           <h4 id="monthAndYear"></h4>
           <div class="button-container-calendar">
@@ -43,6 +67,8 @@
               <select id="year" onchange="jump()"></select>
           </div>
     </div>
+  </main>
+
 <script>
     function generate_year_range(start, end) {
   var years = "";
@@ -129,7 +155,7 @@ function showCalendar(month, year) {
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              cell.innerHTML = "<span>" + date + "</span>";
+              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><span>吹き出し1</span></div></div>";
 
               if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                   cell.className = "date-picker selected";
@@ -147,6 +173,7 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
   return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+
 </script>
 </body>
 </html>
