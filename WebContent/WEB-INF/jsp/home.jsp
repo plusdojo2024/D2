@@ -38,7 +38,7 @@
 				<table>
 					<tr>
 						<td>
-							<img src >
+							<img src = "/D2/upload/${e.childPicture}" width="50" height="50">
 						</td>
 						<td>
 							<p class = child_name>${e.childName}</p>
