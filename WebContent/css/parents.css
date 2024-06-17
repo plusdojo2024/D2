@@ -38,6 +38,16 @@ h2, h3, p{
 	border-radius:50px;
 }
 
+.childprofile_setting_2{
+	padding:40px;
+	min-width:510px;
+	max-height:300px;
+	background-color:#FFFFBA;
+	color:#1C82B0;
+	background-clip:padding-box;
+	border-radius:70px;
+	border:15px solid transparent;
+}
 
 .housework_setting{
  	max-width:250px;

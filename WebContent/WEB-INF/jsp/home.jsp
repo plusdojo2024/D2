@@ -39,10 +39,12 @@
 					<tr>
 						<td>
 							<img src = "${e.childPicture}">
+						</td>
 						<td>
 							<p class = child_name>${e.childName}</p>
 						</td>
 					</tr>
+					<!--  
 					<tr>
 						<td>
 							<p>ほしのかず</p>
@@ -51,6 +53,7 @@
 						<td>
 						</td>
 					</tr>
+					-->
 				</table>
 				</a>
 				</div>
