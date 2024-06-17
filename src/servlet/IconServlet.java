@@ -53,7 +53,7 @@ public class IconServlet extends HttpServlet {
 		List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
 		request.setAttribute("cardList", cardList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/housework.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/icon.jsp");
 		dispatcher.forward(request, response);
 	}
 
