@@ -16,6 +16,7 @@ body{
 }
 img{
 	width: 120px;
+	z-index: 3;
 	}
 
 

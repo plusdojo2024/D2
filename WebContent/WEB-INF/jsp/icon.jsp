@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,9 +27,9 @@
     <img src="/D2/img/madori.png" >
   </div>
 
-    <form id="my_form" action="" method="post">
-		<label>aaaa</label>
-		<input type="text" name="my_x1" value="/D2/${e.iconX}" >
+    <!-- <form id="my_form" action="" method="post">
+		<label></label>
+		<input type="text" name="my_x1" value="/D2/icon/${e.icon}" >
 		<input type="text" name="my_y1" id="my_y1">
 		<label></label>
 		<input type="text" name="my_x2" id="my_x2">
@@ -39,9 +40,9 @@
 
 		<input type="submit" name="my_save" value="保存">
         <input type="reset" name="my_reset" value="リセット">
-	</form>
+	</form>-->
 
-<!--  <form id="my_form" action="" method="post">
+<form id="my_form" action="" method="post">
     <label for="my_x1">X1:</label>
     <input type="text" name="my_x1" id="my_x1">
     <label for="my_y1">Y1:</label>
@@ -59,18 +60,26 @@
 
     <input type="submit" name="my_save" value="保存">
     <input type="reset" name="my_reset" value="リセット">
-</form>-->
+</form>
 
+<div id='my_xy'>
+  <c:if test="${empty cardList}">
+    <p>カードリストは空です。</p>
+</c:if>
 
+<div class="work">
+    <c:forEach var="e" items="${cardList}">
+        <img src="/D2/icon/${e.icon}">
+    </c:forEach>
+</div>
+</div>
 
-	<div id='my_xy'>
+	<!-- <div id='my_xy'>
 		<ul>
 		    <li><img id="my_xy1" class="controlXY" src="/D2/icon/${e.icon}" ></li>
 		</ul>
-	</div>
+	</div> -->
 
 </body>
-
-<script src="/D2/script/controlXY.js"></script>
 
 </html>
