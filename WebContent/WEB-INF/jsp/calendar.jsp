@@ -9,8 +9,24 @@
 <title>カレンダー</title>
 </head>
 <body>
-<h1>カレンダー</h1>
-<div class="container-calendar">
+  <header>
+		<div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <div class="menu-content">
+      <ul>
+        <li><a href="/D2/HomeServlet">ホーム</a></li>
+        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
+        <li><a href="/D2/LockServlet">設定</a></li>
+        <li><a href="/D2/LogoutServlet">ログアウト</a></li>
+      </ul>
+    </div>
+  </div>
+	</header>
+	<main>
+      <h1>カレンダー</h1>
+      <p class=a>やり終えた家事を見ることができます。</p>
+        <div class="container-calendar">
 
           <h4 id="monthAndYear"></h4>
           <div class="button-container-calendar">
@@ -43,6 +59,8 @@
               <select id="year" onchange="jump()"></select>
           </div>
     </div>
+  </main>
+
 <script>
     function generate_year_range(start, end) {
   var years = "";
