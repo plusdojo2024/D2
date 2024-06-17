@@ -9,6 +9,7 @@
 <title>カレンダー</title>
 </head>
 <body>
+
   <header>
 		<div class="hamburger-menu">
     <input type="checkbox" id="menu-btn-check">
@@ -21,8 +22,15 @@
         <li><a href="/D2/LogoutServlet">ログアウト</a></li>
       </ul>
     </div>
-  </div>
-	</header>
+        </div>
+   </header>
+   <div id='my_balloon'>
+		<ul>
+		    	<div class="balloon_contents">
+		    		<span>吹き出し1</span>
+		    	</div>
+		</ul>
+	</div>
 	<main>
       <h1>カレンダー</h1>
       <p class=a>やり終えた家事を見ることができます。</p>
@@ -147,7 +155,7 @@ function showCalendar(month, year) {
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              cell.innerHTML = "<span>" + date + "</span>";
+              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><span>吹き出し1</span></div></div>";
 
               if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                   cell.className = "date-picker selected";
@@ -165,6 +173,7 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
   return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+
 </script>
 </body>
 </html>

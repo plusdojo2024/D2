@@ -39,3 +39,7 @@
   border: 10px solid transparent;
   border-right: 10px solid #a0a0af;
 }
+
+.date-picker:hover .balloon_contents{
+	  display: inline-block;
+}
