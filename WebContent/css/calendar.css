@@ -5,11 +5,20 @@ body {
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
+    margin: 0 50px 0 50px;
 }
-.wrapper {
-  margin: 15px auto;
-  max-width: 700px;
+h1{
+	color:#1C82B0;
+	font-size:220%;
+
+
 }
+.a {
+	color:#2BA6DD;
+	font-size:130%;
+
+}
+
 .container-calendar {
   padding: 15px;
   width: 100%;
@@ -28,15 +37,18 @@ body {
 }
 .table-calendar {
   border-collapse: collapse;
-  width: 100%;
+  width: 150%;
+  height: 400px;
+  border-radius: 10px 0 0 0;
 }
 .table-calendar th,
 .table-calendar td{
   padding: 10px;
   border: 1px solid black;
   text-align: center;
-  vertical-align: top;
+  table-layout: fixed;
 }
+
 .date-picker.selected {
   font-weight: bold;
   color: #fff;
@@ -71,7 +83,6 @@ color: blue;
 }
 .footer-container-calendar {
   margin-top: 1em;
-  border-top: 1px solid #dadada;
   padding: 10px 0;
 }
 .footer-container-calendar select {
@@ -182,10 +193,10 @@ color: blue;
   display: none;
 }
 .container-calendar{
-  width: 800px; /* カレンダー全体の幅 */
+  /*width: 800px; /* カレンダー全体の幅 */
   margin: 0 auto; /* 中央揃え */
-  border: 1px solid #ccc; /* 枠線の設定 */
-  padding: 10px; /* 内側の余白 */
+  /*border: 1px solid #ccc; /* 枠線の設定 */
+  /*padding: 30px; /* 内側の余白 */
 }
 
 .button-container-calendar {
@@ -209,10 +220,13 @@ color: blue;
   border: 1px solid #ccc; /* セルの枠線の設定 */
   padding: 5px; /* セルの内側の余白 */
   text-align: center; /* テキストの中央揃え */
+  border-radius: 10px 0 0 0;
 }
 
 .table-calendar th {
   background-color: #f0f0f0; /* 曜日ヘッダーの背景色 */
+  height: 60px;
+  border-radius: 10px 0 0 0;
 }
 
 .table-calendar .date-picker {
@@ -235,4 +249,44 @@ color: blue;
 
 .footer-container-calendar select {
   padding: 5px;
+}
+
+#my_balloon {
+	position: relative;
+}
+#my_xy ul {
+	list-style-type: none;
+}
+#my_xy ul li {
+	float: left;
+	width: 33%;
+	height:100px;
+}
+.balloon {
+  position: relative;
+}
+.balloon:hover .balloon_contents {
+  display: inline-block;
+}
+.balloon_contents {
+  position: absolute;
+  display: none;
+  padding: 25px;
+  background-color: #a0a0af;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  left : 225px;
+  top : 0;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+.balloon_contents:after{
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: -20px;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-right: 10px solid #a0a0af;
 }
