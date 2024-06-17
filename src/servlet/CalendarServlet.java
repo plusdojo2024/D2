@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -52,7 +53,10 @@ public class CalendarServlet extends HttpServlet {
         request.setAttribute("userList", userList);
 
         CommentDao coDao = new CommentDao();
-        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(), 0, 0);
+        //現在日時を取得
+        Date date = new Date();
+
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(), getYear(),getMonth );
         request.setAttribute("commentList", commentList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
