@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/D2/css/calendar.css">
+<link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 <title>カレンダー</title>
 </head>
 <body>
+<h1>カレンダー</h1>
 <div class="container-calendar">
+
           <h4 id="monthAndYear"></h4>
           <div class="button-container-calendar">
+
               <button id="previous" onclick="previous()">‹</button>
               <button id="next" onclick="next()">›</button>
           </div>
@@ -62,7 +66,7 @@ var calendar = document.getElementById("calendar");
 var lang = calendar.getAttribute('data-lang');
 
 var months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-var days = ["日", "月", "火", "水", "木", "金", "土"];
+var days = ["にちようび", "げつようび", "かようび", "すいようび", "もくようび", "きんようび", "どようび"];
 
 var dayHeader = "<tr>";
 for (day in days) {
