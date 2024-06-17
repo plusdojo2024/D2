@@ -5,6 +5,15 @@ body {
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
+    margin: 0 auto 70px auto;	/* 中央揃え */
+}
+h1{
+	color:#1C82B0;
+	font-size:220%;
+}
+.a {
+	color:#2BA6DD;
+	font-size:130%;
 }
 .wrapper {
   margin: 15px auto;
