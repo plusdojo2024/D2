@@ -90,7 +90,7 @@
 						</tr>
 					</table>
 					<div class=button>
-						<input type="submit" name="housework_submit" value="更新"> <input
+						<input type="submit" name="submit" value="更新"> <input
 							type="reset" name="reset" value="リセット">
 					</div>
 				</div>
@@ -117,7 +117,7 @@
 						</td>
 						<td>
 							<label>なまえ 
-								<input type="text" name="child_name">
+								<input type="text" name="childName">
 							</label>
 						</td>
 					</tr>
@@ -125,21 +125,21 @@
 						<td>
 							<br> 
 							<label>報酬を表示 
-								<input type="radio" name="reword_display" value="true" checked>する 
-								<input type="radio" name="reword_display" value="false">しない
+								<input type="radio" name="rewardUmu" value="true" checked>する 
+								<input type="radio" name="rewardUmu" value="false">しない
 							</label>
 						</td>
 						<td>
 							<br> 
 							<label>☆ 
-								<input type="text"name="reword_star"> 個で表示
+								<input type="text"name="rewardJouken"> 個で表示
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
 							<label>表示する文章 
-								<input type="text" name="reword_paragraph">
+								<input type="text" name="rewardText">
 							</label> 
 							<br>
 						</td>
@@ -147,7 +147,7 @@
 				</table>
 				<br>
 				<div class=button>
-					<input type="submit" id="regist" name="childprofile_submit" value="登録"> 
+					<input type="submit" id="regist" name="submit" value="登録"> 
 					<input type="reset" name="reset" value="リセット">
 					<span id="error_message"></span>
 					<br>
@@ -172,31 +172,31 @@
 						<tr>
 							<td>
 								<label>プロフィール画像<br> 
-									<input type="file" name="child_image" value="${e.childPicture}">
+									<input type="file" name="childPicture" value="${e.childPicture}">
 								</label>
 							</td>
 							<td>
 								<label>なまえ 
-									<input type="text" name="child_name" value="${e.childName}">
+									<input type="text" name="childName" value="${e.childName}">
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td><br> <label>報酬を表示 
-								<input type="radio" name="reword_display" value="yes"<c:if test = "${e.rewardUmu == 'yes'}">checked</c:if>>する 
-								<input type="radio" name="reword_display" value="no"<c:if test = "${e.rewardUmu == 'no'}">checked</c:if>>しない
+								<input type="radio" name="rewardUmu" value="yes"<c:if test = "${e.rewardUmu== 'yes'}">checked</c:if>>する 
+								<input type="radio" name="rewardUmu" value="no"<c:if test = "${e.rewardUmu == 'no'}">checked</c:if>>しない
 							</label></td>
 							<td>
 							<br> 
 								<label>☆ 
-									<input type="text" name="reword_star" value="${e.rewardJouken}"> 個で表示
+									<input type="text" name="rewardJouken" value="${e.rewardJouken}"> 個で表示
 								</label>
 							</td>
 						</tr>
 						<tr>
 							<td colspan="2">
 								<label>表示する文章 
-									<input type="text" name="reword_paragraph" value="${e.rewardText}">
+									<input type="text" name="rewordText" value="${e.rewardText}">
 								</label> 
 							<br>
 							</td>
@@ -204,7 +204,7 @@
 					</table>
 					<br>
 					<div class=button>
-						<input type="submit" id="regist" name="comment_submit" value="更新">
+						<input type="submit" id="regist" name="submit" value="更新">
 						<input type="submit" name="childprofile_delete" value="削除">
 						<span id="error_message"></span><br>
 					</div>

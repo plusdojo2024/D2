@@ -56,7 +56,10 @@ public class ParentsServlet extends HttpServlet {
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
-
+		
+		HouseworkDao hDao = new HouseworkDao();
+		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
+		request.setAttribute("houseList", houseList);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
 		dispatcher.forward(request, response);
@@ -118,64 +121,57 @@ public class ParentsServlet extends HttpServlet {
 					request.setAttribute("result",
 							new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
 				}
-			} else {
-				HttpSession session = request.getSession();
-				User loginUser = (User) session.getAttribute("id");
-				String userID = loginUser.getUserId();
-				ChildDao childDao = new ChildDao();
-				Child childac = new Child(
-					0, //自動採番の際は0に変更(int)
-					"ダミー",
-					"ダミー",
-					userID,
-					"ダミー",
-					"ダミー",
-					"ダミー");
-				childDao.insert(childac);
-	
-				request.setCharacterEncoding("UTF-8");
-				String childId_string = request.getParameter("childId");
-				int childId = -1;
-				if(childId_string != null) {
-					childId = Integer.parseInt(request.getParameter("childId"));
-				}
-				Part childPicture = request.getPart("childPicture");
-				childPicture.write("C:\\pleiades\\workspace\\D2\\WebContent\\upload\\" + childPicture.getSubmittedFileName());
-				String childName = request.getParameter("childName");
-				String userId = request.getParameter("userId");
-				String rewardUmu = request.getParameter("rewardUmu");
-				String rewardJouken = request.getParameter("rewardJouken");
-				String rewardText = request.getParameter("rewardText");
+		} else {
+			HttpSession session = request.getSession();
+			User loginUser = (User) session.getAttribute("id");
+			String userID = loginUser.getUserId();
+
 			
-				ChildDao dDao = new ChildDao();
-				if (request.getParameter("submit").equals("更新")) {
-					if (dDao.update(new Child(childId, childPicture.getSubmittedFileName(), childName, userId, rewardUmu, rewardJouken, rewardText))) { // 更新成功
-						request.setAttribute("result",
-								new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
-					} else { // 更新失敗
-						request.setAttribute("result",
-								new Result("更新失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
-					}
-				} else if(request.getParameter("submit").equals("登録")){
-					if (dDao.insert(new Child(childId, childPicture.getSubmittedFileName(), childName, userId, rewardUmu, rewardJouken, rewardText))) { // 登録成功
-						request.setAttribute("result",
-								new Result("登録成功！", "登録を実施しました", "/D2/ParentsServlet"));
-					} else { // 更新失敗
-						request.setAttribute("result",
-								new Result("登録失敗…","登録出来ませんでした", "/D2/ParentsServlet"));
-					}
-				} else {
-					if (dDao.delete(childId)) { // 削除成功
-						request.setAttribute("result",
-								new Result("削除成功！","削除を実施しました", "/D2/ParentsServlet"));
-					} else { // 削除失敗
-						request.setAttribute("result",
-								new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
-					}
-				}
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-				dispatcher.forward(request, response);
+			request.setCharacterEncoding("UTF-8");
+			String childId_string = request.getParameter("childId");
+			int childId = -1;
+			if(childId_string != null) {
+				childId = Integer.parseInt(request.getParameter("childId"));
 			}
+			Part childPicture = request.getPart("childPicture");
+			childPicture.write("C:\\pleiades\\workspace\\D2\\WebContent\\upload\\" + childPicture.getSubmittedFileName());
+			String childName = new String( request.getParameter("childName").getBytes("ISO-8859-1"),"UTF-8");
+			//String userId = request.getParameter("userId");
+			String rewardUmu = request.getParameter("rewardUmu");
+			String rewardJouken = request.getParameter("rewardJouken");
+			String rewardText = new String( request.getParameter("rewardText").getBytes("ISO-8859-1"),"UTF-8");
+			
+			
+			ChildDao dDao = new ChildDao();
+				
+			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
+				if (dDao.update(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 更新成功
+					request.setAttribute("result",
+							new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
+				} else { // 更新失敗
+					request.setAttribute("result",
+							new Result("更新失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
+				}
+			} else if(new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")){
+				if (dDao.insert(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 登録成功
+					request.setAttribute("result",
+							new Result("登録成功！", "登録を実施しました", "/D2/ParentsServlet"));
+				} else { // 更新失敗
+					request.setAttribute("result",
+							new Result("登録失敗…","登録出来ませんでした", "/D2/ParentsServlet"));
+				}
+			} else {
+				if (dDao.delete(childId)) { // 削除成功
+					request.setAttribute("result",
+							new Result("削除成功！","削除を実施しました", "/D2/ParentsServlet"));
+				} else { // 削除失敗
+					request.setAttribute("result",
+							new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
+				}
+			}
+				
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 }

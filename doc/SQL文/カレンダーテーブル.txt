@@ -9,3 +9,8 @@ CREATE TABLE calendar (
 
 ALTER TABLE calendar
 RENAME COLUMN clickdate TO click_date;
+
+ALTER TABLE calendar
+RENAME COLUMN clickchild TO click_child;
+
+

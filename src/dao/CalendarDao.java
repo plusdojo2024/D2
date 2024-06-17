@@ -26,22 +26,23 @@ try {
 	conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 	// SELECT文を準備する
-	String sql = "SELECT * FROM CALENDAR  WHERE date =? and child_id=? and	housework_name=?";
+	String sql = "SELECT * FROM CALENDAR  WHERE click_date =? and click_child=? and	click_housework=?";
 	PreparedStatement pStmt = conn.prepareStatement(sql);
+//clickDate clickChild clickHousework
 
-	pStmt.setDate(1, (Date) dates.getDate());
-	pStmt.setString(2,dates.getChildId());
-	pStmt.setString(3,dates.getHouseworkName());
+	pStmt.setDate(1, (Date) dates.getclickDate());
+	pStmt.setString(2,dates.getclickChild());
+	pStmt.setString(3,dates.getclickHousework());
 
 	// SELECT文を実行し、結果表を取得する
 	ResultSet rs = pStmt.executeQuery();
 
-	// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
+	// 結果表をコレクションにコピーする
 	while (rs.next()) {
 		Calendar record = new Calendar(
-		rs.getDate ("date"),
-		rs.getString ("ChildId"),
-		rs.getString ("HouseworkName")
+		rs.getDate ("clickDate"),
+		rs.getString ("clickChild"),
+		rs.getString ("clickHousework")
 
 		);
 		datesList .add(record);
