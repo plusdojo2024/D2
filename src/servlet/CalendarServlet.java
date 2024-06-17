@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,10 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.ChildDao;
+import dao.CalendarDao;
 import dao.CommentDao;
+import dao.HouseworkDao;
 import model.CalendarComment;
-import model.Child;
+import model.HouseWork;
 import model.User;
 
 /**
@@ -49,20 +48,30 @@ public class CalendarServlet extends HttpServlet {
         }
         User loginUser = (User) session.getAttribute("id");
 
-        ChildDao cDao = new ChildDao();
+        /*ChildDao cDao = new ChildDao();
         List<Child> userList = cDao.select(loginUser.getUserId());
-        request.setAttribute("userList", userList);
+        request.setAttribute("userList", userList);*/
+        //select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem)
 
+        //commentテーブルから日付、ユーザーID、コメントを取得　コメント本体はどこに？
         CommentDao coDao = new CommentDao();
-        //現在日時を取得
+        List<CalendarComment> commentList = coDao.select(null, 0, 0);
+        request.setAttribute("commentList", commentList);
+
+        //houseworkテーブルから家事の名前、各日のポイントを取得
+        HouseworkDao hoDao = new HouseworkDao();
+        List<HouseWork> housweworkList = hoDao.select(HouseWork.getHouseworkName(),HouseWork.getgetHouseworkPoint());
+        request.setAttribute("HouseWorkList",housweworkList);
+
+        /*現在日時を取得
         Date date = new Date();
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
 		String datey = fmt.format(date);
 		fmt = new SimpleDateFormat("MM");
-		String datem = fmt.format(date);
+		String datem = fmt.format(date);*/
 
-        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem));
-        request.setAttribute("commentList", commentList);
+
+
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
         dispatcher.forward(request, response);
@@ -77,6 +86,20 @@ public class CalendarServlet extends HttpServlet {
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
+		}
+
+		//カレンダーテーブルに家事達成時の日付、ユーザーID、家事名をしまう
+		request.setCharacterEncoding("UTF-8");
+		//フォームからのデータを取得
+		String clickDate = request.getParameter("clickDate");
+		String clickChild = request.getParameter("clickChild");
+		String clickHousework = request.getParameter("clickHousework");
+		//インスタンスを生成し、データを設定する
+		CalendarDao caDao = new CalendarDao();
+		if (caDao.insert(clickDate,clickChild,	clickHousework)) {	// 登録成功
+			request.setAttribute("houseworkresult", true);
+		} else {
+			request.setAttribute("houseworkresult", false);
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
