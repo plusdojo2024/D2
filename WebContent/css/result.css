@@ -2,44 +2,46 @@
 
 /* bodyタグ */
 body {
-  margin: 0 0 0 0;	/* マージンなし（後で個別に設定） */
-  padding: 0 0 0 0;	/* パディングなし（後で個別に設定） */
-  color: black;
-  font-size: 30px;
-  /*background-color: #3cc;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.1) 40%, transparent 40%),
-    radial-gradient(rgba(255, 255, 255, 0.1) 20%, transparent 20%);
-  background-position: 0 0, 40px 40px;
-  background-size: 80px 80px;*/
-  /* 背景画像のURLを指定します。 */
-    background-image: url('../img/background.png');
+	margin: 70px auto 70px auto;	/* 中央揃え */
+ 	width: 700px;			/* 幅を固定 */
+	color: black;
+	font-size: 30px;
+	background-image: url('../img/background.png');
     /* 背景画像の表示方法を設定します。 */
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
 }
-h1{
-  font-size: 50px;
-  color: black;
-  text-align: center;
-}
-/* パラグラフのスタイル */
-p {
-    font-size: 40px;
-    color: red;
-    text-align: center;
+
+.result{
+	padding:60px 100px;
+	background-color:#FFFFBA;
+	border-radius:50px;
 }
 
-a {
-    color: #007bff;
-    transition: color 0.3s;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+p {
+	font-size:30px;
+    text-align: center;
+    color:#2BE993;
+}
+
+.c{
+	text-align:center;
+}
+
+.back {
+	text-align:center;
+  padding: 10px 30px;
+  height: 150px;
+  background-color: #C1E5F5;
+ color: #1C82B0;
+  font-size: 1rem;
+  border: none;
+  border-radius:7px;
+  text-decoration: none;
 }
 
 a:hover {
-    color: #0056b3;
+	opacity: 0.6;
+	cursor: pointer;
 }

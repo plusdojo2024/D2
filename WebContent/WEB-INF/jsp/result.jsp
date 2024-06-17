@@ -4,13 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>シンプル名刺管理</title>
+<title>${result.title}｜おてつだいアプリ</title>
 <link rel = "stylesheet" href = "/D2/css/result.css">
 </head>
 <body>
-<h1>${result.title}</h1>
-<hr>
+<div class = result>
+<p>${result.title}</p>
 <p>${result.message}</p>
-<a href="${result.backTo}">戻る</a>
+</div>
+<br>
+<div class = c >
+<a class = back href="${result.backTo}">戻る</a>
+</div>
 </body>
 </html>
