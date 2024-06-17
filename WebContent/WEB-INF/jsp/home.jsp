@@ -38,7 +38,7 @@
 				<table>
 					<tr>
 						<td>
-							<img src = "${e.childPicture}">
+							<img src >
 						</td>
 						<td>
 							<p class = child_name>${e.childName}</p>
