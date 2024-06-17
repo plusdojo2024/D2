@@ -166,7 +166,7 @@
 		<c:forEach var="e" items="${userList}">
 			<form id="childprofile_form" method="post"
 				action="/D2/ParentsServlet">
-				<div class=childprofile_setting>
+				<div class=childprofile_setting_2>
 					<table>
 						<tr>
 							<td>
