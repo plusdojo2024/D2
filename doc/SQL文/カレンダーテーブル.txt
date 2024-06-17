@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS calendar;
+
+CREATE TABLE calendar (
+    clickDate VARCHAR(32) NOT NULL,
+    clickChild VARCHAR(32) NOT NULL,
+    clickHousework VARCHAR(32) NOT NULL,
+    PRIMARY KEY (clickDate, clickChild, clickHousework)
+);
+
+ALTER TABLE calendar
+RENAME COLUMN clickdate TO click_date;

@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -55,8 +56,12 @@ public class CalendarServlet extends HttpServlet {
         CommentDao coDao = new CommentDao();
         //現在日時を取得
         Date date = new Date();
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
+		String datey = fmt.format(date);
+		fmt = new SimpleDateFormat("MM");
+		String datem = fmt.format(date);
 
-        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(), getYear(),getMonth );
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem));
         request.setAttribute("commentList", commentList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");

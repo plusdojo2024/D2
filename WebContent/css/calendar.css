@@ -181,3 +181,58 @@ color: blue;
 #menu-btn-check {
   display: none;
 }
+.container-calendar{
+  width: 800px; /* カレンダー全体の幅 */
+  margin: 0 auto; /* 中央揃え */
+  border: 1px solid #ccc; /* 枠線の設定 */
+  padding: 10px; /* 内側の余白 */
+}
+
+.button-container-calendar {
+  margin-bottom: 10px;
+}
+
+.button-container-calendar button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.table-calendar {
+  width: 100%; /* カレンダーテーブルの幅 */
+  border-collapse: collapse; /* セルの境界線の重なりを防ぐ */
+}
+
+.table-calendar th,
+.table-calendar td {
+  border: 1px solid #ccc; /* セルの枠線の設定 */
+  padding: 5px; /* セルの内側の余白 */
+  text-align: center; /* テキストの中央揃え */
+}
+
+.table-calendar th {
+  background-color: #f0f0f0; /* 曜日ヘッダーの背景色 */
+}
+
+.table-calendar .date-picker {
+  cursor: pointer;
+}
+
+.table-calendar .selected {
+  background-color: #007bff; /* 選択された日付の背景色 */
+  color: #fff; /* 選択された日付のテキスト色 */
+}
+
+.footer-container-calendar {
+  margin-top: 10px;
+}
+
+.footer-container-calendar label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.footer-container-calendar select {
+  padding: 5px;
+}
