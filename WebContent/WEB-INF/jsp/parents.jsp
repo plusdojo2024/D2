@@ -34,6 +34,7 @@
 
 		<form id="comment_form" method="post" action="/D2/ParentsServlet">
 			<div class=comment_setting>
+			<input type="hidden" name="action" value="comment_regist">
 				<table>
 					<tr>
 						<td><label>コメント <input type="text"
@@ -62,6 +63,7 @@
 		<div class = children>
 		<c:forEach var="e" items="${houseList}">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
+			<input type="hidden" name="action" value="housework_regist">
 				<div class=housework_setting>
 					<div class=delete>
 						<input id=delete type="submit" name="submit" value=削除>
@@ -102,15 +104,15 @@
 
 		<p>${result.message}</p>
 
-		<form id="childprofilechildprofile_form" method="post"
-			action="/D2/ParentsServlet">
+		<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
+			<input type="hidden" name="action" value="child_regist">
 			<div class=childprofile_setting>
 				<table>
 					<tr>
 						<td>
 							<label>プロフィール画像<br> 
-								<input type="file" name="child_image">
+								<input type="file" name="childPicture">
 							</label>
 						</td>
 						<td>
@@ -164,8 +166,7 @@
 		</c:if>
 
 		<c:forEach var="e" items="${userList}">
-			<form id="childprofile_form" method="post"
-				action="/D2/ParentsServlet">
+			<form id="childprofile_form" method="post"action="/D2/ParentsServlet" enctype = "multipart/form-data">
 				<div class=childprofile_setting_2>
 					<table>
 						<tr>
