@@ -9,6 +9,25 @@
 <title>カレンダー</title>
 </head>
 <body>
+<div id='my_balloon'>
+		<ul>
+		    <li class='balloon'>
+		    	<div class="balloon_contents">
+		    		<span>吹き出し1</span>
+		    	</div>
+		    </li>
+		    <li class='balloon'>
+		    	<div class="balloon_contents">
+		    		<span>吹き出し2</span>
+		    	</div>
+		    </li>
+		    <li class='balloon'>
+		    	<div class="balloon_contents">
+		    		<span>吹き出し3</span>
+		    	</div>
+		    </li>
+		</ul>
+	</div>
   <header>
 		<div class="hamburger-menu">
     <input type="checkbox" id="menu-btn-check">
@@ -165,6 +184,29 @@ function showCalendar(month, year) {
 function daysInMonth(iMonth, iYear) {
   return 32 - new Date(iYear, iMonth, 32).getDate();
 }
+const balloonContents = {
+	    1: "吹き出し1の内容",
+	    2: "吹き出し2の内容",
+	    15: "吹き出し3の内容",
+	    // 他の日付と内容を追加
+	};
+
+	// カレンダーの日付要素を取得
+	const calendarDays = document.querySelectorAll('.calendar_day');
+
+	// 各日付に対応する吹き出しを追加する関数
+	calendarDays.forEach(day => {
+	    const date = day.getAttribute('data-date');
+	    if (balloonContents[date]) {
+	        // 吹き出し要素を作成
+	        const balloon = document.createElement('div');
+	        balloon.classList.add('balloon');
+	        balloon.innerHTML = `<div class="balloon_contents"><span>${balloonContents[date]}</span></div>`;
+
+	        // 吹き出しを日付要素に追加
+	        day.appendChild(balloon);
+	    }
+	});
 </script>
 </body>
 </html>
