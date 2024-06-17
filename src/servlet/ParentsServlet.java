@@ -113,14 +113,21 @@ public class ParentsServlet extends HttpServlet {
 		{
 
 			if (request.getParameter("submit").equals("更新")) {
-
 				if (wDao.update(new HouseWork(houseworkName, houseworkContets, houseworkPoint,
 						icon, iconDone, userId, iconX, iconY))) {
-					request.setAttribute("message", "更新成功！");
-				} else {
-					if (wDao.delete(houseworkName)) { // 削除成功
-						request.setAttribute("message", "削除成功！");
-					}
+					request.setAttribute("result",
+							new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
+				}else {
+					request.setAttribute("result",
+							new Result("更新失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
+				}
+			} else {
+				if(wDao.delete(houseworkName)) { // 削除成功
+					request.setAttribute("result",
+							new Result("削除成功！","削除を実施しました", "/D2/ParentsServlet"));
+				} else { // 削除失敗
+					request.setAttribute("result",
+							new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
 				}
 			}
 
@@ -141,22 +148,24 @@ public class ParentsServlet extends HttpServlet {
 		if (request.getParameter("submit").equals("更新")) {
 			if (dDao.update(new Child(childId, childPicture, childName, userId, rewardUmu, rewardJouken, rewardText))) { // 更新成功
 				request.setAttribute("result",
-						new Result("更新成功！"));
+						new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
 			} else { // 更新失敗
 				request.setAttribute("result",
-						new Result("更新失敗！"));
+						new Result("更新失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
 			}
 		} else {
 			if (dDao.delete(childId)) { // 削除成功
 				request.setAttribute("result",
-						new Result("削除成功！"));
+						new Result("削除成功！","削除を実施しました", "/D2/ParentsServlet"));
 			} else { // 削除失敗
 				request.setAttribute("result",
-						new Result("削除失敗！"));
+						new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
 			}
 		}
-
-		doGet(request, response);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
+		
 	}
 
 }
