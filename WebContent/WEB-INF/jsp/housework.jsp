@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,19 @@
   <div class="madori">
     <img src="/D2/img/madori.png" >
   </div>
+<div id='my_xy'>
+  <c:if test="${empty cardList}">
+    <p>カードリストは空です。</p>
+</c:if>
+
+<div class="work">
+    <c:forEach var="e" items="${cardList}">
+        <img src="/D2/icon/${e.icon}">
+    </c:forEach>
+</div>
+</div>
 </header>
 <!-- ヘッダー（ここまで） -->
 </body>
+<script src="/D2/script/controlXY.js"></script>
 </html>
