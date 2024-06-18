@@ -30,6 +30,7 @@ body{
 
  .childprofile{
   display:flex;
+  flex-wrap:wrap;
  }
 
  .child_acount a{
