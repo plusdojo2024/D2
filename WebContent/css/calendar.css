@@ -5,26 +5,30 @@ body {
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
-    margin: 0 200px 0 200px;
+    margin: 0 250px 0 150px;
 }
 h1{
 	color:#1C82B0;
 	font-size:220%;
-
-
+	margin: 0 0 0 60px;
+}
+h4{
+	font-size: 200%;
+	color:#1C82B0;
 }
 .a {
 	color:#2BA6DD;
 	font-size:130%;
+	margin: 0 0 0 60px;
 
 }
 
 .container-calendar {
   padding: 15px;
   width: 100%;
-  margin: 0 100px 0 100px;
+  padding: 0 130px 0 50px;
   overflow: auto;
-}
+ }
 .button-container-calendar button {
   cursor: pointer;
   display: inline-block;
@@ -43,9 +47,9 @@ h1{
 }
 .table-calendar th,
 .table-calendar td{
-  padding: 10px;
+  padding: 10px 50px;
   border: 1px solid black;
-  text-align: center;
+ text-align: center;
   table-layout: fixed;
 }
 
@@ -77,9 +81,15 @@ color: blue;
 }
 #previous {
   float: left;
+  width: 50px;
+  padding: 10px;
+  background: #A6CAEC;
 }
 #next {
   float: right;
+  width: 50px;
+  padding: 10px;
+  background: #F6C6AD;
 }
 .footer-container-calendar {
   margin-top: 1em;
@@ -89,7 +99,7 @@ color: blue;
   cursor: pointer;
   display: inline-block;
   zoom: 1;
-  background: #ffffff;
+ /* background: #ffffff;*/
   color: #454545;
   border: 1px solid #bfc5c5;
   border-radius: 3px;
@@ -224,7 +234,7 @@ color: blue;
 }
 
 .table-calendar th {
-  background-color: #f0f0f0; /* 曜日ヘッダーの背景色 */
+  /*background-color: #f0f0f0; /* 曜日ヘッダーの背景色 */
   height: 60px;
   border-radius: 10px 0 0 0;
 }
@@ -234,7 +244,7 @@ color: blue;
 }
 
 .table-calendar .selected {
-  background-color: #007bff; /* 選択された日付の背景色 */
+  background-color: #A6CAEC; /* 選択された日付の背景色 */
   color: #fff; /* 選択された日付のテキスト色 */
 }
 
