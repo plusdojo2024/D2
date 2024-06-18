@@ -86,7 +86,7 @@ public class IconServlet extends HttpServlet {
 				iconY);
 		//HouseworkDao.insert(houseworkli);
 
-		ChildDao childDao = new ChildDao();
+		/*ChildDao childDao = new ChildDao();
 		Child childac = new Child(
 				0, //自動採番の際は0に変更(int)
 				"ダミー",
@@ -95,7 +95,7 @@ public class IconServlet extends HttpServlet {
 				"ダミー",
 				"ダミー",
 				"ダミー");
-		childDao.insert(childac);
+		childDao.insert(childac);*/
 
 
 		// TODO Auto-generated method stub
