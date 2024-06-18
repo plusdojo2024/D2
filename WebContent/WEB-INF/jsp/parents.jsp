@@ -38,7 +38,7 @@
 				<table>
 					<tr>
 						<td><label>コメント <input type="text"
-								name="reword_paragraph">
+								name="rewardParagraph">
 						</label>
 						<td>
 					</tr>
@@ -55,13 +55,15 @@
 
 		<h2>家事設定</h2>
 		<p>家事に関する設定を行います。</p>
-
+		
+		<h3>家事項目の詳細設定</h3>
+		
 		<c:if test="${empty houseList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
 
 		<div class = children>
-		<c:forEach var="e" items="${houseList}">
+		<c:forEach var="e" items="${houseList}" varStatus = "vs">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 			<input type="hidden" name="action" value="housework_regist">
 				<div class=housework_setting>
@@ -80,30 +82,38 @@
 						<tr>
 							<td><label>重要度 </label>
 								<nobr>
-									<span class="stars">
-										<input id="3" type="radio" name="dufficulty" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>><label for="3">★</label>
-										<input id="2" type="radio" name="dufficulty" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>><label for="2">★</label>
-										<input id="1" type="radio" name="dufficulty" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>><label for="1">★</label>
+									<span class="stars"> 
+										<input id="dufficulty3${vs.index}" type="radio" name="dufficulty" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>>
+										<label for="dufficulty3${vs.index}">★</label> 
+										<input id="dufficulty2${vs.index}" type="radio" name="dufficulty" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>>
+										<label for="dufficulty2${vs.index}">★</label>
+										<input id="dufficulty1${vs.index}" type="radio" name="dufficulty" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>>
+										<label for="dufficulty1${vs.index}">★</label>
 									</span>
 								</nobr>
 							</td>
 						</tr>
 					</table>
 					<div class=button>
-						<input type="submit" name="submit" value="更新"> <input
-							type="reset" name="reset" value="リセット">
+						<input type="submit" name="submit" value="更新"> 
+						<input type="reset" name="reset" value="リセット">
 					</div>
 				</div>
 			</form>
 			<br>
 		</c:forEach>
 		</div>
+		
+		<h3>間取り設定</h3>
+		<p>下記のボタンから間取り設定画面に遷移します</p>
+		
+		<div class = icon>
+		<a class = iconURL href = "/D2/IconServlet">間取り設定画面に移動する</a>
+		</div>
 
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
-
-		<p>${result.message}</p>
-
+		
 		<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
 			<input type="hidden" name="action" value="child_regist">
@@ -195,9 +205,9 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<label>表示する文章
-									<input type="text" name="rewordText" value="${e.rewardText}">
-								</label>
+								<label>表示する文章 
+									<input type="text" name="rewardText" value="${e.rewardText}">
+								</label> 
 							<br>
 							</td>
 						</tr>
