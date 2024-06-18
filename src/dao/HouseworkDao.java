@@ -89,57 +89,58 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Housework VALUES ( ?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Housework VALUES ( NULL,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
+			/*
 			if (HW.getHouseworkName() != null && !HW.getHouseworkName().equals("")) {
 				pStmt.setString(1, HW.getHouseworkName());
 			}
 			else {
 				pStmt.setString(1, "（未設定）");
-			}
+			}*/
 			if (HW.getHouseworkContents() != null && !HW.getHouseworkContents().equals("")) {
-				pStmt.setString(2, HW.getHouseworkContents());
+				pStmt.setString(1, HW.getHouseworkContents());
+			}
+			else {
+				pStmt.setString(1, "（未設定）");
+			}
+			if (HW.getHouseworkPoint() != null && !HW.getHouseworkPoint().equals("")) {
+				pStmt.setString(2, HW.getHouseworkPoint());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (HW.getHouseworkPoint() != null && !HW.getHouseworkPoint().equals("")) {
-				pStmt.setString(3, HW.getHouseworkPoint());
+			if (HW.getIcon() != null && !HW.getIcon().equals("")) {
+				pStmt.setString(3, HW.getIcon());
 			}
 			else {
 				pStmt.setString(3, "（未設定）");
 			}
-			if (HW.getIcon() != null && !HW.getIcon().equals("")) {
-				pStmt.setString(4, HW.getIcon());
+			if (HW.getIconDone() != null && !HW.getIconDone().equals("")) {
+				pStmt.setString(4, HW.getIconDone());
 			}
 			else {
 				pStmt.setString(4, "（未設定）");
 			}
-			if (HW.getIconDone() != null && !HW.getIconDone().equals("")) {
-				pStmt.setString(5, HW.getIconDone());
+			if (HW.getUserId() != null && !HW.getUserId().equals("")) {
+				pStmt.setString(5, HW.getUserId());
 			}
 			else {
 				pStmt.setString(5, "（未設定）");
 			}
-			if (HW.getUserId() != null && !HW.getUserId().equals("")) {
-				pStmt.setString(6, HW.getUserId());
+			if (HW.getIconX() != null && !HW.getIconX().equals("")) {
+				pStmt.setString(6, HW.getIconX());
 			}
 			else {
 				pStmt.setString(6, "（未設定）");
 			}
-			if (HW.getIconX() != null && !HW.getIconX().equals("")) {
-				pStmt.setString(7, HW.getIconX());
+			if (HW.getIconY() != null && !HW.getIconY().equals("")) {
+				pStmt.setString(7, HW.getIconY());
 			}
 			else {
 				pStmt.setString(7, "（未設定）");
-			}
-			if (HW.getIconY() != null && !HW.getIconY().equals("")) {
-				pStmt.setString(8, HW.getIconY());
-			}
-			else {
-				pStmt.setString(8, "（未設定）");
 			}
 			
 			// SQL文を実行する
@@ -182,7 +183,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Housework SET housework_contents=?, housework_point=?,icon=?, icon_done=?, user_id=?, icon_X=?,icon_Y=? WHERE housework_name=?";
+			String sql = "UPDATE Housework SET housework_contents=?, housework_point=?, user_id=? WHERE housework_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -207,9 +208,9 @@ public class HouseworkDao {
 			if (card.getIconDone() != null && !card.getIconDone().equals("")) {
 				pStmt.setString(4, card.getIconDone());
 			}
-			/*else {
+			else {
 				pStmt.setString(4, null);
-			}*/
+			}
 			if (card.getUserId() != null && !card.getUserId().equals("")) {
 				pStmt.setString(5, card.getUserId());
 			}
@@ -219,16 +220,15 @@ public class HouseworkDao {
 			if (card.getIconX() != null && !card.getIconX().equals("")) {
 				pStmt.setString(6, card.getIconX());
 			}
-			/*else {
+			else {
 				pStmt.setString(6, null);
-			}*/
+			}
 			if (card.getIconY() != null && !card.getIconY().equals("")) {
 				pStmt.setString(7, card.getIconY());
 			}
-			/*else {
+			else {
 				pStmt.setString(7, null);
-			}*/
-
+			}
 			pStmt.setString(8, card.getHouseworkName());
 
 			// SQL文を実行する(更新は都度1件だけなのでそれをチェックする)

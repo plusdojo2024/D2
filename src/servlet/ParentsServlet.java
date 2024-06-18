@@ -107,8 +107,7 @@ public class ParentsServlet extends HttpServlet {
 			
 			HouseworkDao wDao = new HouseworkDao();
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
-				if (wDao.update(new HouseWork(houseworkName, houseworkContents, houseworkPoint,
-						icon, iconDone, userID, iconX, iconY))) {
+				if (wDao.update(new HouseWork(houseworkName, houseworkContents, houseworkPoint,icon, iconDone, userID, iconX, iconY))) {
 					request.setAttribute("result",
 							new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
 				}else {
