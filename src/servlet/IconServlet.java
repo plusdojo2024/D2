@@ -89,10 +89,10 @@ public class IconServlet extends HttpServlet {
 			}
 			if (result) {
 				request.setAttribute("result",
-						new Result("保存成功！", "更新を実施しました", "/D2/ParentsServlet"));
+						new Result("保存成功！", "更新を実施しました", "/D2/IconServlet"));
 			} else {
 				request.setAttribute("result",
-						new Result("保存失敗…", "更新出来ませんでした", "/D2/ParentsServlet"));
+						new Result("保存失敗…", "更新出来ませんでした", "/D2/IconServlet"));
 			}
 		}
 
