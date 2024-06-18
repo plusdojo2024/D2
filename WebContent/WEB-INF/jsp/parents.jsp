@@ -76,18 +76,18 @@
 						</tr>
 						<tr>
 							<td><label>家事の内容 <input type="text"
-									name="housework_contents" value="${e.houseworkContents}">
+									name="houseworkContents" value="${e.houseworkContents}">
 							</label></td>
 						</tr>
 						<tr>
-							<td><label>重要度 </label>
+							<td><label>むずかしさ</label>
 								<nobr>
 									<span class="stars"> 
-										<input id="dufficulty3${vs.index}" type="radio" name="dufficulty" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>>
+										<input id="dufficulty3${vs.index}" type="radio" name="houseworkPoint" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>>
 										<label for="dufficulty3${vs.index}">★</label> 
-										<input id="dufficulty2${vs.index}" type="radio" name="dufficulty" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>>
+										<input id="dufficulty2${vs.index}" type="radio" name="houseworkPoint" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>>
 										<label for="dufficulty2${vs.index}">★</label>
-										<input id="dufficulty1${vs.index}" type="radio" name="dufficulty" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>>
+										<input id="dufficulty1${vs.index}" type="radio" name="houseworkPoint" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>>
 										<label for="dufficulty1${vs.index}">★</label>
 									</span>
 								</nobr>

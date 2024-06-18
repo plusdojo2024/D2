@@ -141,32 +141,7 @@ public class HouseworkDao {
 			else {
 				pStmt.setString(8, "（未設定）");
 			}
-			/*if (card.getFax() != null && !card.getFax().equals("")) {
-				pStmt.setString(9, card.getFax());
-			}
-			else {
-				pStmt.setString(9, "（未設定）");
-			}
-
-			if (card.getEmail() != null && !card.getEmail().equals("")) {
-				pStmt.setString(10, card.getEmail());
-			}
-			else {
-				pStmt.setString(10, "（未設定）");
-			}
-			if (card.getStars() != null && !card.getStars().equals("")) {
-				pStmt.setString(11, card.getStars());
-			}
-			else {
-				pStmt.setString(11, "（未設定）");
-			}
-			if (card.getRemarks() != null && !card.getRemarks().equals("")) {
-				pStmt.setString(12, card.getRemarks());
-			}
-			else {
-				pStmt.setString(12, "（未設定）");
-			}*/
-
+			
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -207,7 +182,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Housework SET houseworkContents=?, houseworkPoint=?,icon=?, iconDone=?, userId=?, iconX=?,iconY=? WHERE houseworkName=?";
+			String sql = "UPDATE Housework SET housework_contents=?, housework_point=?,icon=?, icon_done=?, user_id=?, icon_X=?,icon_Y=? WHERE housework_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -232,9 +207,9 @@ public class HouseworkDao {
 			if (card.getIconDone() != null && !card.getIconDone().equals("")) {
 				pStmt.setString(4, card.getIconDone());
 			}
-			else {
+			/*else {
 				pStmt.setString(4, null);
-			}
+			}*/
 			if (card.getUserId() != null && !card.getUserId().equals("")) {
 				pStmt.setString(5, card.getUserId());
 			}
@@ -244,15 +219,15 @@ public class HouseworkDao {
 			if (card.getIconX() != null && !card.getIconX().equals("")) {
 				pStmt.setString(6, card.getIconX());
 			}
-			else {
+			/*else {
 				pStmt.setString(6, null);
-			}
+			}*/
 			if (card.getIconY() != null && !card.getIconY().equals("")) {
 				pStmt.setString(7, card.getIconY());
 			}
-			else {
+			/*else {
 				pStmt.setString(7, null);
-			}
+			}*/
 
 			pStmt.setString(8, card.getHouseworkName());
 
@@ -296,7 +271,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する(何番目のレコードかを見る)
-			String sql = "DELETE FROM Housework WHERE houseworkName=?";
+			String sql = "DELETE FROM Housework WHERE housework_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -328,5 +303,67 @@ public class HouseworkDao {
 		// 結果を返す
 		return result;
 	}
+
+	public boolean updateXY(HouseWork card) {
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む(更新する)
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
+
+			// SQL文を準備する
+			String sql = "UPDATE Housework SET icon_X=?,icon_Y=? WHERE housework_Name=?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			if (card.getIconX() != null && !card.getIconX().equals("")) {
+				pStmt.setString(1, card.getIconX());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			if (card.getIconY() != null && !card.getIconY().equals("")) {
+				pStmt.setString(2, card.getIconY());
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+
+			pStmt.setString(3, card.getHouseworkName());
+
+			// SQL文を実行する(更新は都度1件だけなのでそれをチェックする)
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		// 結果を返す
+		return result;
+	}
+
+
+
 }
 

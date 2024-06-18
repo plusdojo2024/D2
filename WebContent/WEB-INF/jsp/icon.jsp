@@ -88,6 +88,17 @@
 	</div> -->
 </form>
 </body>
+<script>
+//初期設定値をDBから読み込んで配列としてサーブレットから連携？（画像２が設定済の時の例）
+//const xyArray = [{ x:1000, y:50 }, { x:1100, y:50 }, { x:1000, y:150 }, { x:1100, y:150 }, { x:1000, y:250 }, { x:1100, y:250 }];
+const xyArray = [
+<c:forEach var="e" items="${cardList}" varStatus="s">
+{ x:${e.iconX}, y:${e.iconY} },
+</c:forEach>
+];
+</script>
 
 <script src="./script/controlXY.js"></script>
+
+
 </html>
