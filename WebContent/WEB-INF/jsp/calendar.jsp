@@ -24,16 +24,12 @@
     </div>
         </div>
    </header>
-   <div id='my_balloon'>
-		<ul>
-		    	<div class="balloon_contents">
-		    		<span>吹き出し1</span>
-		    	</div>
-		</ul>
-	</div>
+
+   <div class="balloon_contents"></div>
+
 	<main>
       <h1>カレンダー</h1>
-      <p class=a>やり終えた家事を見ることができます。</p>
+      <p class=a>やり終えた家事をカレンダーで見ることができるよ！</p>
         <div class="container-calendar">
 
           <h4 id="monthAndYear"></h4>
@@ -44,7 +40,14 @@
           </div>
 
           <table class="table-calendar" id="calendar" data-lang="ja">
-              <thead id="thead-month"></thead>
+              <thead id="thead-month">
+                <tr>
+                  <th date-days="にちようび">
+                  にちようび
+                  <img src="/D2/img/taiou_01_2.png" width="100" height="100" alt="太陽">
+                  </th>
+                </tr>
+              </thead>
               <tbody id="calendar-body"></tbody>
           </table>
 
