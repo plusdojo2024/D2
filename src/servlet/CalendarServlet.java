@@ -74,10 +74,6 @@ public class CalendarServlet extends HttpServlet {
         request.setAttribute("HouseWorkList",housweworkList);
 
 
-
-
-
-
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
         dispatcher.forward(request, response);
     }

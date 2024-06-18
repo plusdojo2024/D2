@@ -31,7 +31,7 @@
 				<div class="child_acount" style="background-color:#FF8585;">
 					<a href="/D2/HouseworkServlet">
 					<form>
-						<input id = colors  type="radio" name="color" value="#F7DDF1" onchange="changeBackgroundColor(this.value, ${loop.index})">ぴんく 
+						<input id = colors  type="radio" name="color" value="#F7DDF1" onchange="changeBackgroundColor(this.value, ${loop.index})">ぴんく
 						<input id = colors type="radio" name="color" value="#D9F2D0" onchange="changeBackgroundColor(this.value, ${loop.index})"> みどり
 						<input id = colors type="radio" name="color" value="#C1E5F5" onchange="changeBackgroundColor(this.value, ${loop.index})">あお
 					</form>
@@ -44,7 +44,7 @@
 							<p class = child_name>${e.childName}</p>
 						</td>
 					</tr>
-					<!--  
+					<!--
 					<tr>
 						<td>
 							<p>ほしのかず</p>
