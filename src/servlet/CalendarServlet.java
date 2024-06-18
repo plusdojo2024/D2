@@ -55,12 +55,12 @@ public class CalendarServlet extends HttpServlet {
 
         //commentテーブルから日付、ユーザーID、コメントを取得　コメント本体はどこに？
         CommentDao coDao = new CommentDao();
-        List<CalendarComment> commentList = coDao.select(null, 0, 0);
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(), 0, 0);
         request.setAttribute("commentList", commentList);
 
         //houseworkテーブルから家事の名前、各日のポイントを取得
         HouseworkDao hoDao = new HouseworkDao();
-        List<HouseWork> housweworkList = hoDao.select(HouseWork.getHouseworkName(),HouseWork.getgetHouseworkPoint());
+        List<HouseWork> housweworkList = hoDao.select(loginUser.getUserId());
         request.setAttribute("HouseWorkList",housweworkList);
 
         /*現在日時を取得
