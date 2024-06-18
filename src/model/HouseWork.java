@@ -11,7 +11,10 @@ public class HouseWork implements Serializable {
 	private String iconX;//移動したアイコンのX座標
 	private String iconY;	// 移動したアイコンのY座標
 
-
+	public HouseWork() {
+		super();
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
 	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, String icon, String iconDone,
 			String userId, String iconX, String iconY) {
@@ -116,6 +119,9 @@ public class HouseWork implements Serializable {
 	public void setIconY(String iconY) {
 		this.iconY = iconY;
 	}
+
+
+
 
 
 

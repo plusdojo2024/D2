@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +16,7 @@ import dao.ChildDao;
 import dao.HouseworkDao;
 import model.Child;
 import model.HouseWork;
+import model.Result;
 import model.User;
 
 /**
@@ -62,7 +63,33 @@ public class IconServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		Date date = new Date();
+		List<HouseWork> hwList = new ArrayList<>();
+		for(int i = 1; i <=6; i++) {
+			String x = request.getParameter("my_x");
+			if(x==null) {
+				break;
+			}
+			HouseWork hw = new HouseWork();
+			hw.setHouseworkName(request.getParameter("my_z"+i));
+		}
+
+		HouseworkDao hwDao = new HouseworkDao();
+		if (request.getParameter("submit").equals("保存")) {
+			if (hwDao.update(new HouseWork())) {
+				request.setAttribute("result",
+						new Result("保存成功！", "更新を実施しました", "/D2/ParentsServlet"));
+			}else {
+				request.setAttribute("result",
+						new Result("保存失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
+			}
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		dispatcher.forward(request, response);
+	}
+
+
+		/*Date date = new Date();
 		String houseworkName = request.getParameter("houseworkName");
 		String houseworkContets = request.getParameter("houseworkContets");
 		String houseworkPoint = request.getParameter("houseworkPoint");
@@ -83,7 +110,7 @@ public class IconServlet extends HttpServlet {
 				iconDone,//処理済みのアイコン
 				userID,//ログインID
 				iconX,//移動したアイコンのX座標
-				iconY);
+				iconY);*/
 		//HouseworkDao.insert(houseworkli);
 
 		/*ChildDao childDao = new ChildDao();
