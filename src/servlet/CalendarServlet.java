@@ -71,6 +71,20 @@ public class CalendarServlet extends HttpServlet {
         //houseworkテーブルから家事の名前、各日のポイントを取得
         HouseworkDao hoDao = new HouseworkDao();
         List<HouseWork> housweworkList = hoDao.select(loginUser.getUserId());
+        /*家事の名前、ポイント以外の要素を削除
+         * HouseWork commentToRemove = housework_contents;
+		   housweworkList.remove(commentToRemove);
+		   HouseWork commentToRemove = icon;
+		   housweworkList.remove(commentToRemove);
+		   HouseWork commentToRemove = icon_done;
+		   housweworkList.remove(commentToRemove);
+		   HouseWork commentToRemove = user_id;
+		   housweworkList.remove(commentToRemove);
+		   HouseWork commentToRemove = icon_x;
+		   housweworkList.remove(commentToRemove);
+		   HouseWork commentToRemove = icon_y;
+		   housweworkList.remove(commentToRemove);
+		 */
         request.setAttribute("HouseWorkList",housweworkList);
 
 
