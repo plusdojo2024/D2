@@ -61,7 +61,7 @@
 		<c:if test="${empty houseList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
-		
+
 		<div class = children>
 		<c:forEach var="e" items="${houseList}" varStatus = "vs">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
@@ -80,7 +80,7 @@
 							</label></td>
 						</tr>
 						<tr>
-							<td><label>重要度 </label> 
+							<td><label>重要度 </label>
 								<nobr>
 									<span class="stars"> 
 										<input id="dufficulty3${vs.index}" type="radio" name="dufficulty" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>>
@@ -95,8 +95,8 @@
 						</tr>
 					</table>
 					<div class=button>
-						<input type="submit" name="submit" value="更新"> <input
-							type="reset" name="reset" value="リセット">
+						<input type="submit" name="submit" value="更新"> 
+						<input type="reset" name="reset" value="リセット">
 					</div>
 				</div>
 			</form>
@@ -113,9 +113,7 @@
 
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
-
-		<p>${result.message}</p>
-
+		
 		<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
 			<input type="hidden" name="action" value="child_regist">
@@ -123,43 +121,43 @@
 				<table>
 					<tr>
 						<td>
-							<label>プロフィール画像<br> 
+							<label>プロフィール画像<br>
 								<input type="file" name="childPicture">
 							</label>
 						</td>
 						<td>
-							<label>なまえ 
+							<label>なまえ
 								<input type="text" name="childName">
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<br> 
-							<label>報酬を表示 
-								<input type="radio" name="rewardUmu" value="true" checked>する 
+							<br>
+							<label>報酬を表示
+								<input type="radio" name="rewardUmu" value="true" checked>する
 								<input type="radio" name="rewardUmu" value="false">しない
 							</label>
 						</td>
 						<td>
-							<br> 
-							<label>☆ 
+							<br>
+							<label>☆
 								<input type="text"name="rewardJouken"> 個で表示
 							</label>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2">
-							<label>表示する文章 
+							<label>表示する文章
 								<input type="text" name="rewardText">
-							</label> 
+							</label>
 							<br>
 						</td>
 					</tr>
 				</table>
 				<br>
 				<div class=button>
-					<input type="submit" id="regist" name="submit" value="登録"> 
+					<input type="submit" id="regist" name="submit" value="登録">
 					<input type="reset" name="reset" value="リセット">
 					<span id="error_message"></span>
 					<br>
@@ -183,24 +181,24 @@
 					<table>
 						<tr>
 							<td>
-								<label>プロフィール画像<br> 
+								<label>プロフィール画像<br>
 									<input type="file" name="childPicture" value="${e.childPicture}">
 								</label>
 							</td>
 							<td>
-								<label>なまえ 
+								<label>なまえ
 									<input type="text" name="childName" value="${e.childName}">
 								</label>
 							</td>
 						</tr>
 						<tr>
-							<td><br> <label>報酬を表示 
-								<input type="radio" name="rewardUmu" value="yes"<c:if test = "${e.rewardUmu== 'yes'}">checked</c:if>>する 
+							<td><br> <label>報酬を表示
+								<input type="radio" name="rewardUmu" value="yes"<c:if test = "${e.rewardUmu== 'yes'}">checked</c:if>>する
 								<input type="radio" name="rewardUmu" value="no"<c:if test = "${e.rewardUmu == 'no'}">checked</c:if>>しない
 							</label></td>
 							<td>
-							<br> 
-								<label>☆ 
+							<br>
+								<label>☆
 									<input type="text" name="rewardJouken" value="${e.rewardJouken}"> 個で表示
 								</label>
 							</td>

@@ -18,6 +18,7 @@
         <li><a href="/D2/HomeServlet">ホーム</a></li>
         <li><a href="/D2/CalendarServlet">カレンダー</a></li>
         <li><a href="/D2/ParentsServlet">設定</a></li>
+        <li><a href="/D2/IconServlet">間取り</a></li>
         <li><a href="">ログアウト</a></li>
       </ul>
     </div>
@@ -42,7 +43,7 @@
         <input type="reset" name="my_reset" value="リセット">
 	</form>-->
 
-<form id="my_form" action="" method="post">
+<!--  <form id="my_form" action="" method="post">
     <label for="my_x1">X1:</label>
     <input type="text" name="my_x1" id="my_x1">
     <label for="my_y1">Y1:</label>
@@ -56,7 +57,15 @@
     <label for="my_x3">X3:</label>
     <input type="text" name="my_x3" id="my_x3">
     <label for="my_y3">Y3:</label>
-    <input type="text" name="my_y3" id="my_y3"><br>
+    <input type="text" name="my_y3" id="my_y3"><br> -->
+
+    <form id="my_form" action="" method="post">
+  <c:forEach var="i" begin="1" end="6">
+    <label for="my_x${i}">X${i}:</label>
+    <input type="text" name="my_x${i}" id="my_x${i}">
+    <label for="my_y${i}">Y${i}:</label>
+    <input type="text" name="my_y${i}" id="my_y${i}"><br>
+  </c:forEach>
 
     <input type="submit" name="my_save" value="保存">
     <input type="reset" name="my_reset" value="リセット">
@@ -82,4 +91,5 @@
 
 </body>
 
+<script src="./script/controlXY.js"></script>
 </html>

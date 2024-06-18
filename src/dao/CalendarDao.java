@@ -72,8 +72,10 @@ finally {
 return datesList;
 }
 
-	public static void insert(Calendar calendardm) {
+	public boolean insert(Calendar ca) {
 		// TODO 自動生成されたメソッド・スタブ
-
+		return false;
 	}
+
+
 }
