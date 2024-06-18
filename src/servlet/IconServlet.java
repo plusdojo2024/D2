@@ -26,26 +26,27 @@ import model.User;
 public class IconServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
 
-    public IconServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public IconServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
 		}
 
-		User loginUser = (User)session.getAttribute("id");
+		User loginUser = (User) session.getAttribute("id");
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
@@ -61,72 +62,80 @@ public class IconServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		List<HouseWork> hwList = new ArrayList<>();
-		for(int i = 1; i <=6; i++) {
-			String x = request.getParameter("my_x");
-			if(x==null) {
+		for (int i = 1; i <= 6; i++) {
+			String x = request.getParameter("my_x" + i);
+			if (x == null) {
 				break;
 			}
 			HouseWork hw = new HouseWork();
-			hw.setHouseworkName(request.getParameter("my_z"+i));
+			hw.setIconX(request.getParameter("my_x" + i));
+			hw.setIconY(request.getParameter("my_y" + i));
+			hw.setHouseworkName(request.getParameter("my_z" + i));
+			hwList.add(hw);
 		}
 
 		HouseworkDao hwDao = new HouseworkDao();
-		if (request.getParameter("submit").equals("保存")) {
-			if (hwDao.update(new HouseWork())) {
+		if (request.getParameter("my_save").equals("保存")) {
+			boolean result = false;
+			for (HouseWork hw : hwList) {
+				result = hwDao.updateXY(hw);
+				if (result == false) {
+					break;
+				}
+			}
+			if (result) {
 				request.setAttribute("result",
 						new Result("保存成功！", "更新を実施しました", "/D2/ParentsServlet"));
-			}else {
+			} else {
 				request.setAttribute("result",
-						new Result("保存失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
+						new Result("保存失敗…", "更新出来ませんでした", "/D2/ParentsServlet"));
 			}
+		}
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	/*Date date = new Date();
+	String houseworkName = request.getParameter("houseworkName");
+	String houseworkContets = request.getParameter("houseworkContets");
+	String houseworkPoint = request.getParameter("houseworkPoint");
+	String icon = request.getParameter("icon");
+	String iconDone = request.getParameter("iconDone");
+	String iconX = request.getParameter("iconX");
+	String iconY = request.getParameter("iconY");
 
-		/*Date date = new Date();
-		String houseworkName = request.getParameter("houseworkName");
-		String houseworkContets = request.getParameter("houseworkContets");
-		String houseworkPoint = request.getParameter("houseworkPoint");
-		String icon = request.getParameter("icon");
-		String iconDone = request.getParameter("iconDone");
-		String iconX = request.getParameter("iconX");
-		String iconY = request.getParameter("iconY");
+	HttpSession session = request.getSession();
+	User loginUser = (User) session.getAttribute("id");
+	String userID = loginUser.getUserId();
+	HouseworkDao houseworkDao = new HouseworkDao();
+	HouseWork houseworkli = new HouseWork(
+			houseworkName,//家事の名前
+			houseworkContets,//家事内容
+			houseworkPoint,//お手伝いポイント
+			icon,//未処理のアイコン
+			iconDone,//処理済みのアイコン
+			userID,//ログインID
+			iconX,//移動したアイコンのX座標
+			iconY);*/
+	//HouseworkDao.insert(houseworkli);
 
-		HttpSession session = request.getSession();
-		User loginUser = (User) session.getAttribute("id");
-		String userID = loginUser.getUserId();
-		HouseworkDao houseworkDao = new HouseworkDao();
-		HouseWork houseworkli = new HouseWork(
-				houseworkName,//家事の名前
-				houseworkContets,//家事内容
-				houseworkPoint,//お手伝いポイント
-				icon,//未処理のアイコン
-				iconDone,//処理済みのアイコン
-				userID,//ログインID
-				iconX,//移動したアイコンのX座標
-				iconY);*/
-		//HouseworkDao.insert(houseworkli);
-
-		/*ChildDao childDao = new ChildDao();
-		Child childac = new Child(
-				0, //自動採番の際は0に変更(int)
-				"ダミー",
-				"ダミー",
-				userID,
-				"ダミー",
-				"ダミー",
-				"ダミー");
-		childDao.insert(childac);*/
+	/*ChildDao childDao = new ChildDao();
+	Child childac = new Child(
+			0, //自動採番の際は0に変更(int)
+			"ダミー",
+			"ダミー",
+			userID,
+			"ダミー",
+			"ダミー",
+			"ダミー");
+	childDao.insert(childac);*/
 
 
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 }
