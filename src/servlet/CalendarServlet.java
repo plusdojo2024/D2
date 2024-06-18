@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import dao.CalendarDao;
 import dao.CommentDao;
 import dao.HouseworkDao;
+import model.Calendar;
 import model.CalendarComment;
 import model.HouseWork;
 import model.User;
@@ -53,22 +56,24 @@ public class CalendarServlet extends HttpServlet {
         request.setAttribute("userList", userList);*/
         //select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem)
 
-        //commentテーブルから日付、ユーザーID、コメントを取得　コメント本体はどこに？
-        CommentDao coDao = new CommentDao();
-        List<CalendarComment> commentList = coDao.select(null, 0, 0);
-        request.setAttribute("commentList", commentList);
-
-        //houseworkテーブルから家事の名前、各日のポイントを取得
-        HouseworkDao hoDao = new HouseworkDao();
-        List<HouseWork> housweworkList = hoDao.select(HouseWork.getHouseworkName(),HouseWork.getgetHouseworkPoint());
-        request.setAttribute("HouseWorkList",housweworkList);
-
-        /*現在日時を取得
+        //現在日時を取得
         Date date = new Date();
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
 		String datey = fmt.format(date);
 		fmt = new SimpleDateFormat("MM");
-		String datem = fmt.format(date);*/
+		String datem = fmt.format(date);
+
+        //commentテーブルから日付、ユーザーID、コメントを取得　
+        CommentDao coDao = new CommentDao();
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem));
+        request.setAttribute("commentList", commentList);
+
+        //houseworkテーブルから家事の名前、各日のポイントを取得
+        HouseworkDao hoDao = new HouseworkDao();
+        List<HouseWork> housweworkList = hoDao.select(loginUser.getUserId());
+        request.setAttribute("HouseWorkList",housweworkList);
+
+
 
 
 
@@ -96,7 +101,11 @@ public class CalendarServlet extends HttpServlet {
 		String clickHousework = request.getParameter("clickHousework");
 		//インスタンスを生成し、データを設定する
 		CalendarDao caDao = new CalendarDao();
-		if (caDao.insert(clickDate,clickChild,	clickHousework)) {	// 登録成功
+		Calendar Ca =new Calendar(
+				null,
+				"ダミー",
+				"ダミー");
+		if (caDao.insert(Ca)) {	// 登録成功
 			request.setAttribute("houseworkresult", true);
 		} else {
 			request.setAttribute("houseworkresult", false);
