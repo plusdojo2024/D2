@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>間取り</title>
 <link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 <link rel="stylesheet" type="text/css" href="/D2/css/housework.css">
@@ -25,25 +25,29 @@
       </ul>
     </div>
   </div>
-  <div class="haikei">
-    <img src="/D2/img/background.png" >
-  </div>
+</header>
+<form id="my_form" action="" method="post" onsubmit="return confirmFinish();">
+<div id='my_xy'>
+  <c:if test="${empty cardList}">
+    <p></p>
+  </c:if>
   <div class="madori">
     <img src="/D2/img/madori.png" >
   </div>
-<div id='my_xy'>
-  <c:if test="${empty cardList}">
-    <p>カードリストは空です。</p>
-</c:if>
-
-<div class="work">
-    <c:forEach var="e" items="${cardList}">
-        <img src="/D2/icon/${e.icon}">
+  <div class="work">
+    <c:forEach var="e" items="${cardList}" varStatus="s">
+      <input type="image" src="/D2/icon/${e.icon}" name="my_x${s.count}" id="my_x${s.count}"
+      style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;">
     </c:forEach>
+  </div>
 </div>
-</div>
-</header>
-<!-- ヘッダー（ここまで） -->
+</form>
 </body>
-<script src="/D2/script/controlXY.js"></script>
+<script>
+
+
+function confirmFinish() {
+    return confirm("お手伝いはおわりましたか？");
+}
+</script>
 </html>
