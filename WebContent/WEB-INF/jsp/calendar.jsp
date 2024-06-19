@@ -73,18 +73,12 @@
 
     <div class="balloon_contents">
 
-    <c:if test="${empty CommentList}">
-	<p>コメントはありません</p>
-    </c:if>
-
-   <c:forEach var="e" items="${commentList}" >
-     <form method="post" action="/D2/CalendarServlet">
-       <input type="text" name="comment" value="${e.comment }">
-     </form>
-   </c:forEach>
 
 
-   <c:forEach var="e" items="${housweworkList}" >
+
+
+
+   <c:forEach var="e" items="${houseworkList}" >
       <form method="post" action="/D2/CalendarServlet">
         <input type="text" name="housework_name" value="${e.housework_name }">
         <input type="text" name="housework_point" value="${e.housework_point}">
@@ -161,6 +155,11 @@ function showCalendar(month, year) {
 
   // creating all cells
   var date = 1;
+  const commentDateArray = [];
+	  <c:forEach var="e" items="${commentList}" >
+	  commentDateArray[${e.date.date}]='${e.comment}';
+	   </c:forEach>
+
   for ( var i = 0; i < 6; i++ ) {
       var row = document.createElement("tr");
 
@@ -173,13 +172,15 @@ function showCalendar(month, year) {
           } else if (date > daysInMonth(month, year)) {
               break;
           } else {
+        	  let comment = commentDateArray[date];
+
               cell = document.createElement("td");
               cell.setAttribute("data-date", date);
               cell.setAttribute("data-month", month + 1);
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><span>吹き出し1</span></div></div>";
+              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment+"</div><div>"+comment+"</div></div></div>";
 
               if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                   cell.className = "date-picker selected";
