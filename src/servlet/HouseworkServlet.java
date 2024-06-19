@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CalendarDao;
 import dao.ChildDao;
 import dao.HouseworkDao;
+import model.Calendar;
 import model.Child;
 import model.HouseWork;
 import model.User;
@@ -85,6 +87,30 @@ public class HouseworkServlet extends HttpServlet {
      );
     houseworkDao.insert(HW);
     doGet(request, response);
+
+    //カレンダーテーブルに家事達成時の日付、ユーザーID、家事名をしまう
+		request.setCharacterEncoding("UTF-8");
+		//フォームからのデータを取得
+		String clickDate = request.getParameter("clickDate");
+		String clickChild = request.getParameter("clickChild");
+		String clickHousework = request.getParameter("clickHousework");
+		//インスタンスを生成し、データを設定する
+		CalendarDao caDao = new CalendarDao();
+		Calendar Ca =new Calendar(
+				null,
+				"ダミー",
+				"ダミー");
+		if (caDao.insert(Ca)) {	// 登録成功
+			request.setAttribute("houseworkresult", true);
+		} else {
+			request.setAttribute("houseworkresult", false);
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
+			dispatcher.forward(request, response);
+
+		doGet(request, response);
+  }
 }
 
 }
