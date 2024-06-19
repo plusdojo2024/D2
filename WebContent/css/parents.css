@@ -125,6 +125,11 @@ input[name=rewardParagraph]{
   height:7em;
 }
 
+input[name=houseworkName]{
+  width: 8em;
+  height:1.5em;
+}
+
 input[name=houseworkContents]{
   width: 10em;
   height:4em;

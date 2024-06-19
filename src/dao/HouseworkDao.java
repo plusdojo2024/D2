@@ -74,8 +74,8 @@ public class HouseworkDao {
 
 		// 結果を返す
 		return cardList;
-	}
-
+}
+	
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(HouseWork HW ) {
 		Connection conn = null;
@@ -171,92 +171,60 @@ public class HouseworkDao {
 	}
 
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
-	public boolean update(HouseWork card) {
-		Connection conn = null;
-		boolean result = false;
+	public boolean updateHW(HouseWork houseWork) {
+	    Connection conn = null;
+	    PreparedStatement pStmt = null;
+	    boolean result = false;
 
-		try {
-			// JDBCドライバを読み込む(更新する)
-			Class.forName("org.h2.Driver");
+	    try {
+	        Class.forName("org.h2.Driver");
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
+	        String sql = "UPDATE Housework SET housework_contents=?, housework_point=? WHERE housework_name=? AND user_id=?";
+	        pStmt = conn.prepareStatement(sql);
 
-			// SQL文を準備する
-			String sql = "UPDATE Housework SET housework_contents=?, housework_point=?, user_id=? WHERE housework_name=?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+	        // 各フィールドの更新を判定してセットする
+	        if (houseWork.getHouseworkContents() != null && !houseWork.getHouseworkContents().equals("")) {
+	        	pStmt.setString(1, houseWork.getHouseworkContents());
+	        } else {
+	            pStmt.setString(1, houseWork.getHouseworkContents());
+	        }
+	        if (houseWork.getHouseworkPoint() != null && !houseWork.getHouseworkPoint().equals("")) {
+	        	pStmt.setString(2, houseWork.getHouseworkPoint());
+	        } else {
+	            pStmt.setString(2, houseWork.getHouseworkPoint());
+	        }
+	        
+	        pStmt.setString(3, houseWork.getHouseworkName());
+	        pStmt.setString(4, houseWork.getUserId());
 
-			// SQL文を完成させる
-			if (card.getHouseworkContents() != null && !card.getHouseworkContents().equals("")) {
-				pStmt.setString(1, card.getHouseworkContents());
-			}
-			else {
-				pStmt.setString(1, null);
-			}
-			if (card.getHouseworkPoint() != null && !card.getHouseworkPoint().equals("")) {
-				pStmt.setString(2, card.getHouseworkPoint());
-			}
-			else {
-				pStmt.setString(2, null);
-			}
-			if (card.getIcon() != null && !card.getIcon().equals("")) {
-				pStmt.setString(3, card.getIcon());
-			}
-			else {
-				pStmt.setString(3, null);
-			}
-			if (card.getIconDone() != null && !card.getIconDone().equals("")) {
-				pStmt.setString(4, card.getIconDone());
-			}
-			else {
-				pStmt.setString(4, null);
-			}
-			if (card.getUserId() != null && !card.getUserId().equals("")) {
-				pStmt.setString(5, card.getUserId());
-			}
-			else {
-				pStmt.setString(5, null);
-			}
-			if (card.getIconX() != null && !card.getIconX().equals("")) {
-				pStmt.setString(6, card.getIconX());
-			}
-			else {
-				pStmt.setString(6, null);
-			}
-			if (card.getIconY() != null && !card.getIconY().equals("")) {
-				pStmt.setString(7, card.getIconY());
-			}
-			else {
-				pStmt.setString(7, null);
-			}
-			pStmt.setString(8, card.getHouseworkName());
-
-			// SQL文を実行する(更新は都度1件だけなのでそれをチェックする)
-			if (pStmt.executeUpdate() == 1) {
-				result = true;
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-
-		// 結果を返す
-		return result;
+	        if (pStmt.executeUpdate() == 1) {
+	            result = true;
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+	    } finally {
+	        if (pStmt != null) {
+	            try {
+	                pStmt.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        if (conn != null) {
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	    return result;
 	}
+
+
 
 	// 引数numberで指定されたレコードを削除し、成功したらtrueを返す
 	public boolean delete(String houseworkName) {
@@ -363,7 +331,7 @@ public class HouseworkDao {
 		return result;
 	}
 
-
-
 }
+
+
 

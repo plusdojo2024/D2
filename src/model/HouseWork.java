@@ -28,7 +28,13 @@ public class HouseWork implements Serializable {
 		this.iconY = iconY;
 	}
 
-
+	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, 
+			String userId) {
+		this.houseworkName = houseworkName;
+		this.houseworkContents = houseworkContents;
+		this.houseworkPoint = houseworkPoint;
+		this.userId = userId;
+	}
 	/*public HouseWork() {
 		this.houseworkName =  "";
 		this.houseworkContents =  "";

@@ -72,11 +72,13 @@
 					</div>
 					<table>
 						<tr>
-							<td>家事の名前：${e.houseworkName}</td>
+							<td>家事の名前
+								<input type="text" name="houseworkName" value="${e.houseworkName}" readonly>
+							</td>
 						</tr>
 						<tr>
-							<td><label>家事の内容 <input type="text"
-									name="houseworkContents" value="${e.houseworkContents}">
+							<td><label>家事の内容 
+							<input type="text" name="houseworkContents" value="${e.houseworkContents}">
 							</label></td>
 						</tr>
 						<tr>
