@@ -89,25 +89,19 @@ public class ParentsServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
-			
 			HouseworkDao hDao = new HouseworkDao();
 			List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 			request.setAttribute("houseList", houseList);
 			
 			request.setCharacterEncoding("UTF-8");
 			
-			String houseworkName = request.getParameter("houseworkName");
+			String houseworkName = new String(request.getParameter("houseworkName").getBytes("ISO-8859-1"),"UTF-8");
 			String houseworkContents = new String(request.getParameter("houseworkContents").getBytes("ISO-8859-1"),"UTF-8");
 			String houseworkPoint = request.getParameter("houseworkPoint");
-			String icon = request.getParameter("icon");
-			String iconDone = request.getParameter("iconDone");
-			//String userId = request.getParameter("userId");
-			String iconX = request.getParameter("iconX");
-			String iconY = request.getParameter("iconY");
 			
 			HouseworkDao wDao = new HouseworkDao();
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
-				if (wDao.update(new HouseWork(houseworkName, houseworkContents, houseworkPoint,icon, iconDone, userID, iconX, iconY))) {
+				if (wDao.updateHW(new HouseWork(houseworkName, houseworkContents, houseworkPoint,userID))) {
 					request.setAttribute("result",
 							new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
 				}else {
@@ -123,6 +117,7 @@ public class ParentsServlet extends HttpServlet {
 							new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
 				}
 			}
+
 		}else {
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
@@ -171,9 +166,9 @@ public class ParentsServlet extends HttpServlet {
 							new Result("削除失敗…","削除出来ませんでした", "/D2/ParentsServlet"));
 				}
 			}
-				
+		}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
-		}
+		
 	}
 }
