@@ -66,6 +66,7 @@ public class CalendarServlet extends HttpServlet {
         //commentテーブルから日付、ユーザーID、コメントを取得　
         CommentDao coDao = new CommentDao();
         List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem));
+
         request.setAttribute("commentList", commentList);
 
         //houseworkテーブルから家事の名前、各日のポイントを取得
