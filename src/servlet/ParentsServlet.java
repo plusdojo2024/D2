@@ -74,18 +74,22 @@ public class ParentsServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if (action.equals("comment_regist")) {		// 親ページからのコメントの登録処理
 			request.setCharacterEncoding("UTF-8");
+
 			String comment = request.getParameter("comment");
-			Date date = new Date();
-			
+			Date date = new Date(); // 現在の日付を取得（仮定）
+
 			CommentDao coDao = new CommentDao();
-			
-			if (coDao.insert(date, 0, comment)) {
-				request.setAttribute("commentSuccess", true);
-			} else {
-				request.setAttribute("commentSuccess", false);
+
+			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"), "UTF-8").equals("登録")) {
+			    if (coDao.insert(date, 0, comment)) {
+			        request.setAttribute("result",
+			                new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
+			    } else {
+			        request.setAttribute("result",
+			                new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
+			    }
 			}
-		}
-		else if (action.equals("housework_regist")){
+		} else if (action.equals("housework_regist")){
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();

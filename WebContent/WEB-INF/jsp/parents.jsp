@@ -37,15 +37,14 @@
 			<input type="hidden" name="action" value="comment_regist">
 				<table>
 					<tr>
-						<td><label>コメント <input type="text"
-								name="rewardParagraph">
+						<td><label>コメント <input type="text" name="comment">
 						</label>
 						<td>
 					</tr>
 				</table>
 				<br>
 				<div class=button>
-					<input type="submit" id="regist" name="comment_submit" value="登録">
+					<input type="submit" id="regist" name="submit" value="登録">
 					<input type="reset" name="reset" value="リセット"> <span
 						id="error_message"></span><br>
 				</div>
