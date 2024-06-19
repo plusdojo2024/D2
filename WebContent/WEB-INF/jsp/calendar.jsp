@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,6 @@
     </div>
         </div>
    </header>
-
-   <div class="balloon_contents"></div>
 
 	<main>
       <h1>カレンダー</h1>
@@ -69,7 +68,29 @@
               </select>
               <select id="year" onchange="jump()"></select>
           </div>
-    </div>
+          </div>
+
+
+    <div class="balloon_contents">
+
+    <c:if test="${empty CommentList}">
+	<p>コメントはありません</p>
+    </c:if>
+
+   <c:forEach var="e" items="${commentList}" >
+     <form method="post" action="/D2/CalendarServlet">
+       <input type="text" name="comment" value="${e.comment }">
+     </form>
+   </c:forEach>
+
+
+   <c:forEach var="e" items="${housweworkList}" >
+      <form method="post" action="/D2/CalendarServlet">
+        <input type="text" name="housework_name" value="${e.housework_name }">
+        <input type="text" name="housework_point" value="${e.housework_point}">
+      </form>
+   </c:forEach>
+   </div>
   </main>
 
 <script>
