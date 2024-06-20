@@ -26,7 +26,7 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<form id="my_form" action="" method="post"
 		onsubmit="return confirmFinish();">
 		<div id='my_xy'>
@@ -41,7 +41,7 @@
 					<span class="icons"> <c:forEach var="e" items="${cardList}" varStatus="s">
 							<input type="radio" name="my_p${s.count}" id="my_p${s.count}" value="true"
 								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute; display: none;">
-							<label for="my_p${s.count}"> <img src="/D2/icon/{e.icon}"
+							<label for="my_p${s.count}"> <img src="/D2/icon/${e.icon}"
 								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;"
 								onclick="makeTransparent(this)">
 							</label>
