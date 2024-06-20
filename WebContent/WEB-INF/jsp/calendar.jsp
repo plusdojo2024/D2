@@ -114,7 +114,13 @@ var days = ["にちようび", "げつようび", "かようび", "すいよう�
 
 var dayHeader = "<tr>";
 for (day in days) {
-  dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
+  if (days[day] === "にちようび") {
+    dayHeader += "<th style='color: red;' data-days='" + days[day] + "'>" + days[day] + "</th>";
+  } else if (days[day] === "どようび") {
+    dayHeader += "<th style='color: blue;' data-days='" + days[day] + "'>" + days[day] + "</th>";
+  } else {
+    dayHeader += "<th data-days='" + days[day] + "'>" + days[day] + "</th>";
+  }
 }
 dayHeader += "</tr>";
 
