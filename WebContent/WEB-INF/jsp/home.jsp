@@ -44,16 +44,6 @@
 							<p class = child_name>${e.childName}</p>
 						</td>
 					</tr>
-					<!--
-					<tr>
-						<td>
-							<p>ほしのかず</p>
-							<p>こ</p>
-						</td>
-						<td>
-						</td>
-					</tr>
-					-->
 				</table>
 				</a>
 				</div>
@@ -61,31 +51,43 @@
 		</div>
 		<br>
 		<div class = housework>
-			<p class = b>おてつだい</p>
-			<c:forEach var = "e" items = "${houselist}">
-			<p></p>
-			</c:forEach>
+			<p class = b>おてつだい いちらん</p>
+			<div >
+				<table class = houseworkTable>
+					<tr>
+						<td class = title>おてつだい</td>
+						<td class = title>&nbsp;&nbsp;やること</td>
+						<td class = title>おわっているか</td>
+					</tr>
+					<c:forEach var = "e" items = "${houseList}">
+						<tr>
+							<td class = work>${e.houseworkName}</td>
+							<td class = work>　${e.houseworkContents}</td>
+							<td class = work><c:if test ="${e.houseworkCheck == 'true'}">✔</c:if><c:if test ="${e.houseworkCheck == 'false'}"></c:if></td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
 	</main>
 	<script>
-	function changeBackgroundColor(color, index) {
-		var childAccounts = document.querySelectorAll('.child_acount');
-		childAccounts[index].style.backgroundColor = color;
-		// 色をローカルストレージに保存
-		localStorage.setItem('childAccountColor_' + index, color);
-	}
+		function changeBackgroundColor(color, index) {
+			var childAccounts = document.querySelectorAll('.child_acount');
+			childAccounts[index].style.backgroundColor = color;
+			// 色をローカルストレージに保存
+			localStorage.setItem('childAccountColor_' + index, color);
+		}
 
-	// ページ読み込み時にローカルストレージから色を復元
-	document.addEventListener('DOMContentLoaded', function() {
-		var childAccounts = document.querySelectorAll('.child_acount');
-		childAccounts.forEach(function(childAccount, index) {
-			var savedColor = localStorage.getItem('childAccountColor_' + index);
-			if (savedColor) {
-				childAccount.style.backgroundColor = savedColor;
-			}
+		// ページ読み込み時にローカルストレージから色を復元
+		document.addEventListener('DOMContentLoaded', function() {
+			var childAccounts = document.querySelectorAll('.child_acount');
+			childAccounts.forEach(function(childAccount, index) {
+				var savedColor = localStorage.getItem('childAccountColor_' + index);
+				if (savedColor) {
+					childAccount.style.backgroundColor = savedColor;
+				}
+			});
 		});
-	});
-</script>
 	</script>
 </body>
 </html>

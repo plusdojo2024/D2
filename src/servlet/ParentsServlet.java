@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -74,14 +73,19 @@ public class ParentsServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		if (action.equals("comment_regist")) {		// 親ページからのコメントの登録処理
 			request.setCharacterEncoding("UTF-8");
+			HttpSession session = request.getSession();
+			User loginUser = (User) session.getAttribute("id");
+			String userID = loginUser.getUserId();
 
 			String comment = request.getParameter("comment");
-			Date date = new Date(); // 現在の日付を取得（仮定）
+			// 現在の日付を SQL の DATE 型として扱うために java.sql.Date を使用する
+			java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
 
 			CommentDao coDao = new CommentDao();
 
-			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"), "UTF-8").equals("登録")) {
-			    if (coDao.insert(date, 0, comment)) {
+			// submit パラメータの文字コードの問題を修正するため、値を直接比較する
+			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")) {
+			    if (coDao.insert(date, userID, comment)) {
 			        request.setAttribute("result",
 			                new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
 			    } else {

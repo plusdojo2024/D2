@@ -4,18 +4,18 @@ import java.util.Date;
 
 public class CalendarComment implements Serializable{
 	private Date date;//日付
-	private String childId;//子どものID
+	private String userId;//子どものID
 	private String comment ;// コメント
-	public CalendarComment(Date date, String childId, String comment) {
+	public CalendarComment(Date date, String userId, String comment) {
 		super();
 		this.date = date;
-		this.childId = childId;
+		this.userId = userId;
 		this.comment = comment;
 	}
 	public CalendarComment() {
 		super();
 		this.date = null;
-		this.childId = "";
+		this.userId = "";
 		this.comment = "";
 	}
 	public Date getDate() {
@@ -25,10 +25,10 @@ public class CalendarComment implements Serializable{
 		this.date = date;
 	}
 	public String getChildId() {
-		return childId;
+		return userId;
 	}
 	public void setChildId(String childId) {
-		this.childId = childId;
+		this.userId = childId;
 	}
 	public String getComment() {
 		return comment;

@@ -83,7 +83,8 @@ public class HouseworkServlet extends HttpServlet {
 		"ダミー",
 		userID,
 		"ダミー",
-		"ダミー"
+		"ダミー",
+		false
      );
     houseworkDao.insert(HW);
     doGet(request, response);
@@ -111,6 +112,4 @@ public class HouseworkServlet extends HttpServlet {
 
 		doGet(request, response);
   }
-}
-
 }

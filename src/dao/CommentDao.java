@@ -72,7 +72,7 @@ public class CommentDao {
         return commentList;
     }
 
-	public boolean insert(java.util.Date date, int i, String comment) {
+	public boolean insert(java.util.Date date, String userId, String comment) {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}

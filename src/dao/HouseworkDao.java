@@ -46,7 +46,8 @@ public class HouseworkDao {
 				rs.getString("icon_done"),
 				rs.getString ("user_id"),
 				rs.getString ("icon_x"),
-				rs.getString("icon_y")
+				rs.getString("icon_y"),
+				rs.getBoolean("housework_check")
 				);
 				cardList.add(record);
 			}
@@ -89,7 +90,7 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Housework VALUES ( NULL,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Housework VALUES ( NULL,?,?,?,?,?,?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -141,6 +142,11 @@ public class HouseworkDao {
 			}
 			else {
 				pStmt.setString(7, "（未設定）");
+			}
+			if (HW.getHouseworkCheck() != null) {
+			    pStmt.setBoolean(7, HW.getHouseworkCheck());
+			} else {
+			    pStmt.setBoolean(7, false); // もしnullの場合はfalseとしてセットする
 			}
 			
 			// SQL文を実行する
