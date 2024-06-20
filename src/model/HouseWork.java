@@ -30,21 +30,21 @@ public class HouseWork implements Serializable {
 		this.houseworkCheck = houseworkCheck;
 	}
 
-	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, 
+	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint,
 			String userId) {
 		this.houseworkName = houseworkName;
 		this.houseworkContents = houseworkContents;
 		this.houseworkPoint = houseworkPoint;
 		this.userId = userId;
 	}
-	
+
 	public HouseWork(String houseworkName, String houseworkContents, String userId, Boolean houseworkCheck) {
 		this.houseworkName = houseworkName;
 		this.houseworkContents = houseworkContents;
 		this.userId = userId;
 		this.houseworkCheck = houseworkCheck;
 	}
-	
+
 	/*public HouseWork() {
 		this.houseworkName =  "";
 		this.houseworkContents =  "";
