@@ -349,18 +349,12 @@ public class HouseworkDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Housework SET housework_check? WHERE housework_Name=?";
+			String sql = "UPDATE Housework SET housework_check? WHERE housework_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (card.getHouseworkCheck() != null && !card.getHouseworkCheck().equals("")) {
-				pStmt.enquoteIdentifier(sql, result);
-			}
-			else {
-				pStmt.setString(1, null);
-			}
-
+			pStmt.setBoolean(1, card.getHouseworkCheck());
 			pStmt.setString(2, card.getHouseworkName());
 
 			// SQL文を実行する(更新は都度1件だけなのでそれをチェックする)

@@ -72,12 +72,16 @@ public class HouseworkServlet extends HttpServlet {
 		for (int i = 1; i <= 6; i++) {
 			String x = request.getParameter("my_p" + i);
 			if (x == null) {
-				break;
+				HouseWork hw = new HouseWork();
+				hw.setHouseworkName(request.getParameter("my_p" + i));
+				hw.setHouseworkCheck(false);
+				hwList.add(hw);
+			} else {
+				HouseWork hw = new HouseWork();
+				hw.setHouseworkName(request.getParameter("my_p" + i));
+				hw.setHouseworkCheck(true);
+				hwList.add(hw);
 			}
-			HouseWork hw = new HouseWork();
-			hw.setHouseworkName(request.getParameter("my_p" + i));
-			hw.setHouseworkCheck(true);
-			hwList.add(hw);
 		}
 		HouseworkDao hwDao = new HouseworkDao();
 		if (request.getParameter("my_save").equals("ホームにもどる")) {
