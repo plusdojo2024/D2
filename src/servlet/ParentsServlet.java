@@ -78,7 +78,6 @@ public class ParentsServlet extends HttpServlet {
 			String userID = loginUser.getUserId();
 
 			String comment = request.getParameter("comment");
-			// 現在の日付を SQL の DATE 型として扱うために java.sql.Date を使用する
 			java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
 
 			CommentDao coDao = new CommentDao();
