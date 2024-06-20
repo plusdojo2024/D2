@@ -66,6 +66,12 @@ img{
 	left: 1010px;
 }
 
-nput[type="image"] {
-	position: relative;
+input[type="submit"]{
+  width: 200px;
+  height: 50px;
+  background-color: #C1E5F5;
+  color: #1C82B0;
+  font-size: 1rem;
+  border: none;
+  border-radius:7px;
 }
