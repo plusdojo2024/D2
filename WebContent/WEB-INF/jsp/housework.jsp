@@ -37,10 +37,8 @@
 			</div>
 			<div class="work">
 				<nobr>
-					<span class="icons"> <c:forEach var="e" items="${cardList}"
-							varStatus="s">
-							<input type="radio" name="my_p${s.count}" id="my_p${s.count}"
-								value="true"
+					<span class="icons"> <c:forEach var="e" items="${cardList}" varStatus="s">
+							<input type="radio" name="my_p${s.count}" id="my_p${s.count}" value="true"
 								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute; display: none;">
 							<label for="my_p${s.count}"> <img src="${e.icon}"
 								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;"
