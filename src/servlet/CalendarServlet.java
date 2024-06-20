@@ -66,22 +66,25 @@ public class CalendarServlet extends HttpServlet {
             date = c.getTime();
         }
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
-		String datey = fmt.format(date);
+		int datey = Integer.parseInt(fmt.format(date));
 		fmt = new SimpleDateFormat("MM");
-		String datem = fmt.format(date);
+		int datem = Integer.parseInt(fmt.format(date));
+
 
         //commentテーブルから日付、ユーザーID、コメントを取得　
         CommentDao coDao = new CommentDao();
-        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem));
+        List<CalendarComment> commentList = coDao.select(loginUser.getUserId(),datey,datem);
 
         request.setAttribute("commentList", commentList);
 
         //houseworkテーブルから家事の名前、各日のポイントを取得
 
         CalendarDao CaDao = new CalendarDao();
-        List<Calendar> datesList = CaDao.select(date.getYear(), date.getMonth()+1);
+        List<Calendar> datesList = CaDao.select(datey, datem);
 
         request.setAttribute("datesList",datesList);
+        request.setAttribute("currentMonth",datem);
+        request.setAttribute("currentYear",datey);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
         dispatcher.forward(request, response);

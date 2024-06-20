@@ -87,9 +87,10 @@ public class CalendarDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			//clickDate clickChild clickHousework
 
-			pStmt.setDate(1, new java.sql.Date(c.getTime().getTime()));
+			pStmt.setDate(1, new java.sql.Date(c.getTimeInMillis()));
 			c.add(java.util.Calendar.MONTH,1);
-			pStmt.setDate(2, new java.sql.Date(c.getTime().getTime()));
+
+			pStmt.setDate(2, new java.sql.Date(c.getTimeInMillis()));
 
 
 			// SELECT文を実行し、結果表を取得する
@@ -98,9 +99,9 @@ public class CalendarDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Calendar record = new Calendar(
-						rs.getDate("clickDate"),
-						rs.getString("clickChild"),
-						rs.getString("clickHousework")
+						rs.getDate("click_Date"),
+						rs.getString("click_Child"),
+						rs.getString("click_Housework")
 
 				);
 				datesList.add(record);
