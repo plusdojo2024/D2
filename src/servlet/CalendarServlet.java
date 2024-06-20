@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CalendarDao;
 import dao.CommentDao;
-import dao.HouseworkDao;
+import model.Calendar;
 import model.CalendarComment;
-import model.HouseWork;
 import model.User;
 
 /**
@@ -49,13 +49,22 @@ public class CalendarServlet extends HttpServlet {
         }
         User loginUser = (User) session.getAttribute("id");
 
+
         /*ChildDao cDao = new ChildDao();
         List<Child> userList = cDao.select(loginUser.getUserId());
         request.setAttribute("userList", userList);*/
         //select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem)
-
+        String year = request.getParameter("year");
+        String month = request.getParameter("month");
         //現在日時を取得
         Date date = new Date();
+        if(year != null && month != null && ! year.equals("")&& ! month.equals("")) {
+        	java.util.Calendar c = java.util.Calendar.getInstance();
+            c.set(java.util.Calendar.YEAR, Integer.parseInt(year));
+            c.set(java.util.Calendar.MONTH, Integer.parseInt(month)-1);
+            c.set(java.util.Calendar.DATE, 1);
+            date = c.getTime();
+        }
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
 		String datey = fmt.format(date);
 		fmt = new SimpleDateFormat("MM");
@@ -68,24 +77,11 @@ public class CalendarServlet extends HttpServlet {
         request.setAttribute("commentList", commentList);
 
         //houseworkテーブルから家事の名前、各日のポイントを取得
-        HouseworkDao hoDao = new HouseworkDao();
-        List<HouseWork> housweworkList = hoDao.select(loginUser.getUserId());
-        /*家事の名前、ポイント以外の要素を削除
-         * HouseWork commentToRemove = housework_contents;
-		   housweworkList.remove(commentToRemove);
-		   HouseWork commentToRemove = icon;
-		   housweworkList.remove(commentToRemove);
-		   HouseWork commentToRemove = icon_done;
-		   housweworkList.remove(commentToRemove);
-		   HouseWork commentToRemove = user_id;
-		   housweworkList.remove(commentToRemove);
-		   HouseWork commentToRemove = icon_x;
-		   housweworkList.remove(commentToRemove);
-		   HouseWork commentToRemove = icon_y;
-		   housweworkList.remove(commentToRemove);
-		 */
-        request.setAttribute("HouseWorkList",housweworkList);
 
+        CalendarDao CaDao = new CalendarDao();
+        List<Calendar> datesList = CaDao.select(date.getYear(), date.getMonth()+1);
+
+        request.setAttribute("datesList",datesList);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/calendar.jsp");
         dispatcher.forward(request, response);
