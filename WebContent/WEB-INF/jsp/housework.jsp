@@ -35,30 +35,22 @@
     <img src="/D2/img/madori.png" >
   </div>
   <div class="work">
+  <nobr>
+	<span class="icons">
     <c:forEach var="e" items="${cardList}" varStatus="s">
-      <input type="image" src="/D2/icon/${e.icon}" name="my_x${s.count}" id="my_x${s.count}" value="${e.houseworkName}"
-      style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;" onclick="makeImageInactive(this);" >
-    </c:forEach>
+      <input type="radio"  name="my_p${s.count}" id="my_p${s.count}" value="true"
+      style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute; display: none;" >
+      <label for="my_p${s.count}" >
+         <img src="${e.icon}" style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;"
+         onclick="makeTransparent(this)" >
+      </label>
+     </c:forEach>
+     </span>
+   </nobr>
   </div>
 </div>
 </form>
 </body>
-<style>
-  .inactive {
-    opacity: 0.5; /* 半透明にする */
-    pointer-events: none; /* クリックを無効にする */
-  }
-</style>
-<script>
 
-
-function confirmFinish() {
-    return confirm("お手伝いはおわりましたか？");
-}
-function makeImageInactive(image) {
-    image.classList.add('inactive');
-    image.onclick = null; // クリックイベントを削除してクリックを無効にする
-  }
-
-</script>
+<script src="./script/HouseWork.js"></script>
 </html>
