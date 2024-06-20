@@ -10,3 +10,5 @@ function makeTransparent(imgElement) {
     }
     // 「OK」の場合は何もしない（既に透明化済み）
 }
+
+
