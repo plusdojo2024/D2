@@ -354,12 +354,7 @@ public class HouseworkDao {
 
 			// SQL文を完成させる
 
-			if (card.getHouseworkCheck() != null && !card.getHouseworkCheck().equals("")) {
-				pStmt.enquoteIdentifier(sql, result);
-			}
-			else {
-				pStmt.setString(1, null);
-			}
+			pStmt.setBoolean(1, card.getHouseworkCheck());
 
 			pStmt.setString(2, card.getHouseworkName());
 
