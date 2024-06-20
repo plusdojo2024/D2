@@ -73,8 +73,7 @@
 						src="/D2/icon/${e.icon}">
 					<input type="hidden" name="my_x${s.count}" id="my_x${s.count}">
 					<input type="hidden" name="my_y${s.count}" id="my_y${s.count}">
-					<input type="hidden" name="my_z${s.count}"
-						value="${e.houseworkName}">
+					<input type="hidden" name="my_z${s.count}" value="${e.houseworkName}">
 				</c:forEach>
 			</div>
 			<div class="action">
