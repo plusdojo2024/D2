@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,83 +11,68 @@
 </head>
 <body>
 
-  <header>
+	<header>
 		<div class="hamburger-menu">
-    <input type="checkbox" id="menu-btn-check">
-    <label for="menu-btn-check" class="menu-btn"><span></span></label>
-    <div class="menu-content">
-      <ul>
-        <li><a href="/D2/HomeServlet">ホーム</a></li>
-        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
-        <li><a href="/D2/LockServlet">設定</a></li>
-        <li><a href="/D2/LogoutServlet">ログアウト</a></li>
-      </ul>
-    </div>
-        </div>
-   </header>
+			<input type="checkbox" id="menu-btn-check"> <label
+				for="menu-btn-check" class="menu-btn"><span></span></label>
+			<div class="menu-content">
+				<ul>
+					<li><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><a href="/D2/LockServlet">設定</a></li>
+					<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
 
 	<main>
-      <h1>カレンダー</h1>
-      <p class=a>やり終えた家事をカレンダーで見ることができるよ！</p>
-        <div class="container-calendar">
+		<h1>カレンダー</h1>
+		<p class=a>やり終えた家事をカレンダーで見ることができるよ！</p>
+		<div class="container-calendar">
 
-          <h4 id="monthAndYear"></h4>
-          <div class="button-container-calendar">
+			<h4 id="monthAndYear"></h4>
+			<div class="button-container-calendar">
 
-              <button id="previous" onclick="previous()">‹</button>
-              <button id="next" onclick="next()">›</button>
-          </div>
+				<button id="previous" onclick="previous()">‹</button>
+				<button id="next" onclick="next()">›</button>
+			</div>
 
-          <table class="table-calendar" id="calendar" data-lang="ja">
-              <thead id="thead-month">
-                <tr>
-                  <th date-days="にちようび">
-                  にちようび
-                  <img src="/D2/img/taiou_01_2.png" width="100" height="100" alt="太陽">
-                  </th>
-                </tr>
-              </thead>
-              <tbody id="calendar-body"></tbody>
-          </table>
+			<table class="table-calendar" id="calendar" data-lang="ja">
+				<thead id="thead-month">
+					<tr>
+						<th date-days="にちようび">にちようび <img src="/D2/img/taiou_01_2.png"
+							width="100" height="100" alt="太陽">
+						</th>
+					</tr>
+				</thead>
+				<tbody id="calendar-body"></tbody>
+			</table>
 
-          <div class="footer-container-calendar">
-              <label for="month">日付指定：</label>
-              <select id="month" onchange="jump()">
-                  <option value=0>1月</option>
-                  <option value=1>2月</option>
-                  <option value=2>3月</option>
-                  <option value=3>4月</option>
-                  <option value=4>5月</option>
-                  <option value=5>6月</option>
-                  <option value=6>7月</option>
-                  <option value=7>8月</option>
-                  <option value=8>9月</option>
-                  <option value=9>10月</option>
-                  <option value=10>11月</option>
-                  <option value=11>12月</option>
-              </select>
-              <select id="year" onchange="jump()"></select>
-          </div>
-          </div>
-
-
-    <div class="balloon_contents">
+			<div class="footer-container-calendar">
+				<label for="month">日付指定：</label> <select id="month"
+					onchange="jump()">
+					<option value=0>1月</option>
+					<option value=1>2月</option>
+					<option value=2>3月</option>
+					<option value=3>4月</option>
+					<option value=4>5月</option>
+					<option value=5>6月</option>
+					<option value=6>7月</option>
+					<option value=7>8月</option>
+					<option value=8>9月</option>
+					<option value=9>10月</option>
+					<option value=10>11月</option>
+					<option value=11>12月</option>
+				</select> <select id="year" onchange="jump()"></select>
+			</div>
+		</div>
 
 
 
+	</main>
 
-
-
-   <c:forEach var="e" items="${houseworkList}" >
-      <form method="post" action="/D2/CalendarServlet">
-        <input type="text" name="housework_name" value="${e.housework_name }">
-        <input type="text" name="housework_point" value="${e.housework_point}">
-      </form>
-   </c:forEach>
-   </div>
-  </main>
-
-<script>
+	<script>
     function generate_year_range(start, end) {
   var years = "";
   for (var year = start; year <= end; year++) {
@@ -162,9 +147,14 @@ function showCalendar(month, year) {
   // creating all cells
   var date = 1;
   const commentDateArray = [];
-	  <c:forEach var="e" items="${commentList}" >
-	  commentDateArray[${e.date.date}]='${e.comment}';
-	   </c:forEach>
+  <c:forEach var="e" items="${commentList}" >
+  commentDateArray[${e.date.date}]='${e.comment}';
+  </c:forEach>
+
+  const datesListArray = [];
+  <c:forEach var="e" items="${datesList}" >
+  datesListArray[${e.clickDate.date}]='${e.clickHousework}';
+  </c:forEach>
 
   for ( var i = 0; i < 6; i++ ) {
       var row = document.createElement("tr");
@@ -178,15 +168,15 @@ function showCalendar(month, year) {
           } else if (date > daysInMonth(month, year)) {
               break;
           } else {
-        	  let comment = commentDateArray[date];
-
+        	  let comment1 = commentDateArray[date];
+        	  let comment2 = datesListArray[date];
               cell = document.createElement("td");
               cell.setAttribute("data-date", date);
               cell.setAttribute("data-month", month + 1);
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment+"</div><div>"+comment+"</div></div></div>";
+              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment1+"</div><div>"+comment2+"</div></div></div>";
 
               if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                   cell.className = "date-picker selected";
