@@ -71,7 +71,11 @@ public class CalendarDao {
 	public List<Calendar> select(int year ,int month ) {
 		Connection conn = null;
 		List<Calendar> datesList = new ArrayList<Calendar>();
+		//Calendar.getInstance() メソッドを使って、デフォルトのタイムゾーンとロケールで
+		//初期化された Calendar オブジェクトを取得して、現在の日時が設定される。
         java.util.Calendar c = java.util.Calendar.getInstance();
+        //java.util.Calendar を使用して、指定された年と月を設定。
+        //java.util.Calendar.YEAR：年を設定するための定数。以下同じような感じ。
         c.set(java.util.Calendar.YEAR, year);
         c.set(java.util.Calendar.MONTH, month-1);
         c.set(java.util.Calendar.DATE, 1);
@@ -83,13 +87,16 @@ public class CalendarDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SELECT文を準備する
+			//?はプレースホルダーの役割で、PreparedStatementの値がセットされる。
 			String sql = "SELECT * FROM CALENDAR  WHERE click_date >=? and click_date < ? ORDER BY click_date, click_housework";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			//clickDate clickChild clickHousework
 
+			//setDateメソッドを使用して、SQL文の1番目のパラメータに日付を設定。
+			//c.getTimeInMillis()は、cの現在時刻をミリ秒単位で取得。
 			pStmt.setDate(1, new java.sql.Date(c.getTimeInMillis()));
+			//cの日付を1ヶ月進めて、次の月の初めを表すようにcが更新される。
 			c.add(java.util.Calendar.MONTH,1);
-
+			//２番目のパラメータに更新されたcの日付を設定している。
 			pStmt.setDate(2, new java.sql.Date(c.getTimeInMillis()));
 
 

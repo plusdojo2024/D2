@@ -73,6 +73,7 @@
 	</main>
 
 <script>
+//指定された範囲の年を選択肢として生成する関数。startからendまでの各年を <option> タグの文字列として結合している。
 function generate_year_range(start, end) {
   var years = "";
   for (var year = start; year <= end; year++) {
@@ -80,20 +81,20 @@ function generate_year_range(start, end) {
   }
   return years;
 }
-
+//Dateオブジェクトを使用して現在の日付を取得している。
 var today = new Date();
 //const today = new Date(${currentYear},${currentMonth-1},${currentDay});
 
-
+//JSPから取得した現在の月と年を設定している。
 var currentMonth = ${currentMonth-1};
 var currentYear = ${currentYear};
+//id属性の "year" と "month" の要素を取得している。
 var selectYear = document.getElementById("year");
 var selectMonth = document.getElementById("month");
-
+//generate_year_range 関数を使って、1970年から2200年までの年の選択肢を生成し、HTMLの年の選択要素に設定している。
 var createYear = generate_year_range(1970, 2200);
-
 document.getElementById("year").innerHTML = createYear;
-
+// langはlangageの略で、HTMLでjapaneseが指定されている。
 var calendar = document.getElementById("calendar");
 var lang = calendar.getAttribute('data-lang');
 
@@ -111,33 +112,34 @@ for (day in days) {
   }
 }
 dayHeader += "</tr>";
-
 document.getElementById("thead-month").innerHTML = dayHeader;
 
+//showCalendar 関数を呼び出して、初期表示として現在の月と年のカレンダーを表示している。
 monthAndYear = document.getElementById("monthAndYear");
 showCalendar(currentMonth, currentYear);
 
+//次の月へ移動する処理。currentMonth が11（12月）の場合は年を次の年に進め、それ以外の場合は currentMonth を1プラスしている。
 function next() {
   currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
   currentMonth = (currentMonth + 1) % 12;
   //showCalendar(currentMonth, currentYear);
   window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
-
+//前の月へ移動する処理で、currentMonth が0（1月）の場合は年を前の年に戻し、それ以外の場合は currentMonth を1マイナスしている。
 function previous() {
   currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
   currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
   //showCalendar(currentMonth, currentYear);
   window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
-
+//年と月の選択要素から選択された値を取得して反映している。
 function jump() {
   currentYear = parseInt(selectYear.value);
   currentMonth = parseInt(selectMonth.value);
   //showCalendar(currentMonth, currentYear);
   window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
-
+//指定された月と年のカレンダーを生成して表示する。月初めの曜日を取得して、テーブルの枠に日付やコメントを表示している。
 function showCalendar(month, year) {
 
   var firstDay = ( new Date( year, month ) ).getDay();
@@ -150,7 +152,7 @@ function showCalendar(month, year) {
   selectYear.value = year;
   selectMonth.value = month;
 
-  // creating all cells
+  // カレンダーのセルを構築
   var date = 1;
   const commentDateArray = [];
   <c:forEach var="e" items="${commentList}" >
@@ -161,19 +163,23 @@ function showCalendar(month, year) {
   <c:forEach var="e" items="${datesList}" >
   datesListArray[${e.clickDate.date}]='${e.clickHousework}';
   </c:forEach>
-
+//外側のループは、6行の行を生成（1ヶ月のカレンダーが最大で6週間分の行で構成されるため）
   for ( var i = 0; i < 6; i++ ) {
+	  //ここで新しい行を生成している。
       var row = document.createElement("tr");
-
+//内側のループは、1行あたりのセル（日）を生成（1週間分のセルが必要）。
       for ( var j = 0; j < 7; j++ ) {
+    	  //最初の週で、1日の曜日が先頭に来るまでの空白のセルを生成。
           if ( i === 0 && j < firstDay ) {
               cell = document.createElement( "td" );
               cellText = document.createTextNode("");
               cell.appendChild(cellText);
               row.appendChild(cell);
+              //その月の日数を超えない範囲でセルに日付をセット。
           } else if (date > daysInMonth(month, year)) {
               break;
           } else {
+        	  //各日付に対するコメントを取得します。
         	  let comment1 = commentDateArray[date]||'';
         	  let comment2 = datesListArray[date]||'';
               cell = document.createElement("td");
@@ -186,6 +192,7 @@ function showCalendar(month, year) {
             	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span></div>";
 
               }else{
+            	  //空でない場合は、それぞれのコメントを <td> 内の適切な要素に表示。
             	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment1+"</div><div>"+comment2+"</div></div></div>";
 
               }
@@ -204,7 +211,7 @@ function showCalendar(month, year) {
   }
 
 }
-
+//指定された月と年の日数を求める関数で、32日(31日)から指定された月の最後の日を引いて、その月の日数を正確に取得する。
 function daysInMonth(iMonth, iYear) {
   return 32 - new Date(iYear, iMonth, 32).getDate();
 }

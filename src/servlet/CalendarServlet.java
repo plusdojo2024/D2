@@ -48,16 +48,12 @@ public class CalendarServlet extends HttpServlet {
             return;
         }
         User loginUser = (User) session.getAttribute("id");
-
-
-        /*ChildDao cDao = new ChildDao();
-        List<Child> userList = cDao.select(loginUser.getUserId());
-        request.setAttribute("userList", userList);*/
-        //select(loginUser.getUserId(),Integer.parseInt(datey),Integer.parseInt(datem)
+       //リクエストパラメータから年と月を取得し、それが存在する場合はそれを基にjava.util.Calendar を使用して日付を設定。
         String year = request.getParameter("year");
         String month = request.getParameter("month");
         //現在日時を取得
         Date date = new Date();
+        //月と年が入力されているとき、文字列のyearとmonthをCalendarクラスのyearとmonthにint型で代入している
         if(year != null && month != null && ! year.equals("")&& ! month.equals("")) {
         	java.util.Calendar c = java.util.Calendar.getInstance();
             c.set(java.util.Calendar.YEAR, Integer.parseInt(year));
@@ -65,6 +61,7 @@ public class CalendarServlet extends HttpServlet {
             c.set(java.util.Calendar.DATE, 1);
             date = c.getTime();
         }
+        //SimpleDateFormat を使用して、日付から年と月を取得。
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy");//yyyy-MM-dd
 		int datey = Integer.parseInt(fmt.format(date));
 		fmt = new SimpleDateFormat("MM");
