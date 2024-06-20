@@ -72,8 +72,8 @@
 
 	</main>
 
-	<script>
-    function generate_year_range(start, end) {
+<script>
+function generate_year_range(start, end) {
   var years = "";
   for (var year = start; year <= end; year++) {
       years += "<option value='" + year + "'>" + year + "</option>";
@@ -82,8 +82,11 @@
 }
 
 var today = new Date();
-var currentMonth = today.getMonth();
-var currentYear = today.getFullYear();
+//const today = new Date(${currentYear},${currentMonth-1},${currentDay});
+
+
+var currentMonth = ${currentMonth-1};
+var currentYear = ${currentYear};
 var selectYear = document.getElementById("year");
 var selectMonth = document.getElementById("month");
 
@@ -117,19 +120,22 @@ showCalendar(currentMonth, currentYear);
 function next() {
   currentYear = (currentMonth === 11) ? currentYear + 1 : currentYear;
   currentMonth = (currentMonth + 1) % 12;
-  showCalendar(currentMonth, currentYear);
+  //showCalendar(currentMonth, currentYear);
+  window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
 
 function previous() {
   currentYear = (currentMonth === 0) ? currentYear - 1 : currentYear;
   currentMonth = (currentMonth === 0) ? 11 : currentMonth - 1;
-  showCalendar(currentMonth, currentYear);
+  //showCalendar(currentMonth, currentYear);
+  window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
 
 function jump() {
   currentYear = parseInt(selectYear.value);
   currentMonth = parseInt(selectMonth.value);
-  showCalendar(currentMonth, currentYear);
+  //showCalendar(currentMonth, currentYear);
+  window.location.href="./CalendarServlet?year="+currentYear+"&month="+(currentMonth+1);
 }
 
 function showCalendar(month, year) {
@@ -168,15 +174,23 @@ function showCalendar(month, year) {
           } else if (date > daysInMonth(month, year)) {
               break;
           } else {
-        	  let comment1 = commentDateArray[date];
-        	  let comment2 = datesListArray[date];
+        	  let comment1 = commentDateArray[date]||'';
+        	  let comment2 = datesListArray[date]||'';
               cell = document.createElement("td");
               cell.setAttribute("data-date", date);
               cell.setAttribute("data-month", month + 1);
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment1+"</div><div>"+comment2+"</div></div></div>";
+              if(comment1 ==='' || comment2 ==='' ){
+            	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span></div>";
+
+              }else{
+            	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment1+"</div><div>"+comment2+"</div></div></div>";
+
+              }
+
+
 
               if ( date === today.getDate() && year === today.getFullYear() && month === today.getMonth() ) {
                   cell.className = "date-picker selected";
