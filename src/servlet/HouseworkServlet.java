@@ -73,7 +73,7 @@ public class HouseworkServlet extends HttpServlet {
 			String x = request.getParameter("my_p" + i);
 
 			if (x == null) {
-				break;
+				continue;
 			}
 			HouseWork hw = new HouseWork();
 			hw.setHouseworkName(request.getParameter("my_z" + i));
