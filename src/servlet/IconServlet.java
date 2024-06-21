@@ -47,6 +47,8 @@ public class IconServlet extends HttpServlet {
 		}
 
 		User loginUser = (User) session.getAttribute("id");
+        session.removeAttribute("pc");
+
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);

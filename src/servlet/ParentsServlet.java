@@ -54,7 +54,7 @@ public class ParentsServlet extends HttpServlet {
 			response.sendRedirect("./LockServlet");
 			return;
 		}
-		session.removeAttribute("pc");
+		//session.removeAttribute("pc");
 
 		User loginUser = (User)session.getAttribute("id");
 
@@ -79,7 +79,7 @@ public class ParentsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if (action.equals("comment_regist")) {		// 親ページからのコメントの登録処理
-			
+
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
