@@ -41,11 +41,12 @@ public class HomeServlet extends HttpServlet {
 			return;
 		}
 		User loginUser = (User)session.getAttribute("id");
+		session.removeAttribute("pc");
 
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
-		
+
 		HouseworkDao hDao = new HouseworkDao();
 		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 		request.setAttribute("houseList", houseList);

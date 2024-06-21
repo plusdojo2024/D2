@@ -48,6 +48,7 @@ public class CalendarServlet extends HttpServlet {
             return;
         }
         User loginUser = (User) session.getAttribute("id");
+        session.removeAttribute("pc");
        //リクエストパラメータから年と月を取得し、それが存在する場合はそれを基にjava.util.Calendar を使用して日付を設定。
         String year = request.getParameter("year");
         String month = request.getParameter("month");
