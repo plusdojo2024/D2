@@ -69,7 +69,7 @@ public class HouseworkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		List<HouseWork> hwList = new ArrayList<>();
-		for (int i = 1; i <= 6; i++) {
+		for (int i = 1; i <= 7; i++) {
 			String x = request.getParameter("my_p" + i);
 
 			if (x == null) {
@@ -91,7 +91,7 @@ public class HouseworkServlet extends HttpServlet {
 			}
 			if (result) {
 				request.setAttribute("result",
-						new Result("保存成功！", "更新を実施しました", "/D2/HouseworkServlet"));
+						new Result("保存成功！", "更新を実施しました", "/D2/HomeServlet"));
 			} else {
 				request.setAttribute("result",
 						new Result("保存失敗…", "更新出来ませんでした", "/D2/HouseworkServlet"));
