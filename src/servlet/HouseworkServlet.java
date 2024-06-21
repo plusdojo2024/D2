@@ -73,7 +73,7 @@ public class HouseworkServlet extends HttpServlet {
 			String x = request.getParameter("my_p" + i);
 
 			if (x == null) {
-				break;
+				continue;
 			}
 			HouseWork hw = new HouseWork();
 			hw.setHouseworkName(request.getParameter("my_z" + i));
@@ -94,7 +94,7 @@ public class HouseworkServlet extends HttpServlet {
 						new Result("保存成功！", "更新を実施しました", "/D2/HomeServlet"));
 			} else {
 				request.setAttribute("result",
-						new Result("保存失敗…", "更新出来ませんでした", "/D2/HouseworkServlet"));
+						new Result("保存失敗…", "更新出来ませんでした", "/D2/HomeServlet"));
 			}
 		}
 

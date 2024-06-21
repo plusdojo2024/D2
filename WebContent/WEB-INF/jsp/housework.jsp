@@ -40,13 +40,12 @@
 				<nobr>
 					<span class="icons"> <c:forEach var="e" items="${cardList}" varStatus="s">
 
-							<label for="my_p${s.count}"> <img src="/D2/icon/${e.icon}"
-								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;"
+							<label for="my_p${s.count}">
+							<img src="/D2/icon/${e.icon}" style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute;"
 								onclick="makeTransparent(this)">
 							<input type="hidden" name="my_z${s.count}" value="${e.houseworkName}">
 							<input type="radio" name="my_p${s.count}" id="my_p${s.count}"
-								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute; display: none;"
-								value="true">
+								style="width:120px; left:${e.iconX}px; top:${e.iconY}px; position: absolute; display: none;" value="true">
 
 
 							</label>

@@ -4,14 +4,18 @@
 body{
 background-image: url('../img/background.png');
 	background-size: cover;
-	background-position: center; 
-	margin: 40px auto 0 auto;	/* 中央揃え */
+	background-position: center;
  	width: 700px;			/* 幅を固定 */
 	color: #2BE993;
 }
 
 h1 {
+	font-size: 50px;
 	margin: 150px 0 0 0;
+}
+h2{
+	font-size: 30px;
+	top: -10px;
 }
 .wrapper {
  /* margin: 0 auto 0 auto;	/* 中央揃え
@@ -56,6 +60,7 @@ label {
   position: relative;
   top: 20px;
   left: 300px;
+  font-size: 30px;
 }
 
 label.menu-btn {
