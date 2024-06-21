@@ -69,19 +69,16 @@ public class HouseworkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		List<HouseWork> hwList = new ArrayList<>();
-		for (int i = 1; i <= 6; i++) {
+		for (int i = 1; i <= 7; i++) {
 			String x = request.getParameter("my_p" + i);
+
 			if (x == null) {
-				HouseWork hw = new HouseWork();
-				hw.setHouseworkName(request.getParameter("my_p" + i));
-				hw.setHouseworkCheck(false);
-				hwList.add(hw);
-			} else {
-				HouseWork hw = new HouseWork();
-				hw.setHouseworkName(request.getParameter("my_p" + i));
-				hw.setHouseworkCheck(true);
-				hwList.add(hw);
+				break;
 			}
+			HouseWork hw = new HouseWork();
+			hw.setHouseworkName(request.getParameter("my_z" + i));
+			hw.setHouseworkCheck(true);
+			hwList.add(hw);
 		}
 		HouseworkDao hwDao = new HouseworkDao();
 		if (request.getParameter("my_save").equals("ホームにもどる")) {
@@ -94,7 +91,7 @@ public class HouseworkServlet extends HttpServlet {
 			}
 			if (result) {
 				request.setAttribute("result",
-						new Result("保存成功！", "更新を実施しました", "/D2/HouseworkServlet"));
+						new Result("保存成功！", "更新を実施しました", "/D2/HomeServlet"));
 			} else {
 				request.setAttribute("result",
 						new Result("保存失敗…", "更新出来ませんでした", "/D2/HouseworkServlet"));

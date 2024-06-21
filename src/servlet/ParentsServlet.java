@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -53,6 +54,8 @@ public class ParentsServlet extends HttpServlet {
 			response.sendRedirect("./LockServlet");
 			return;
 		}
+		session.removeAttribute("pc");
+
 		User loginUser = (User)session.getAttribute("id");
 
 		ChildDao cDao = new ChildDao();
@@ -79,9 +82,10 @@ public class ParentsServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
-
+			
+			Date date = new Date();
 			String comment = request.getParameter("comment");
-			// 日付データ
+			
 			CommentDao coDao = new CommentDao();
 
 			// submit パラメータの文字コードの問題を修正するため、値を直接比較する
