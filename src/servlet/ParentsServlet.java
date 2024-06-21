@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +16,7 @@ import javax.servlet.http.Part;
 import dao.ChildDao;
 import dao.CommentDao;
 import dao.HouseworkDao;
+import model.CalendarComment;
 import model.Child;
 import model.HouseWork;
 import model.Result;
@@ -75,22 +75,21 @@ public class ParentsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if (action.equals("comment_regist")) {		// 親ページからのコメントの登録処理
-			request.setCharacterEncoding("UTF-8");
+			
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
-			
-			Date date = new Date();
-			String comment = request.getParameter("comment");
-			
+			String date1 = request.getParameter("date");
+			java.sql.Date date= java.sql.Date.valueOf(date1);
+			String comment = new String(request.getParameter("comment").getBytes("ISO-8859-1"),"UTF-8");
 			CommentDao coDao = new CommentDao();
-
 			// submit パラメータの文字コードの問題を修正するため、値を直接比較する
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")) {
-			    if (coDao.insert(date, userID, comment)) {
+			    if (coDao.insert(new CalendarComment(date, userID, comment))) {
 			        request.setAttribute("result",
 			                new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
 			    } else {
