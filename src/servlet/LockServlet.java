@@ -39,6 +39,7 @@ public class LockServlet extends HttpServlet {
 			response.sendRedirect("./LockServlet");
 			return;
 		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
 		dispatcher.forward(request, response);
 	}
