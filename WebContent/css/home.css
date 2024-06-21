@@ -72,7 +72,9 @@ body{
 	color:#5FE7A0;
 }
 
-
+img{
+	border-radius:25px;
+}
 
 td{
 	margin:20px;
