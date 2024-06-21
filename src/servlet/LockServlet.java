@@ -34,11 +34,11 @@ public class LockServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		if (session.getAttribute("pc") != null) {
-			response.sendRedirect("./LockServlet");
+			response.sendRedirect("./ParentsServlet");
 			return;
-		}
+		}*/
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
 		dispatcher.forward(request, response);
@@ -62,6 +62,7 @@ public class LockServlet extends HttpServlet {
 			// ログイン処理を行う
 
 			if (pascord.equals(pc)) { // ログイン成功
+				session.setAttribute("pc", pascord);
 
 				response.sendRedirect("./ParentsServlet");
 			} else { // ログイン失敗
