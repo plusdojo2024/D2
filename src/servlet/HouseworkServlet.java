@@ -51,6 +51,8 @@ public class HouseworkServlet extends HttpServlet {
 		//Child child = new Child(userId);
 
 		User loginUser = (User)session.getAttribute("id");
+        session.removeAttribute("pc");
+
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
