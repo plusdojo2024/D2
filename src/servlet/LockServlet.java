@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Result;
 import model.User;
 
 /**
@@ -32,6 +33,13 @@ public class LockServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+		if (session.getAttribute("pc") != null) {
+			response.sendRedirect("./LockServlet");
+			return;
+		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -59,11 +67,11 @@ public class LockServlet extends HttpServlet {
 			} else { // ログイン失敗
 				//エラーメッセージを出すならここで設定する　jspで表示する
 				// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-				//request.setAttribute("result",
-						//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/D2/LoginServlet"));
+				request.setAttribute("result",
+						new Result("失敗...", "パスコードが間違っています。", "/D2/LockServlet"));
 
 				// 結果ページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lock.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

@@ -10,11 +10,15 @@ public class HouseWork implements Serializable {
 	private String userId;//ログインID
 	private String iconX;//移動したアイコンのX座標
 	private String iconY;	// 移動したアイコンのY座標
+	private Boolean houseworkCheck;
 
-
+	public HouseWork() {
+		super();
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
 	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint, String icon, String iconDone,
-			String userId, String iconX, String iconY) {
+			String userId, String iconX, String iconY, Boolean houseworkCheck) {
 		this.houseworkName = houseworkName;
 		this.houseworkContents = houseworkContents;
 		this.houseworkPoint = houseworkPoint;
@@ -23,8 +27,23 @@ public class HouseWork implements Serializable {
 		this.userId = userId;
 		this.iconX = iconX;
 		this.iconY = iconY;
+		this.houseworkCheck = houseworkCheck;
 	}
 
+	public HouseWork(String houseworkName, String houseworkContents, String houseworkPoint,
+			String userId) {
+		this.houseworkName = houseworkName;
+		this.houseworkContents = houseworkContents;
+		this.houseworkPoint = houseworkPoint;
+		this.userId = userId;
+	}
+
+	public HouseWork(String houseworkName, String houseworkContents, String userId, Boolean houseworkCheck) {
+		this.houseworkName = houseworkName;
+		this.houseworkContents = houseworkContents;
+		this.userId = userId;
+		this.houseworkCheck = houseworkCheck;
+	}
 
 	/*public HouseWork() {
 		this.houseworkName =  "";
@@ -116,6 +135,17 @@ public class HouseWork implements Serializable {
 	public void setIconY(String iconY) {
 		this.iconY = iconY;
 	}
+
+	public Boolean getHouseworkCheck() {
+		return houseworkCheck;
+	}
+
+	public void setHouseworkCheck(Boolean houseworkCheck) {
+		this.houseworkCheck = houseworkCheck;
+	}
+
+
+
 
 
 

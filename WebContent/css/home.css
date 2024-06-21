@@ -3,13 +3,14 @@ body{
 	background-image: url('../img/background.png');
 	background-size: cover;
 	background-position: center; 
-	margin: 40px auto 0 auto;	/* 中央揃え */
+	margin: 40px auto 30px auto;	/* 中央揃え */
  	width: 700px;			/* 幅を固定 */
 }
 
 .b {
 	font-size:30px;
-	color:#9DF5CD;
+	color:#5FE7A0;
+	margin:20px  0 0 20px;
 }
 
 .child_name{
@@ -18,14 +19,20 @@ body{
 }
 
 .child_acount{
-	
 	padding:30px;
-	max-width:260px;
+	max-width:220px;
+	min-width:220px;
 	min-height:210px;
-	background-color:#FF8585;
+	background-clip:padding-box;
 	color:#000000;
-	border-radius:30px; 
+	border-radius:60px; 
+	border:20px solid transparent;
 }
+
+ .childprofile{
+  display:flex;
+  flex-wrap:wrap;
+ }
 
  .child_acount a{
   display: block;
@@ -45,4 +52,28 @@ body{
 	background-color:#FFFFBA;
 	color:#000000;
 	border-radius:30px;
+}
+
+.houseworkTable{
+	width:500px;
+	margin:10px 0 20px 55px;
+}
+
+.title{
+	font-size:22px;
+	text-align:center;
+	padding: 0 10px 10px 10px;
+	color:#5FE7A0;
+}
+
+.work{
+	text-align:center;
+	font-size:18px;
+	color:#5FE7A0;
+}
+
+
+
+td{
+	margin:20px;
 }

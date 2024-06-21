@@ -5,17 +5,30 @@ body {
     background-size: cover; /* 画面全体に広がるように調整 */
     background-position: center; /* 画像を中央に配置 */
     /* 必要に応じて、背景の他のスタイルを追加できます。 */
+    margin: 0 250px 0 150px;
 }
-.wrapper {
-  margin: 15px auto;
-  max-width: 700px;
+h1{
+	color:#1C82B0;
+	font-size:220%;
+	margin: 0 0 0 60px;
 }
+h4{
+	font-size: 200%;
+	color:#1C82B0;
+}
+.a {
+	color:#2BA6DD;
+	font-size:130%;
+	margin: 0 0 0 60px;
+
+}
+
 .container-calendar {
   padding: 15px;
   width: 100%;
-  margin: 0 auto;
+  padding: 0 130px 0 50px;
   overflow: auto;
-}
+ }
 .button-container-calendar button {
   cursor: pointer;
   display: inline-block;
@@ -29,14 +42,18 @@ body {
 .table-calendar {
   border-collapse: collapse;
   width: 100%;
+  height: 400px;
+  border-radius: 10px 0 0 0;
+  background-color:white;
 }
 .table-calendar th,
 .table-calendar td{
-  padding: 10px;
+  padding: 10px 50px;
   border: 1px solid black;
-  text-align: center;
-  vertical-align: top;
+ text-align: center;
+  table-layout: fixed;
 }
+
 .date-picker.selected {
   font-weight: bold;
   color: #fff;
@@ -65,20 +82,25 @@ color: blue;
 }
 #previous {
   float: left;
+  width: 50px;
+  padding: 10px;
+  background: #A6CAEC;
 }
 #next {
   float: right;
+  width: 50px;
+  padding: 10px;
+  background: #F6C6AD;
 }
 .footer-container-calendar {
   margin-top: 1em;
-  border-top: 1px solid #dadada;
   padding: 10px 0;
 }
 .footer-container-calendar select {
   cursor: pointer;
   display: inline-block;
   zoom: 1;
-  background: #ffffff;
+ /* background: #ffffff;*/
   color: #454545;
   border: 1px solid #bfc5c5;
   border-radius: 3px;
@@ -180,4 +202,118 @@ color: blue;
 }
 #menu-btn-check {
   display: none;
+}
+.container-calendar{
+  /*width: 800px; /* カレンダー全体の幅 */
+  margin: 0 auto; /* 中央揃え */
+  /*border: 1px solid #ccc; /* 枠線の設定 */
+  /*padding: 30px; /* 内側の余白 */
+
+}
+
+.button-container-calendar {
+  margin-bottom: 10px;
+}
+
+.button-container-calendar button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.table-calendar {
+  width: 100%; /* カレンダーテーブルの幅 */
+  border-collapse: collapse; /* セルの境界線の重なりを防ぐ */
+}
+
+.table-calendar th,
+.table-calendar td {
+  border: 1px solid #ccc; /* セルの枠線の設定 */
+  padding: 5px; /* セルの内側の余白 */
+  text-align: center; /* テキストの中央揃え */
+  border-radius: 10px 0 0 0;
+}
+
+.table-calendar th {
+  /*background-color: #f0f0f0; /* 曜日ヘッダーの背景色 */
+  height: 60px;
+  border-radius: 10px 0 0 0;
+}
+
+.table-calendar .date-picker {
+  cursor: pointer;
+}
+
+.table-calendar .selected {
+  background-color: #A6CAEC; /* 選択された日付の背景色 */
+  color: #fff; /* 選択された日付のテキスト色 */
+}
+
+.footer-container-calendar {
+  margin-top: 10px;
+}
+
+.footer-container-calendar label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.footer-container-calendar select {
+  padding: 5px;
+}
+
+#my_balloon {
+	position: relative;
+}
+#my_xy ul {
+	list-style-type: none;
+}
+#my_xy ul li {
+	float: left;
+	width: 33%;
+	height:100px;
+}
+.balloon {
+  position: relative;
+}
+.balloon:hover .balloon_contents {
+  display: inline-block;
+}
+.balloon_contents {
+  position: absolute;
+  display: none;
+  padding: 25px;
+  background-color: #a0a0af;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  left : -45px;
+  top : 20px;
+  border-radius: 10px;
+  z-index: 80;
+}
+.balloon_contents:after{
+  content: "";
+  position: absolute;
+  top: 30%;
+  margin-top: -10px;
+  border: 10px solid transparent;
+  border-right: 10px solid #a0a0af;
+}
+.date-picker:hover .balloon_contents{
+	  display: inline-block;
+}
+.balloon_b{
+	position: relative;
+}
+
+/* 曜日名が「にちようび」の場合のスタイル */
+th[data-days="にちようび"] {
+  color: red;
+}
+
+/* 曜日名が「どようび」の場合のスタイル */
+th[data-days="どようび"] {
+  color: blue;
 }

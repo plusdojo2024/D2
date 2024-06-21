@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* bodyタグ */
+body {
+	margin: 70px auto 70px auto;	/* 中央揃え */
+ 	width: 700px;			/* 幅を固定 */
+	color: black;
+	font-size: 30px;
+	background-image: url('../img/background.png');
+    /* 背景画像の表示方法を設定します。 */
+    background-size: cover; /* 画面全体に広がるように調整 */
+    background-position: center; /* 画像を中央に配置 */
+    /* 必要に応じて、背景の他のスタイルを追加できます。 */
+}
+
+.result{
+	padding:60px 100px;
+	background-color:#FFFFBA;
+	border-radius:50px;
+}
+
+p {
+	font-size:30px;
+    text-align: center;
+    color:#2BE993;
+}
+
+.c{
+	text-align:center;
+}
+
+.back {
+	text-align:center;
+  padding: 10px 30px;
+  height: 150px;
+  background-color: #C1E5F5;
+ color: #1C82B0;
+  font-size: 1rem;
+  border: none;
+  border-radius:7px;
+  text-decoration: none;
+}
+
+a:hover {
+	opacity: 0.6;
+	cursor: pointer;
+}
