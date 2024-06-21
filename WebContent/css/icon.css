@@ -11,7 +11,7 @@ body{
 	position: relative;
 	width: 1075px;
 	top: 25px;
-	left:  230px;
+	left:  220px;
 
 }
 img{
@@ -61,25 +61,26 @@ img{
 .action{
 	position: absolute;
 	top: 630px;
-	left: 530px;
+	left: 520px;
 }
 
 input[type="reset"]{
-  width: 150px;
-  height: 45px;
+  width: 220px;
+  height: 60px;
   background-color: #C1E5F5;
   color: #1C82B0;
-  font-size: 1rem;
+  font-size: 23px;
   border: none;
   border-radius:7px;
 }
 
 input[type="submit"]{
-  width: 150px;
-  height: 45px;
+  width: 220px;
+  height: 60px;
   background-color: #C1E5F5;
   color: #1C82B0;
-  font-size: 1rem;
+  font-size: 23px;
   border: none;
   border-radius:7px;
+  margin-right: 80px;
 }
