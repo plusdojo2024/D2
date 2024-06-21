@@ -55,6 +55,10 @@ public class IconServlet extends HttpServlet {
 		List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
 		request.setAttribute("cardList", cardList);
 
+		/*HouseworkDao reDao = new HouseworkDao();
+		List<HouseWork> reList = reDao.select(loginUser.getUserId());
+		request.setAttribute("reList", reList);*/
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/icon.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -95,6 +99,37 @@ public class IconServlet extends HttpServlet {
 						new Result("保存失敗…", "更新出来ませんでした", "/D2/IconServlet"));
 			}
 		}
+
+
+		/*request.setCharacterEncoding("UTF-8");
+		List<HouseWork> reList = new ArrayList<>();
+		for (int i = 1; i <= 6; i++) {
+			String x = request.getParameter("my_z" + i);
+			if (x == null) {
+				break;
+			}
+			HouseWork re = new HouseWork();
+			re.setHouseworkName(request.getParameter("my_z" + i));
+			reList.add(re);
+		}
+
+		if (request.getParameter("my_reset").equals("リセット")) {
+			boolean result = false;
+			for (HouseWork hw : hwList) {
+				result = hwDao.updateRE(hw);
+				if (result == false) {
+					break;
+				}
+			}
+			if (result) {
+				request.setAttribute("result",
+						new Result("保存成功！", "更新を実施しました", "/D2/ParentsServlet"));
+			} else {
+				request.setAttribute("result",
+						new Result("保存失敗…", "更新出来ませんでした", "/D2/ParentsServlet"));
+			}
+		}*/
+
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
