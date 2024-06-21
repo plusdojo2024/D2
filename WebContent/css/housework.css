@@ -9,9 +9,9 @@ body{
 
 .madori img{
 	position: relative;
-	width: 1000px;
-	top: 0px;
-	left:  0px;
+	width: 1075px;
+	top: 25px;
+	left:  230px;
 
 }
 img{
@@ -33,7 +33,7 @@ img{
 #my_xy {
     position: absolute;
 	height: 540px;
-	width: 1500px;
+	width: 980px;
 
 }
 #my_xy::after {
@@ -62,16 +62,16 @@ img{
 }
 .action{
 	position: absolute;
-	bottom: 0px;
-	left: 1010px;
+	top: 630px;
+	left: 530px;
 }
 
-input[type="submit"]{
-  width: 200px;
-  height: 50px;
-  background-color: #C1E5F5;
-  color: #1C82B0;
-  font-size: 1rem;
-  border: none;
-  border-radius:7px;
+input[type="submit"] {
+    width: 500px;
+    height: 70px;
+    background-color: #C1E5F5;
+    color: #1C82B0;
+    font-size: 30px;
+    border: none;
+    border-radius: 7px;
 }
