@@ -72,7 +72,7 @@ public class CommentDao {
         return commentList;
     }
 
-	public boolean insert(CalendarComment comm) {
+	public boolean insert (CalendarComment comm) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -83,8 +83,7 @@ public class CommentDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
-			// SQL文を準備する（AUTO_INCREMENTのChildId列にはNULLを指定する）
-			String sql = "INSERT INTO Comment VALUES (?,?,?)";
+			String sql = "INSERT INTO Comment VALUES (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -92,7 +91,7 @@ public class CommentDao {
 				
 			pStmt.setString(2, comm.getUserId());
 				
-			pStmt.setString(2,comm.getComment());
+			pStmt.setString(3, comm.getComment());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -119,6 +118,11 @@ public class CommentDao {
 
 		// 結果を返す
 		return result;
+	}
+
+	public boolean insert(java.util.Date date, String userID, String comment) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
 	}
 
 }
