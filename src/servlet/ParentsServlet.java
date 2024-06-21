@@ -49,6 +49,9 @@ public class ParentsServlet extends HttpServlet {
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
+		}else if (session.getAttribute("pc") == null) {
+			response.sendRedirect("./LockServlet");
+			return;
 		}
 		User loginUser = (User)session.getAttribute("id");
 
@@ -60,7 +63,7 @@ public class ParentsServlet extends HttpServlet {
 		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 		request.setAttribute("houseList", houseList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ParentsServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
 		dispatcher.forward(request, response);
 	}
 
