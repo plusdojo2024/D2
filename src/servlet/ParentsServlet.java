@@ -60,7 +60,7 @@ public class ParentsServlet extends HttpServlet {
 		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 		request.setAttribute("houseList", houseList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/parents.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/LockServlet");
 		dispatcher.forward(request, response);
 	}
 
