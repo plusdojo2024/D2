@@ -37,8 +37,14 @@
 			<input type="hidden" name="action" value="comment_regist">
 				<table>
 					<tr>
-						<td><label>コメント <input type="text" name="comment">
-						</label>
+						<td>
+						<label>今日の日付</label>
+						<input type = "date"  name = date value="">
+						</td>
+					</tr>
+					<tr>
+						<td>
+						<label>コメント <input type="text" name="comment"></label>
 						<td>
 					</tr>
 				</table>
@@ -223,5 +229,15 @@
 			</form>
 		</c:forEach>
 	</main>
+	<script>
+	window.onload = function(){
+	    var getToday = new Date();
+	    var y = getToday.getFullYear();
+	    var m = getToday.getMonth() + 1;
+	    var d = getToday.getDate();
+	    var today = y + "-" + m.toString().padStart(2,'0') + "-" + d.toString().padStart(2,'0');
+	    document.getElementById("datepicker").setAttribute("value",today);
+	}
+	</script>
 </body>
 </html>
