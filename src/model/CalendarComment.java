@@ -24,11 +24,11 @@ public class CalendarComment implements Serializable{
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getChildId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setChildId(String childId) {
-		this.userId = childId;
+	public void setChildId(String userId) {
+		this.userId = userId;
 	}
 	public String getComment() {
 		return comment;
