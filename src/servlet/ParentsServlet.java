@@ -53,6 +53,8 @@ public class ParentsServlet extends HttpServlet {
 			response.sendRedirect("./LockServlet");
 			return;
 		}
+		session.removeAttribute("pc");
+
 		User loginUser = (User)session.getAttribute("id");
 
 		ChildDao cDao = new ChildDao();

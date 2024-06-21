@@ -40,11 +40,6 @@
 
 			<table class="table-calendar" id="calendar" data-lang="ja">
 				<thead id="thead-month">
-					<tr>
-						<th date-days="にちようび">にちようび <img src="/D2/img/taiou_01_2.png"
-							width="100" height="100" alt="太陽">
-						</th>
-					</tr>
 				</thead>
 				<tbody id="calendar-body"></tbody>
 			</table>
@@ -193,7 +188,7 @@ function showCalendar(month, year) {
 
               }else{
             	  //空でない場合は、それぞれのコメントを <td> 内の適切な要素に表示。
-            	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>"+comment1+"</div><div>"+comment2+"</div></div></div>";
+            	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>コメント："+comment1+"</div><div>家事："+comment2+"</div></div></div>";
 
               }
 
