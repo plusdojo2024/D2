@@ -55,12 +55,12 @@ public class ParentsServlet extends HttpServlet {
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
 		request.setAttribute("userList", userList);
-		
+
 		HouseworkDao hDao = new HouseworkDao();
 		List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 		request.setAttribute("houseList", houseList);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/LockServlet");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ParentsServlet");
 		dispatcher.forward(request, response);
 	}
 
@@ -98,13 +98,13 @@ public class ParentsServlet extends HttpServlet {
 			HouseworkDao hDao = new HouseworkDao();
 			List<HouseWork> houseList = hDao.select(loginUser.getUserId());
 			request.setAttribute("houseList", houseList);
-			
+
 			request.setCharacterEncoding("UTF-8");
-			
+
 			String houseworkName = new String(request.getParameter("houseworkName").getBytes("ISO-8859-1"),"UTF-8");
 			String houseworkContents = new String(request.getParameter("houseworkContents").getBytes("ISO-8859-1"),"UTF-8");
 			String houseworkPoint = request.getParameter("houseworkPoint");
-			
+
 			HouseworkDao wDao = new HouseworkDao();
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
 				if (wDao.updateHW(new HouseWork(houseworkName, houseworkContents, houseworkPoint,userID))) {
@@ -129,7 +129,7 @@ public class ParentsServlet extends HttpServlet {
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
 
-			
+
 			request.setCharacterEncoding("UTF-8");
 			String childId_string = request.getParameter("childId");
 			int childId = -1;
@@ -143,10 +143,10 @@ public class ParentsServlet extends HttpServlet {
 			String rewardUmu = request.getParameter("rewardUmu");
 			String rewardJouken = request.getParameter("rewardJouken");
 			String rewardText = new String( request.getParameter("rewardText").getBytes("ISO-8859-1"),"UTF-8");
-			
-			
+
+
 			ChildDao dDao = new ChildDao();
-				
+
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
 				if (dDao.update(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 更新成功
 					request.setAttribute("result",
@@ -175,6 +175,6 @@ public class ParentsServlet extends HttpServlet {
 		}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
-		
+
 	}
 }
