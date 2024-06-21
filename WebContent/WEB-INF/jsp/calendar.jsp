@@ -31,7 +31,7 @@
 		<p class=a>やり終えた家事をカレンダーで見ることができるよ！</p>
 		<div class="container-calendar">
 
-			<div class="items"><div class="left-png"><img src="./calendar/1_1.png" width="150" height="150"alt=""></div><h4 id="monthAndYear"></h4><div class="right-png"><img src="./calendar/1_2.png" width="150" height="150"alt=""></div></div>
+			<div class="items"><div class="left-png"><img src="./calendar/${currentMonth}_1.png;" width="170" height="150"alt=""></div><h4 id="monthAndYear"></h4><div class="right-png"><img src="./calendar/${currentMonth}_2.png;" width="170" height="150"alt=""></div></div>
 			<div class="button-container-calendar">
 
 				<button id="previous" onclick="previous()">‹</button>
