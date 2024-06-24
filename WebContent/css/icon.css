@@ -8,10 +8,10 @@ body{
 }
 
 .madori img{
-	position: absolute;
-	width: 1000px;
-	top: 0px;
-	left:  0px;
+	position: relative;
+	width: 1075px;
+	top: 25px;
+	left:  220px;
 
 }
 img{
@@ -30,8 +30,8 @@ img{
 
 #my_xy {
     position: relative;
-	height: 540px;
-	width: 1500px;
+	height: 600px;
+	width: 1800px;
 
 }
 #my_xy::after {
@@ -60,26 +60,27 @@ img{
 }
 .action{
 	position: absolute;
-	bottom: 0px;
-	left: 1010px;
+	top: 630px;
+	left: 520px;
 }
 
 input[type="reset"]{
-  width: 150px;
-  height: 45px;
+  width: 220px;
+  height: 60px;
   background-color: #C1E5F5;
   color: #1C82B0;
-  font-size: 1rem;
+  font-size: 23px;
   border: none;
   border-radius:7px;
 }
 
 input[type="submit"]{
-  width: 150px;
-  height: 45px;
+  width: 220px;
+  height: 60px;
   background-color: #C1E5F5;
   color: #1C82B0;
-  font-size: 1rem;
+  font-size: 23px;
   border: none;
   border-radius:7px;
+  margin-right: 80px;
 }

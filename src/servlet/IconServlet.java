@@ -47,7 +47,7 @@ public class IconServlet extends HttpServlet {
 		}
 
 		User loginUser = (User) session.getAttribute("id");
-        session.removeAttribute("pc");
+        //session.removeAttribute("pc");
 
 		ChildDao cDao = new ChildDao();
 		List<Child> userList = cDao.select(loginUser.getUserId());
@@ -72,7 +72,7 @@ public class IconServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		List<HouseWork> hwList = new ArrayList<>();
-		for (int i = 1; i <= 6; i++) {
+		for (int i = 1; i <= 7; i++) {
 			String x = request.getParameter("my_x" + i);
 			if (x == null) {
 				break;
