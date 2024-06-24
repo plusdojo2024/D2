@@ -31,7 +31,7 @@ public class HouseworkServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // H2 Databaseの接続情報
-    private static final String JDBC_URL = " jdbc:h2:file:C:/pleiades/workspace/data/D2"; // H2のデータベースファイルパス
+    private static final String JDBC_URL = "jdbc:h2:file:C:/pleiades/workspace/data/D2"; // H2のデータベースファイルパス
     private static final String DB_USER = "sa"; // デフォルトのユーザー名
     private static final String DB_PASSWORD = ""; // デフォルトのパスワード
 
@@ -60,7 +60,7 @@ public class HouseworkServlet extends HttpServlet {
             String clickDate = today.format(DateTimeFormatter.ISO_DATE);
 
             // セッションスコープからclickChildを取得
-            String clickChild = (String) session.getAttribute("cn");
+            String clickChild = request.getParameter("childName");
 
             String sql = "SELECT AVG(CAST(D.REWARD_JOUKEN AS DOUBLE)) AS avg_reward, " +
                          "SUM(CAST(H.HOUSEWORK_POINT AS DOUBLE)) AS sum_housework " +
@@ -75,10 +75,10 @@ public class HouseworkServlet extends HttpServlet {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                double avgReward = rs.getDouble("avg_reward");
-                double sumHousework = rs.getDouble("sum_housework");
+               int avgReward = rs.getInt("avg_reward");
+               int sumHousework = rs.getInt("sum_housework");
 
-                if (sumHousework > avgReward) {
+                if (sumHousework >= avgReward && avgReward != 0) {
                     session.setAttribute("mw", true);
                 } else {
                     session.setAttribute("mw", false);
