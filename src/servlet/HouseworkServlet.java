@@ -1,6 +1,13 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,51 +26,90 @@ import model.HouseWork;
 import model.Result;
 import model.User;
 
-/**
- * Servlet implementation class HouseworkServlet
- */
 @WebServlet("/HouseworkServlet")
 public class HouseworkServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HouseworkServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    // H2 Databaseの接続情報
+    private static final String JDBC_URL = " jdbc:h2:file:C:/pleiades/workspace/data/D2"; // H2のデータベースファイルパス
+    private static final String DB_USER = "sa"; // デフォルトのユーザー名
+    private static final String DB_PASSWORD = ""; // デフォルトのパスワード
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D2/LoginServlet");
-			return;
-		}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("id") == null) {
+            response.sendRedirect("/D2/LoginServlet");
+            return;
+        }
 
-//		Child child = (Child)session.getAttribute("id");
-//		HouseWork hw = (HouseWork)session.getAttribute("id");
-		//String userId = (String)session.getAttribute("id");
-		//Child child = new Child(userId);
-
-		User loginUser = (User)session.getAttribute("id");
+        User loginUser = (User) session.getAttribute("id");
         session.removeAttribute("pc");
 
-		ChildDao cDao = new ChildDao();
-		List<Child> userList = cDao.select(loginUser.getUserId());
-		request.setAttribute("userList", userList);
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-		HouseworkDao hwDao = new HouseworkDao();
-		List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
-		request.setAttribute("cardList", cardList);
+        try {
+            // H2 Databaseに接続
+            Class.forName("org.h2.Driver");
+            conn = DriverManager.getConnection(JDBC_URL, DB_USER, DB_PASSWORD);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/housework.jsp");
-		dispatcher.forward(request, response);
-	}
+            // 今日の日付を取得
+            LocalDate today = LocalDate.now();
+            String clickDate = today.format(DateTimeFormatter.ISO_DATE);
+
+            // セッションスコープからclickChildを取得
+            String clickChild = (String) session.getAttribute("cn");
+
+            String sql = "SELECT AVG(CAST(D.REWARD_JOUKEN AS DOUBLE)) AS avg_reward, " +
+                         "SUM(CAST(H.HOUSEWORK_POINT AS DOUBLE)) AS sum_housework " +
+                         "FROM CALENDAR AS C " +
+                         "INNER JOIN HOUSEWORK AS H ON H.HOUSEWORK_NAME = C.CLICK_HOUSEWORK " +
+                         "INNER JOIN CHILD AS D ON D.CHILD_NAME = C.CLICK_CHILD " +
+                         "WHERE C.CLICK_DATE = ? AND C.CLICK_CHILD = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, clickDate);
+            pstmt.setString(2, clickChild);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                double avgReward = rs.getDouble("avg_reward");
+                double sumHousework = rs.getDouble("sum_housework");
+
+                if (sumHousework > avgReward) {
+                    session.setAttribute("mw", true);
+                } else {
+                    session.setAttribute("mw", false);
+                }
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ChildDao cDao = new ChildDao();
+        List<Child> userList = cDao.select(loginUser.getUserId());
+        request.setAttribute("userList", userList);
+
+        HouseworkDao hwDao = new HouseworkDao();
+        List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
+        request.setAttribute("cardList", cardList);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/housework.jsp");
+        dispatcher.forward(request, response);
+    }
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

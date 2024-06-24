@@ -69,7 +69,9 @@
 			</div>
 		</div>
 	</form>
-
+	<c:if test="${sessionScope.mw == true}">
+        <p>モーダルウィンドウ</p>
+    </c:if>
 </body>
 <script src="./script/HouseWork.js"></script>
 </html>
