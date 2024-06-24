@@ -41,6 +41,7 @@ public class IconServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		//もしセッションにログインユーザー情報がない場合、ログインページにリダイレクトします。
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/D2/LoginServlet");
 			return;
@@ -71,7 +72,9 @@ public class IconServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		// 家事アイコン情報を保持するリストを初期化
 		List<HouseWork> hwList = new ArrayList<>();
+		// リクエストから家事アイコンの位置情報を取得してリストに追加
 		for (int i = 1; i <= 7; i++) {
 			String x = request.getParameter("my_x" + i);
 			if (x == null) {
@@ -85,6 +88,7 @@ public class IconServlet extends HttpServlet {
 		}
 
 		HouseworkDao hwDao = new HouseworkDao();
+		 // 保存ボタンが押された場合の処理
 		if (request.getParameter("my_save").equals("保存")) {
 			boolean result = false;
 			for (HouseWork hw : hwList) {
@@ -93,6 +97,7 @@ public class IconServlet extends HttpServlet {
 					break;
 				}
 			}
+			// 保存結果に応じたメッセージをリクエストスコープにセット
 			if (result) {
 				request.setAttribute("result",
 						new Result("保存成功！", "更新を実施しました", "/D2/ParentsServlet"));
