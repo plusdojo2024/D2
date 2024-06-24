@@ -43,6 +43,7 @@ public class HouseworkServlet extends HttpServlet {
             return;
         }
 
+<<<<<<< HEAD
         User loginUser = (User) session.getAttribute("id");
         session.removeAttribute("pc");
 
@@ -109,6 +110,18 @@ public class HouseworkServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+=======
+		User loginUser = (User)session.getAttribute("id");
+        session.removeAttribute("pc");
+        // ユーザーに関連する子供のリストを取得し、リクエスト属性にセットする
+		ChildDao cDao = new ChildDao();
+		List<Child> userList = cDao.select(loginUser.getUserId());
+		request.setAttribute("userList", userList);
+		 // ユーザーに関連する家事のリストを取得し、リクエスト属性にセットする
+		HouseworkDao hwDao = new HouseworkDao();
+		List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
+		request.setAttribute("cardList", cardList);
+>>>>>>> bd676600f50acc0acec1651f53aac89b5301db32
 
 
 	/**
@@ -117,12 +130,14 @@ public class HouseworkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		List<HouseWork> hwList = new ArrayList<>();
+		//7個の家事について処理を行う
 		for (int i = 1; i <= 7; i++) {
 			String x = request.getParameter("my_p" + i);
-
+			// 家事が未入力の場合はスキップする
 			if (x == null) {
 				continue;
 			}
+			  // HouseWork オブジェクトを作成し、リストに追加する
 			HouseWork hw = new HouseWork();
 			hw.setHouseworkName(request.getParameter("my_z" + i));
 			hw.setHouseworkCheck(true);
@@ -132,6 +147,7 @@ public class HouseworkServlet extends HttpServlet {
 		if (request.getParameter("my_save").equals("ホームにもどる")) {
 			boolean result = false;
 			for (HouseWork hw : hwList) {
+				// 家事の更新で成功した場合は、result を true に設定する
 				result = hwDao.updateF(hw);
 				if (result == false) {
 					break;
