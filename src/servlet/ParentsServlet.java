@@ -85,7 +85,7 @@ public class ParentsServlet extends HttpServlet {
 			String userID = loginUser.getUserId();
 			String date1 = request.getParameter("date");
 			java.sql.Date date= java.sql.Date.valueOf(date1);
-			String comment = new String(request.getParameter("comment").getBytes("ISO-8859-1"),"UTF-8");
+			String comment = new String(request.getParameter("comment"));
 			CommentDao coDao = new CommentDao();
 			// submit パラメータの文字コードの問題を修正するため、値を直接比較する
 			String submitValue = request.getParameter("submit");
