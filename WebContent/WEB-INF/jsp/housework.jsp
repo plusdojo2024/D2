@@ -64,7 +64,7 @@
 					</span>
 				</nobr>
 				<div class="action">
-					<input type="submit" name="my_save" value="ホームにもどる">
+					<input type="submit" name="my_save" value="かくていする">
 				</div>
 			</div>
 		</div>

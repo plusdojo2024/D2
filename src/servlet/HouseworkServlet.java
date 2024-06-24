@@ -128,8 +128,9 @@ public class HouseworkServlet extends HttpServlet {
 			hw.setHouseworkCheck(true);
 			hwList.add(hw);
 		}
+
 		HouseworkDao hwDao = new HouseworkDao();
-		if (request.getParameter("my_save").equals("ホームにもどる")) {
+		if (request.getParameter("my_save").equals("かくていする")) {
 			boolean result = false;
 			for (HouseWork hw : hwList) {
 				result = hwDao.updateF(hw);
