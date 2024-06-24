@@ -135,7 +135,6 @@ public class ParentsServlet extends HttpServlet {
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
 
-
 			request.setCharacterEncoding("UTF-8");
 			String childId_string = request.getParameter("childId");
 			int childId = -1;

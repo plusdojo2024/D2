@@ -120,9 +120,4 @@ public class CommentDao {
 		return result;
 	}
 
-	public boolean insert(java.util.Date date, String userID, String comment) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
-	}
-
 }
