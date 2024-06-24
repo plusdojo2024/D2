@@ -308,6 +308,12 @@ color: blue;
   border-radius: 10px;
   z-index: 80;
 }
+
+.table-calendar .selected .balloon_contents{
+	color:#000;
+	font-weight:normal;
+}
+
 /*.balloon_contents:after{
   content: "";
   position: absolute;

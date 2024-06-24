@@ -149,14 +149,14 @@ function showCalendar(month, year) {
 
   // カレンダーのセルを構築
   var date = 1;
-  const commentDateArray = [];
+  const commentDateArray = ["", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", ""];
   <c:forEach var="e" items="${commentList}" >
   commentDateArray[${e.date.date}]='${e.comment}';
   </c:forEach>
 
-  const datesListArray = [];
+  const datesListArray = ["", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "","", "", "", "", "", "", "", "", "", "", ""];
   <c:forEach var="e" items="${datesList}" >
-  datesListArray[${e.clickDate.date}]='${e.clickHousework}';
+  datesListArray[${e.clickDate.date}] += '・${e.clickHousework}';
   </c:forEach>
 //外側のループは、6行の行を生成（1ヶ月のカレンダーが最大で6週間分の行で構成されるため）
   for ( var i = 0; i < 6; i++ ) {
@@ -183,7 +183,7 @@ function showCalendar(month, year) {
               cell.setAttribute("data-year", year);
               cell.setAttribute("data-month_name", months[month]);
               cell.className = "date-picker";
-              if(comment1 ==='' || comment2 ==='' ){
+              if(comment1 ==='' && comment2 ==='' ){
             	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span></div>";
 
               }else{
