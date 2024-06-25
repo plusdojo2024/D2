@@ -13,6 +13,68 @@ import java.util.List;
 import model.HouseWork;
 
 public class HouseworkDao {
+	public List<HouseWork> selectDone(){
+		Connection conn = null;
+		List<HouseWork> cardList = new ArrayList<HouseWork>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
+
+			// SQL文を準備する
+			String sql ="SELECT *  FROM housework WHERE 	HOUSEWORK_CHECK  = ?";
+
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setBoolean(1, true);
+
+
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする ArratListに乗り換えてるらしい？
+			while (rs.next()) {
+				HouseWork record = new HouseWork(
+				rs.getString ("housework_name"),
+				rs.getString ("housework_contents"),
+				rs.getString ("housework_point"),
+				rs.getString ("icon"),
+				rs.getString("icon_done"),
+				rs.getString ("user_id"),
+				rs.getString ("icon_x"),
+				rs.getString("icon_y"),
+				rs.getBoolean("housework_check")
+				);
+				cardList.add(record);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<HouseWork> select(String userId) {
 		Connection conn = null;
