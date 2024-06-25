@@ -58,6 +58,15 @@
 .menu-content ul li {
   border-bottom: solid 2.5px #ffffff;
   list-style: none;
+  display: flex;
+    align-items: center; /* アイテムを垂直方向中央揃え */
+    padding: 10px 15px; /* 必要に応じてパディングを調整 */
+}
+.menu-content ul li img {
+    margin-right: 10px; /* アイコンとテキストの間のマージン */
+    width: 20px; /* アイコンの幅を必要に応じて調整 */
+    height: auto; /* アスペクト比を保持 */
+    filter: invert(1); /* 画像の色を反転させて白にする */
 }
 .menu-content ul li a {
   display: block;
@@ -83,7 +92,7 @@
 }
 .menu-content {
   width: 30%;
-  height: 50%;/*サイドバーのサイズ*/
+  height: 60%;/*サイドバーのサイズ*/
   position: fixed;
   top: 0;
   left: 100%;/*leftの値を変更してメニューを画面外へ*/
