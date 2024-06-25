@@ -166,7 +166,7 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Child SET child_Id=?, child_Picture=?, user_Id=?,reward_Umu=?, reward_Jouken=?, reward_text=?";
+			String sql = "UPDATE Child SET  child_Picture=?,child_name=?, user_Id=?,reward_Umu=?, reward_Jouken=?, reward_text=? WHERE child_Id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

@@ -206,8 +206,8 @@
 						</tr>
 						<tr>
 							<td><br> <label>報酬を表示
-								<input type="radio" name="rewardUmu" value="yes"<c:if test = "${e.rewardUmu== 'yes'}">checked</c:if>>する
-								<input type="radio" name="rewardUmu" value="no"<c:if test = "${e.rewardUmu == 'no'}">checked</c:if>>しない
+								<input type="radio" name="rewardUmu" value="true"<c:if test = "${e.rewardUmu== true}">checked</c:if>>する
+								<input type="radio" name="rewardUmu" value="false"<c:if test = "${e.rewardUmu ==false}">checked</c:if>>しない
 							</label></td>
 							<td>
 							<br>
@@ -228,7 +228,7 @@
 					<br>
 					<div class=button>
 						<input type="submit" id="regist" name="submit" value="更新">
-						<input type="submit" name="childprofile_delete" value="削除">
+						<input type="submit" name="submit" value="削除">
 						<span id="error_message"></span><br>
 					</div>
 				</div>
