@@ -25,40 +25,8 @@
 			</div>
 		</div>
 
-
-
-		<!-- <form id="my_form" action="" method="post">
-		<label></label>
-		<input type="text" name="my_x1" value="/D2/icon/${e.icon}" >
-		<input type="text" name="my_y1" id="my_y1">
-		<label></label>
-		<input type="text" name="my_x2" id="my_x2">
-		<input type="text" name="my_y2" id="my_y2">
-		<label></label>
-		<input type="text" name="my_x3" id="my_x3">
-		<input type="text" name="my_y3" id="my_y3">
-
-		<input type="submit" name="my_save" value="保存">
-        <input type="reset" name="my_reset" value="リセット">
-	</form>-->
-
-		<!--  <form id="my_form" action="" method="post">
-    <label for="my_x1">X1:</label>
-    <input type="text" name="my_x1" id="my_x1">
-    <label for="my_y1">Y1:</label>
-    <input type="text" name="my_y1" id="my_y1"><br>
-
-    <label for="my_x2">X2:</label>
-    <input type="text" name="my_x2" id="my_x2">
-    <label for="my_y2">Y2:</label>
-    <input type="text" name="my_y2" id="my_y2"><br>
-
-    <label for="my_x3">X3:</label>
-    <input type="text" name="my_x3" id="my_x3">
-    <label for="my_y3">Y3:</label>
-    <input type="text" name="my_y3" id="my_y3"><br> -->
-
-
+		<h1>間取り設定画面</h1>
+		<h2>ドラックアンドドロップでアイコンを配置することができます</h2>
 
 		<div id='my_xy'>
 			<c:if test="${empty cardList}">
@@ -79,7 +47,6 @@
 			</div>
 			<div class="action">
 				<input type="submit" name="my_save" value="保存">
-				 <input type="reset" name="my_reset" value="リセット">
 			</div>
 		</div>
 

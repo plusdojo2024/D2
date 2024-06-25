@@ -7,11 +7,27 @@ body{
  	width: 700px;			/* 幅を固定 */
 }
 
+h1{
+	font-size: 30px;
+	color:#1C82B0;
+	position: absolute;
+	top: -5px;
+	left: 50px;
+}
+
+h2{
+	font-size: 15px;
+	color:#1C82B0;
+	position: absolute;
+	top: 48px;
+	left: 50px;
+}
+
 .madori img{
 	position: relative;
-	width: 1075px;
-	top: 25px;
-	left:  220px;
+	width: 980px;
+	top: 85px;
+	left:  240px;
 
 }
 img{
@@ -61,26 +77,16 @@ img{
 .action{
 	position: absolute;
 	top: 630px;
-	left: 520px;
+	left: 510px;
 }
 
-input[type="reset"]{
-  width: 220px;
-  height: 60px;
-  background-color: #C1E5F5;
-  color: #1C82B0;
-  font-size: 23px;
-  border: none;
-  border-radius:7px;
-}
 
 input[type="submit"]{
-  width: 220px;
-  height: 60px;
+  width: 500px;
+  height: 70px;
   background-color: #C1E5F5;
   color: #1C82B0;
-  font-size: 23px;
+  font-size: 30px;
   border: none;
   border-radius:7px;
-  margin-right: 80px;
 }
