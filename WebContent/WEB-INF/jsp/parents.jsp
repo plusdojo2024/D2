@@ -31,7 +31,8 @@
 
 		<h2>コメント設定</h2>
 		<p>毎日の「ありがとうコメント」を設定できます。</p>
-
+		<span id="error_message"></span><br><br>
+		
 		<form id="comment_form" method="post" action="/D2/ParentsServlet">
 			<div class=comment_setting>
 			<input type="hidden" name="action" value="comment_regist">
@@ -51,8 +52,8 @@
 				<br>
 				<div class=button>
 					<input type="submit" id="regist" name="submit" value="登録">
-					<input type="reset" name="reset" value="リセット"> <span
-						id="error_message"></span><br>
+					<input type="reset" name="reset" value="リセット"> 
+					
 				</div>
 			</div>
 		</form>
@@ -123,7 +124,7 @@
 		
 		<form id="childprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
-			<span id="error_message"></span>
+			<span id="error_message2"></span><br><br>
 			<input type="hidden" name="action" value="child_regist">
 			<div class=childprofile_setting>
 			<input type="hidden" name="action" value="child_regist">
@@ -181,13 +182,12 @@
 
 		<h3>アカウント情報更新</h3>
 		<p>登録済みアカウントの情報更新ができます。</p>
-		<span id="error_message"></span>
 		<c:if test="${empty userList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
-
+		
 		<c:forEach var="e" items="${userList}">
-			<form id="childprofile_form" method="post"action="/D2/ParentsServlet" enctype = "multipart/form-data">
+			<form id="childprofile_form2" method="post"action="/D2/ParentsServlet" enctype = "multipart/form-data">
 				<div class=childprofile_setting_2>
 				<input type="hidden" name="action" value="child_update">
 					<label>登録番号</label><input type="text" name="childId" value="${e.childId}" readonly>
@@ -229,47 +229,68 @@
 					<div class=button>
 						<input type="submit" id="regist" name="submit" value="更新">
 						<input type="submit" name="submit" value="削除">
-						<span id="error_message"></span><br>
 					</div>
 				</div>
 			</form>
 		</c:forEach>
 	</main>
 	<script>
-	window.onload = function(){
-	    var getToday = new Date();
-	    var y = getToday.getFullYear();
-	    var m = getToday.getMonth() + 1;
-	    var d = getToday.getDate();
-	    var today = y + "-" + m.toString().padStart(2,'0') + "-" + d.toString().padStart(2,'0');
-	    document.getElementById("datepicker").setAttribute("value",today);
-	}
+	    'use strict';
+	    window.onload = function(){
+	        var getToday = new Date();
+	        var y = getToday.getFullYear();
+	        var m = getToday.getMonth() + 1;
+	        var d = getToday.getDate();
+	        var today = y + "-" + m.toString().padStart(2,'0') + "-" + d.toString().padStart(2,'0');
+	        document.getElementById("datepicker").setAttribute("value",today);
+	    }
 	
+	    /*子供登録の処理*/
+	    let formObj = document.getElementById('childprofile_form');
+	    let errorMessageObj = document.getElementById('error_message2');
+	    
+	    /* [実行]ボタンをクリックしたときの処理 */
+	    formObj.onsubmit = function() {
+	        /* 氏名を必須入力項目とします */
+	        if (!formObj.childName.value) {
+	            errorMessageObj.textContent = '※なまえは必ず入力してください！';
+	            return false;
+	        }
+	
+	        if (!window.confirm('この内容で登録します。よろしいですか？')) {
+	            window.alert('登録画面に戻ります。');
+	            return false;
+	        }
+	
+	        errorMessageObj.textContent = null;
+	    };
+	    
+	 // コメント登録フォームのJavaScript処理
+	    let commentFormObj = document.getElementById('comment_form');  // コメントフォームを取得
+	    let commentErrorMessageObj = document.getElementById('error_message');  // エラーメッセージ表示領域を取得
 
-	/* HTML要素をオブジェクトとして取得する */
-	/*let formObj = document.getElementById('childprofile_form');
-	let errorMessageObj = document.getElementById('error_message');*/
-	
-	/* [実行]ボタンをクリックしたときの処理 */
-	/*formObj.onsubmit = function() {
-	/* 氏名を必須入力項目とします */
-		/*if (!formObj.childPicture.value && !formObj.name.value) {
-			errorMessageObj.textContent = '※なまえとプロフィール写真を入力してください！';
-			return false;
-		} else if (!formObj.name.value) {
-			errorMessageObj.textContent = '※なまえを入力してください！';
-			return false;
-		} else if (!formObj.childPicture.value) {
-			errorMessageObj.textContent = '※プロフィール写真を入力してください！';
-			 return false;
-		}
-		if (!window.confirm('この内容で登録します。よろしいですか？')) {
-			window.alert('登録画面に戻ります。');
-			return false;
-		}
-	
-		errorMessageObj.textContent = null;
-	};*/
+	    commentFormObj.onsubmit = function() {
+	    	if(!commentFormObj.date.value && !commentFormObj.comment.value){
+	    		commentErrorMessageObj.textContent = '※コメントと日付は必ず入力してください！';
+	            return false;
+	    	} else if (!commentFormObj.date.value) {  // 日付が入力されていない場合
+	            commentErrorMessageObj.textContent = '※日付は必ず入力してください！';
+	            return false;  // フォームの送信を中止
+	        } else if (!commentFormObj.comment.value) {  // コメントが入力されていない場合
+	            commentErrorMessageObj.textContent = '※コメントは必ず入力してください！';
+	            return false;  // フォームの送信を中止
+	        }
+
+	        // 確認メッセージを表示し、キャンセルされた場合は送信を中止
+	        if (!window.confirm('この内容で登録します。よろしいですか？')) {
+	            window.alert('登録画面に戻ります。');
+	            return false;  // フォームの送信を中止
+	        }
+
+	        commentErrorMessageObj.textContent = null;  // エラーメッセージをリセット
+	    };
+	    
+	    
 	</script>
 </body>
 </html>
