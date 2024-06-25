@@ -25,6 +25,7 @@
   </div>
 	</header>
 	<main>
+	<p class = p>アイコンをタップしておてつだいをはじめよう！</p>
 		<div class = childprofile>
 			<!--子供のプロフィール-->
 			<c:forEach var="e" items="${userList}" varStatus="loop">

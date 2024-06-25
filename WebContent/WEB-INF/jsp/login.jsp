@@ -17,17 +17,15 @@
     <table>
       <tr>
         <td>
-          <label>ID
+          <label>ID</label>
           <input type="text" name="id">
-          </label>
         </td>
       </tr>
       <tr>
         <td>
-          <label>パスワード
+          <label>パスワード </label>
           <input type="password" name="pw">
-          </label>
-        </td>
+         </td>
       <tr>
       <tr>
         <td colspan="2">

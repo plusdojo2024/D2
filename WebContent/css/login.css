@@ -1,55 +1,35 @@
 @charset "UTF-8";
 
-@charset "UTF-8";
-
 /* bodyタグ */
 body {
-  margin: 0 0 0 0;	/* マージンなし（後で個別に設定） */
-  padding: 0 0 0 0;	/* パディングなし（後で個別に設定） */
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
   color: black;
   font-size: 30px;
-  /*background-color: #3cc;
-  background-image:
-    radial-gradient(rgba(255, 255, 255, 0.1) 40%, transparent 40%),
-    radial-gradient(rgba(255, 255, 255, 0.1) 20%, transparent 20%);
-  background-position: 0 0, 40px 40px;
-  background-size: 80px 80px;*/
-  /* 背景画像のURLを指定します。 */
-    background-image: url('../img/background.png');
-    /* 背景画像の表示方法を設定します。 */
-    background-size: cover; /* 画面全体に広がるように調整 */
-    background-position: center; /* 画像を中央に配置 */
-    /* 必要に応じて、背景の他のスタイルを追加できます。 */
+  background-image: url('../img/background.png');
+  background-size: cover;
 }
 
 /* wrapperクラス */
 .wrapper {
- /* margin: 0 auto 0 auto;	/* 中央揃え
-  width: 920px;			/* 幅を固定 */
+	margin: 0 auto 0 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/*#time {
-  font-family:serif;
-  font-size:25px;
-  color:linear-gradient(to right,#c70000,#d28300,#dfd000,#00873c,#005aa0,#181878,#800073);
-}*/
 #greet {
   font-family:serif;
   font-size:30px;
 }
+
 /* h1タグを付けたページの見出し */
 h1 {
-  font-size: 50px;
-  color: #2BE993;
-  text-align: center;
-  /*overflow: hidden;/*アニメーション
-  white-space: nowrap;
-  animation: midashi 2s linear forwards;*/
-  margin: 80px 0 0 0;
+  font-size:50px;
+  color:#2BE993;
+  text-align:center;
+  margin:80px 0 0 0;
 }
  @keyframes midashi {
     0% {
@@ -61,24 +41,6 @@ h1 {
       transform: translateY(0); /*出る位置*/
     }
 }
-h2 {
-  font-size: 35px;
-  font-family:serif;
-  text-align: center;
-  margin: 70px 0 30px 0;
-}
-/* h3タグを付けたページの見出し */
-h3 {
-  font-size: 30px;
-  color: blue;
-  border-bottom: 2px solid #9966FF;	/* 茶色の下線を付ける */
-  margin: 40px 0px 20px 0px;
-  padding-top: 10px 10px 10px 10px;
-}
-h4 {
-  font-size: 30px;
-  text-align: center;
-}
 
 /* 画像 */
 png {
@@ -87,113 +49,8 @@ png {
   max-width: 150%;
 }
 
-#nav {
-  margin: 0 0 0 0;
-  padding: 20px 0px 20px 15px;
-  background-color: dimgray;
-}
-.menu {
-  margin: 0 0 0 0;
-  padding: 15px 30px 12px 30px;
-  text-align: left;
-}
-#nav li {
-  display: inline;		/* インラインで横に表示する */
- /* list-style-type; none;	/* 先頭の記号をなくす */
-  padding: 25px;		/* 区切りを空ける */
-  font-size:20px;
-}
-.menu td {
-  list-style-type:none;	/* 先頭の記号をなくす */
-  padding: 20px;		/* 区切りを空ける */
-  margin: 10px 0 5px 0;
-}
-#nav li a:link {
-  color: white;
-  text-decoration: none;
-}
-
-#nav li a:visited {
-  color: white;
-  text-decoration: none;
-}
-
-#nav li a:hover {
-  color: skyblue;
-  text-decoration: none;
-}
-
-#nav li a:active {
-  color: hotpink;
-  text-decoration: none;
-}
-.menu tr a:visited {
-  color:white;
-  text-decoration: none;
-}
-
-.menu tr a:hover{
-  color: yellow;
-  text-decoration: none;
-}
-
-.menu tr a:active {
-  color: black;
-  text-decoration: none;
-}
-
-.honbun li {
-  margin: 30px 0 0 0;
-  padding: 0;
-  list-style-type: number;
-  font-size: 25px;
-  font-family:serif;
-}
-.honbun li a:link{
-  color: green;
-  text-decoration: none;
-}
-
-.honbun li a:visited{
-  color: blue;
-  text-decoration: none;
-}
-
-.honbun li a:hover{
-  color: white;
-  text-decoration: none;
-}
-
-.honbun li a:active{
-  color:blue;
-  text-decoration: none;
-}
-
 .gazou img {
   margin:20px 40px 0 50px ;
-}
-
-
-/* id="footer"
-#footer {
-  background-color: #00CC33
-  background-repeat: repeat-x;
-  margin-top: 30px;
-  padding: 20px 0px 20px 0px;
-  font-size: smaller;
-  color: black;
-}*/
-.footer design {
-  width: 450px;
-  height: 200px;
-  display: grid;
-  place-items: center;
-  background-color: #FF6666;
-}
-
-.footer img{
-  mix-blend-mode: multiply;
-  height:auto;
 }
 
 /* form */
@@ -204,89 +61,31 @@ form {
 }
 
 input[name=id]{
- width:9em;
+ width:8em;
  height:3em;
- margin: 0 0 0 185px;
+ margin: 0 0 0 229px;
  padding: 0px 150px 0px 0px;
  font-size:20px;
 }
 
 input[name=pw]{
- width:20em;
+ width:8em;
  height:3em;
- padding: 0px 0px 0px 0px;
- margin: 20px 0 0 70px;
+ padding: 0px 150px 0px 0px;
+ margin: 0 0 0 113.5px;
  font-size:20px;
-}
-input[name=name] {
-  width: 16em;
-}
-
-input[name=pw] {
-  width: 16em;
 }
 
 input[type=submit], input[type=reset] {
   width: 6em;
 }
 
-input[name=number]{
-  width: 8em;
-}
-
-input[name=company]{
-  width: 20em;
-}
-
-input[name=department]{
-  width: 20em;
-}
-
-input[name=position]{
-  width: 20em;
-}
-
-input[name=name]{
-  width: 16em;
-}
-
-input[name=hurigana]{
-  width: 18em;
-}
-
-input[name=zip11]{
-  width: 10em;
-}
-
-input[name=addr11]{
-  width: 30em;
-
-}
-
-input[name=phone]{
-  width: 12em;
-}
-
-input[name=fax]{
-  width: 12em;
-}
-
-input[name=email]{
-  width: 20em;
-}
-
-input[name=remarks]{
-  width: 50em;
-  padding: 15px;
-  font-size: 15px;
-}
-
 input[type="submit"]{
   width: 180px;
   padding: 20px 0 20px 0;
   margin:50px 0 0 220px;
-  background-color: #253958;
-  color:#FFFFFF;
+  background-color:#CCFFCC;
+  color:#00FF99;
   font-size: 1em;
   border: none;
   border-radius:7px;
@@ -296,58 +95,11 @@ input[type="reset"]{
   width: 180px;
   padding: 20px 0 20px 0;
   margin:40px 0 0 50px;
-  background-color: #253958;
-  color: #FFFFFF;
+  background-color:#CCFFCC;
+  color:#00FF99;
   font-size: 1em;
   border: none;
   border-radius:7px;
-}
-button[type="upload"]{
-border: none;
-  padding: 20px 0 20px 0;
-  margin:40px 0 0 0;
-  width:180px;
-  background-color: #253958;
-  color: #FFFFFF;
-  font-size: 1em;
-}
-input[type="checkbox"]{
-  width:50px;
-  padding:10px;
-  text-align:left;
-}
-input[type="type2"]{
-  width:50em;
-  height:30px;
-}
-input[type="message"]{
-  width:50em;
-  height:50px;
-  font-size:1em;
-}
-option value{
-  width:100px;
-}
-textarea{
-  height:140px;
-  width:100%;
-  font-size:1em;
-  resize:none;
-}
-
-
-div#table {
-  width: 700px;
-  height: 350px;
-  overflow: auto;	/* はみ出した場合は、スクロールバーを表示する */
-}
-table#list th, table#list td {
-  border-bottom-width: 1px;	/* 黒色でドットの下線を付ける */
-  border-bottom-style: dotted;
-  border-bottom-color: black;
-  padding: 4px 16px 4px 0;
-  text-align: left;
-  white-space: nowrap;	/* 折り返さない */
 }
 
 /* エラーメッセージ */
@@ -357,58 +109,7 @@ table#list th, table#list td {
 #error_number {
   color:red;
 }
-/* 検索結果のフォーム */
-.search_result {
-  background-color: white;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-}
 
-/* 検索結果のフォームの中にある入力領域の枠を消す */
-.no_border {
-  border: none;
-}
-
-/* 検索結果のフォームの会社名を大きくする */
-.search_result input[name=company] {
-  font-size: 100%;
-}
-
-/* 検索結果のフォームの氏名を大きくする */
-.search_result input[name=name] {
-  font-size: 100%;
-}
-.itiran {
-    width: 100%; /* テーブルの幅を100%に設定 */
-    border-collapse: collapse; /* セルの境界線を一つにまとめる */
-  }
-
-  /* テーブル内の各セルのスタイル */
-  .itiran td {
-    padding: 8px; /* セル内のコンテンツと境界線の間の余白 */
-    border:none;
-  }
-
-  /* テーブル内の最初のセルのスタイル（番号を表示するセル） */
-  .itiran td:first-child {
-    text-align: center; /* テキストを中央揃えにする */
-  }
-
-  /* ファイル選択フィールドの幅を調整 */
-  #photoinput {
-    width: 100px; /* 適切な幅に設定 */
-  }
-
-  /* 郵便番号の入力フィールドのスタイル */
-  input[name="zipcode"] {
-    width: 100px; /* 適切な幅に設定 */
-  }
-
-  /* メールアドレスの入力フィールドのスタイル */
-  input[name="email"] {
-    width: 200px; /* 適切な幅に設定 */
-  }
 .box_css{
 
 width:900px;
@@ -421,4 +122,8 @@ background-color: #FFFFBA;
 border: none;
 border-radius:30px;
 
+}
+
+label{
+	color:#2BE993;
 }

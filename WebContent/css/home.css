@@ -6,7 +6,15 @@ body{
 	margin: 40px auto 30px auto;	/* 中央揃え */
  	width: 700px;			/* 幅を固定 */
 }
-
+.p{
+	width:600px;
+	padding:5px 15px;
+	text-align:center;
+	background-color:#FFFFBA;
+	border-radius:10px;
+	font-size:1.5em;
+	color:#00FF99;
+}
 .b {
 	font-size:30px;
 	color:#5FE7A0;
@@ -26,7 +34,7 @@ body{
 	background-clip:padding-box;
 	color:#000000;
 	border-radius:60px; 
-	border:20px solid transparent;
+	border:15px solid transparent;
 }
 
  .childprofile{

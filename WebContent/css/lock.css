@@ -10,11 +10,11 @@ background-image: url('../img/background.png');
 }
 
 h1 {
-	font-size: 50px;
+	font-size: 30px;
 	margin: 150px 0 0 0;
 }
 h2{
-	font-size: 30px;
+	font-size: 20px;
 	top: -10px;
 }
 .wrapper {
@@ -38,8 +38,8 @@ input[name=pc] {
 input[type="submit"]{
   width: 150px;
   height: 50px;
-  background-color: #C1E5F5;
-  color: #1C82B0;
+  background-color: #CCFFCC;
+  color: #00FF99;
   font-size: 25px;
   border: none;
   border-radius:7px;
