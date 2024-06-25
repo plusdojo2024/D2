@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ログイン | おてつだいアプリ</title>
+<title>ログイン | 家事おてつだい</title>
 <link rel="stylesheet" type="text/css" href="/D2/css/all.css">
 <link rel="stylesheet" type="text/css" href="/D2/css/login.css">
 </head>
