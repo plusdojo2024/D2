@@ -183,3 +183,8 @@ input[name=houseworkContents]{
               0px 1px 0 #F8C601,  0-1px 0 #F8C601,
               -1px 0 0 #F8C601, 1px 0 0 #F8C601;
 }
+
+input[name=childId]{
+	width: 4em;
+  height:1.5em;
+}

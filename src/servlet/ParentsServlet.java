@@ -79,7 +79,6 @@ public class ParentsServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String action = request.getParameter("action");
 		if (action.equals("comment_regist")) {		// 親ページからのコメントの登録処理
-
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
@@ -98,15 +97,6 @@ public class ParentsServlet extends HttpServlet {
 	                        new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
 	            }
 	        }
-			/*if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")) {
-			    if (coDao.insert(new CalendarComment(date, userID, comment))) {
-			        request.setAttribute("result",
-			                new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
-			    } else {
-			        request.setAttribute("result",
-			                new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
-			    }
-			}*/
 		} else if (action.equals("housework_regist")){
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
@@ -140,19 +130,45 @@ public class ParentsServlet extends HttpServlet {
 				}
 			}
 
-		}else {
+		} else if (action.equals("child_regist")) {
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
 
 			request.setCharacterEncoding("UTF-8");
-			String childId_string = request.getParameter("childId");
-			int childId = -1;
-			if(childId_string != null) {
-				childId = Integer.parseInt(request.getParameter("childId"));
-			}
+			int childId = Integer.parseInt(request.getParameter("childId"));
 			Part childPicture = request.getPart("childPicture");
-			childPicture.write("C:\\pleiades\\workspace\\D2\\WebContent\\upload\\" + childPicture.getSubmittedFileName());
+			if (childPicture.getSubmittedFileName() != "") {
+				childPicture.write("C:\\pleiades\\workspace\\D2\\WebContent\\upload\\"+ childPicture.getSubmittedFileName());
+			} 
+			String childName = new String( request.getParameter("childName").getBytes("ISO-8859-1"),"UTF-8");
+			//String userId = request.getParameter("userId");
+			String rewardUmu = request.getParameter("rewardUmu");
+			String rewardJouken = request.getParameter("rewardJouken");
+			String rewardText = new String( request.getParameter("rewardText").getBytes("ISO-8859-1"),"UTF-8");
+
+
+			ChildDao dDao = new ChildDao();
+
+			 if(new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")){
+				if (dDao.insert(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 登録成功
+					request.setAttribute("result",
+							new Result("登録成功！", "登録を実施しました", "/D2/ParentsServlet"));
+				} else { // 更新失敗
+					request.setAttribute("result",
+							new Result("登録失敗…","登録出来ませんでした", "/D2/ParentsServlet"));
+				}
+			}
+		} else {
+			HttpSession session = request.getSession();
+			User loginUser = (User) session.getAttribute("id");
+			String userID = loginUser.getUserId();
+
+			request.setCharacterEncoding("UTF-8");
+			Part childPicture = request.getPart("childPicture");
+			if (childPicture.getSubmittedFileName() != "") {
+				childPicture.write("C:\\pleiades\\workspace\\D2\\WebContent\\upload\\"+ childPicture.getSubmittedFileName());
+			} 
 			String childName = new String( request.getParameter("childName").getBytes("ISO-8859-1"),"UTF-8");
 			//String userId = request.getParameter("userId");
 			String rewardUmu = request.getParameter("rewardUmu");
@@ -163,23 +179,15 @@ public class ParentsServlet extends HttpServlet {
 			ChildDao dDao = new ChildDao();
 
 			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("更新")) {
-				if (dDao.update(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 更新成功
+				if (dDao.update(new Child(0, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 更新成功
 					request.setAttribute("result",
 							new Result("更新成功！", "更新を実施しました", "/D2/ParentsServlet"));
 				} else { // 更新失敗
 					request.setAttribute("result",
 							new Result("更新失敗…","更新出来ませんでした", "/D2/ParentsServlet"));
 				}
-			} else if(new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")){
-				if (dDao.insert(new Child(childId, childPicture.getSubmittedFileName(), childName, userID, rewardUmu, rewardJouken, rewardText))) { // 登録成功
-					request.setAttribute("result",
-							new Result("登録成功！", "登録を実施しました", "/D2/ParentsServlet"));
-				} else { // 更新失敗
-					request.setAttribute("result",
-							new Result("登録失敗…","登録出来ませんでした", "/D2/ParentsServlet"));
-				}
 			} else {
-				if (dDao.delete(childId)) { // 削除成功
+				if (dDao.delete(childName)) { // 削除成功
 					request.setAttribute("result",
 							new Result("削除成功！","削除を実施しました", "/D2/ParentsServlet"));
 				} else { // 削除失敗

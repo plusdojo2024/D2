@@ -121,10 +121,13 @@
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
 		
-		<form id="childprofilechildprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
+		<form id="childprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
+			<span id="error_message"></span>
 			<input type="hidden" name="action" value="child_regist">
 			<div class=childprofile_setting>
+			<input type="hidden" name="action" value="child_regist">
+			<label>登録番号</label><input type="text" name="childId" value="自動採番" readonly="readonly" style="background-color: lightyellow">
 				<table>
 					<tr>
 						<td>
@@ -178,6 +181,7 @@
 
 		<h3>アカウント情報更新</h3>
 		<p>登録済みアカウントの情報更新ができます。</p>
+		<span id="error_message"></span>
 		<c:if test="${empty userList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
@@ -185,6 +189,8 @@
 		<c:forEach var="e" items="${userList}">
 			<form id="childprofile_form" method="post"action="/D2/ParentsServlet" enctype = "multipart/form-data">
 				<div class=childprofile_setting_2>
+				<input type="hidden" name="action" value="child_update">
+					<label>登録番号</label><input type="text" name="childId" value="${e.childId}" readonly>
 					<table>
 						<tr>
 							<td>
@@ -238,6 +244,32 @@
 	    var today = y + "-" + m.toString().padStart(2,'0') + "-" + d.toString().padStart(2,'0');
 	    document.getElementById("datepicker").setAttribute("value",today);
 	}
+	
+
+	/* HTML要素をオブジェクトとして取得する */
+	/*let formObj = document.getElementById('childprofile_form');
+	let errorMessageObj = document.getElementById('error_message');*/
+	
+	/* [実行]ボタンをクリックしたときの処理 */
+	/*formObj.onsubmit = function() {
+	/* 氏名を必須入力項目とします */
+		/*if (!formObj.childPicture.value && !formObj.name.value) {
+			errorMessageObj.textContent = '※なまえとプロフィール写真を入力してください！';
+			return false;
+		} else if (!formObj.name.value) {
+			errorMessageObj.textContent = '※なまえを入力してください！';
+			return false;
+		} else if (!formObj.childPicture.value) {
+			errorMessageObj.textContent = '※プロフィール写真を入力してください！';
+			 return false;
+		}
+		if (!window.confirm('この内容で登録します。よろしいですか？')) {
+			window.alert('登録画面に戻ります。');
+			return false;
+		}
+	
+		errorMessageObj.textContent = null;
+	};*/
 	</script>
 </body>
 </html>

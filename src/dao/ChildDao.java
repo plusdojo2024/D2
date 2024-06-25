@@ -92,7 +92,7 @@ public class ChildDao{
 				pStmt.setString(1, childac.getChildPicture());
 			}
 			else {
-				pStmt.setString(1, "（未設定）");
+				pStmt.setString(1, "kodomo.png");
 			}
 			if (childac.getChildName() != null && !childac.getChildName().equals("")) {
 				pStmt.setString(2, childac.getChildName());
@@ -165,7 +165,7 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する
-			String sql = "UPDATE Child SET childId=?, childPicture=?, userId=?,rewardUmu=?, rewardJouken=?, rewardtext=?";
+			String sql = "UPDATE Child SET child_Id=?, child_Picture=?, user_Id=?,reward_Umu=?, reward_Jouken=?, reward_text=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -237,7 +237,7 @@ public class ChildDao{
 	}
 
 	// 引数childIdで指定されたレコードを削除し、成功したらtrueを返す
-	public boolean delete(int childId) {
+	public boolean delete(String childName) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -249,11 +249,11 @@ public class ChildDao{
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/D2", "sa", "");
 
 			// SQL文を準備する(何番目のレコードかを見る)
-			String sql = "DELETE FROM Child WHERE childId=?";
+			String sql = "DELETE FROM Child WHERE child_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setInt(1, childId);
+			pStmt.setString(1, childName);
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
