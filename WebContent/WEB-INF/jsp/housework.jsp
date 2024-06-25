@@ -27,6 +27,9 @@
 		</div>
 	</header>
 
+	<h1>おてつだいチェック</h1>
+	<h2>おわらせたおてつだいをチェックしよう！</h2>
+
 	<form id="my_form" action="" method="post"
 		onsubmit="return confirmFinish();">
 		<div id='my_xy'>
