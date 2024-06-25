@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+//import java.util.Date; // これは java.util.Date を使う場合のみ必要です
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -19,8 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CalendarDao;
 import dao.ChildDao;
 import dao.HouseworkDao;
+import model.Calendar;
 import model.Child;
 import model.HouseWork;
 import model.Result;
@@ -60,8 +63,15 @@ public class HouseworkServlet extends HttpServlet {
             String clickDate = today.format(DateTimeFormatter.ISO_DATE);
 
             // セッションスコープからclickChildを取得
-            String clickChild = request.getParameter("childName");
+            String  clickChild = request.getParameter("childName");
+            String saveToSessionParam = request.getParameter("saveToSession");
 
+            if (saveToSessionParam != null && saveToSessionParam.equals("true")) {
+                //HttpSession session = request.getSession();
+                session.setAttribute("selectedChildName",  clickChild);
+            }
+
+            //sql文
             String sql = "SELECT AVG(CAST(D.REWARD_JOUKEN AS DOUBLE)) AS avg_reward, " +
                          "SUM(CAST(H.HOUSEWORK_POINT AS DOUBLE)) AS sum_housework " +
                          "FROM CALENDAR AS C " +
@@ -75,10 +85,10 @@ public class HouseworkServlet extends HttpServlet {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-               int avgReward = rs.getInt("avg_reward");
-               int sumHousework = rs.getInt("sum_housework");
+                double avgReward = rs.getDouble("avg_reward");
+                double sumHousework = rs.getDouble("sum_housework");
 
-                if (sumHousework >= avgReward && avgReward != 0) {
+                if (sumHousework > avgReward) {
                     session.setAttribute("mw", true);
                 } else {
                     session.setAttribute("mw", false);
@@ -129,13 +139,74 @@ public class HouseworkServlet extends HttpServlet {
 			hwList.add(hw);
 		}
 
-		HouseworkDao hwDao = new HouseworkDao();
+
 		if (request.getParameter("my_save").equals("かくていする")) {
 			boolean result = false;
+
+			HouseworkDao hwDao = new HouseworkDao();
+			CalendarDao caDao = new CalendarDao();
+			/*String date1 = request.getParameter("date");
+			java.sql.Date clickDate= java.sql.Date.valueOf(date1);
+			Child child = (Child)session.getAttribute("id");
+			String clickChild = request.getChildName();
+			//String action = request.getParameter("action");
+			//User loginUser = (User) session.getAttribute("id");
+			//String userID = loginUser.getUserId();*/
+
+
+			//やった家事の名前を取得
+			List<HouseWork> selectDone =hwDao.selectDone();
+
+
+			// 現在の日付を取得 (java.util.Date)
+	        java.util.Date utilDate = new java.util.Date();
+
+	        // java.util.Date から java.sql.Date への変換
+	        java.sql.Date clickDate = new java.sql.Date(utilDate.getTime());
+
+            // セッションスコープからclickChildを取得
+		    //HttpSession session = request.getSession();
+           // String clickChild = (String) session.getAttribute("cn");
+
+	     // セッションスコープからclickChildを取得
+            String  clickChild = request.getParameter("childName");
+            String saveToSessionParam = request.getParameter("saveToSession");
+
+            if (saveToSessionParam != null && saveToSessionParam.equals("true")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("selectedChildName",  clickChild);
+            }
+
+			if (request.getParameter("my_save").equals("かくていする")) {
+				//boolean result = false;
+
+
+
+				// インサートが成功した場合の処理が続く
+
+
+
+
 			for (HouseWork hw : hwList) {
 				result = hwDao.updateF(hw);
 				if (result == false) {
 					break;
+				}
+				String hwName =hw.getHouseworkName();
+				boolean isDone = false;
+				for (HouseWork item : selectDone) {
+					if(hwName.equals(item.getHouseworkName())) {
+						isDone =true;
+						break;
+					}
+				}
+				if(!isDone) {
+					Calendar cal = new Calendar(clickDate, clickChild, hwName);
+					if (!caDao.insert(cal)) {
+					    result =false;
+					    break;
+
+					}
 				}
 			}
 			if (result) {
@@ -153,4 +224,4 @@ public class HouseworkServlet extends HttpServlet {
 	}
 
  }
-
+	}

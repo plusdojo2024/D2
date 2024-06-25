@@ -29,7 +29,9 @@
 			<!--子供のプロフィール-->
 			<c:forEach var="e" items="${userList}" varStatus="loop">
 				<div class="child_acount" style="background-color:#FF8585;">
-					<a href="/D2/HouseworkServlet?childName=${e.childName}"> <!-- JavaScriptで子供の名前をセッションに保存 -->
+					<!-- <a href="/D2/HouseworkServlet?childName=${e.childName}"> --> <!-- JavaScriptで子供の名前をセッションに保存 -->
+					<a href="/D2/HouseworkServlet?childName=${e.childName}&saveToSession=true">
+
 					<form>
 						<input id = colors  type="radio" name="color" value="#F7DDF1" onchange="changeBackgroundColor(this.value, ${loop.index})">ぴんく
 						<input id = colors type="radio" name="color" value="#D9F2D0" onchange="changeBackgroundColor(this.value, ${loop.index})"> みどり

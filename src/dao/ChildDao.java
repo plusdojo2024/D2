@@ -25,6 +25,7 @@ public class ChildDao{
 
 			// SQL文を準備する
 			String sql ="SELECT * FROM Child WHERE  User_Id = ? ORDER BY Child_Id";
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, userId);
 

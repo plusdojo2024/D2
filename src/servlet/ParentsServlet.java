@@ -84,7 +84,7 @@ public class ParentsServlet extends HttpServlet {
 			String userID = loginUser.getUserId();
 			String date1 = request.getParameter("date");
 			java.sql.Date date= java.sql.Date.valueOf(date1);
-			String comment = new String(request.getParameter("comment"));
+			String comment = new String(request.getParameter("comment").getBytes("ISO-8859-1"),"UTF-8");
 			CommentDao coDao = new CommentDao();
 			// submit パラメータの文字コードの問題を修正するため、値を直接比較する
 			String submitValue = request.getParameter("submit");
@@ -97,6 +97,15 @@ public class ParentsServlet extends HttpServlet {
 	                        new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
 	            }
 	        }
+			if (new String(request.getParameter("submit").getBytes("ISO-8859-1"),"UTF-8").equals("登録")) {
+			    if (coDao.insert(new CalendarComment(date, userID, comment))) {
+			        request.setAttribute("result",
+			                new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
+			    } else {
+			        request.setAttribute("result",
+			                new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
+			    }
+			}
 		} else if (action.equals("housework_regist")){
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
@@ -134,6 +143,7 @@ public class ParentsServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			User loginUser = (User) session.getAttribute("id");
 			String userID = loginUser.getUserId();
+
 
 			request.setCharacterEncoding("UTF-8");
 			int childId = Integer.parseInt(request.getParameter("childId"));
