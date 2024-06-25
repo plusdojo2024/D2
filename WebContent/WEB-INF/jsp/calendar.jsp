@@ -190,6 +190,7 @@ function showCalendar(month, year) {
             	  //空でない場合は、それぞれのコメントを <td> 内の適切な要素に表示。
             	  cell.innerHTML = "<div class=balloon_b><span>" + date + "</span><div class=\"balloon_contents\"><div>コメント："+comment1+"</div><div>家事："+comment2+"</div></div></div>";
 
+            	  cell.classList.add('has-data');
               }
 
 

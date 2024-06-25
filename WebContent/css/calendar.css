@@ -247,7 +247,7 @@ color: blue;
   border: 1px solid black; /* セルの枠線の設定 */
   padding: 5px; /* セルの内側の余白 */
   text-align: center; /* テキストの中央揃え */
-  border-radius: 10px 0 0 0;
+ /* border-radius: 10px 0 0 0;*/
 }
 
 .table-calendar th {
@@ -261,7 +261,7 @@ color: blue;
 }
 
 .table-calendar .selected {
-  background-color: #A6CAEC; /* 選択された日付の背景色 */
+  /*background-color: #A6CAEC; /* 選択された日付の背景色 */
   color: #fff; /* 選択された日付のテキスト色 */
 }
 
@@ -338,3 +338,8 @@ th[data-days="にちようび"] {
 th[data-days="どようび"] {
   color: blue;
 }
+.has-data {
+  background-color: lightblue; /* 例：背景色を変更 */
+  border-radius: 10px 0 0 0;
+}
+
