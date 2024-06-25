@@ -17,10 +17,10 @@
 				for="menu-btn-check" class="menu-btn"><span></span></label>
 			<div class="menu-content">
 				<ul>
-					<li><a href="/D2/HomeServlet">ホーム</a></li>
-					<li><a href="/D2/CalendarServlet">カレンダー</a></li>
-					<li><a href="/D2/LockServlet">設定</a></li>
-					<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+					<li><img src="/D2/img/icon_home.png" alt="home icon"><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><img src="/D2/img/icon_calendar.png" alt="calendar icon"><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><img src="/D2/img/icon_setting.png" alt="setting icon"><a href="/D2/ParentsServlet">設定</a></li>
+					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet" onclick="return confirmLogout();">ログアウト</a></li>
 				</ul>
 			</div>
 		</div>
@@ -210,6 +210,12 @@ function showCalendar(month, year) {
 //指定された月と年の日数を求める関数で、32日(31日)から指定された月の最後の日を引いて、その月の日数を正確に取得する。
 function daysInMonth(iMonth, iYear) {
   return 32 - new Date(iYear, iMonth, 32).getDate();
+}
+
+
+
+function confirmLogout() {
+    return confirm("ログアウトしますか？");
 }
 
 </script>

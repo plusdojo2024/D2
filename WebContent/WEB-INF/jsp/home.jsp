@@ -12,17 +12,17 @@
 <body>
 	<header>
 		<div class="hamburger-menu">
-    <input type="checkbox" id="menu-btn-check">
-    <label for="menu-btn-check" class="menu-btn"><span></span></label>
-    <div class="menu-content">
-      <ul>
-        <li><a href="/D2/HomeServlet">ホーム</a></li>
-        <li><a href="/D2/CalendarServlet">カレンダー</a></li>
-        <li><a href="/D2/LockServlet">設定</a></li>
-        <li><a href="/D2/LogoutServlet">ログアウト</a></li>
-      </ul>
-    </div>
-  </div>
+			<input type="checkbox" id="menu-btn-check"> <label
+				for="menu-btn-check" class="menu-btn"><span></span></label>
+			<div class="menu-content">
+				<ul>
+					<li><img src="/D2/img/icon_home.png" alt="home icon"><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><img src="/D2/img/icon_calendar.png" alt="calendar icon"><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><img src="/D2/img/icon_setting.png" alt="setting icon"><a href="/D2/ParentsServlet">設定</a></li>
+					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet" onclick="return confirmLogout();">ログアウト</a></li>
+				</ul>
+			</div>
+		</div>
 	</header>
 	<main>
 	<p class = p>アイコンをタップしておてつだいをはじめよう！</p>
@@ -91,6 +91,12 @@
 				}
 			});
 		});
+
+
+	        function confirmLogout() {
+	            return confirm("ログアウトしますか？");
+	        }
+
 	</script>
 </body>
 </html>

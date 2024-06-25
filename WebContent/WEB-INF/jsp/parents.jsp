@@ -12,15 +12,15 @@
 <body>
 
 	<header>
-		<div class="hamburger-menu">
+				<div class="hamburger-menu">
 			<input type="checkbox" id="menu-btn-check"> <label
 				for="menu-btn-check" class="menu-btn"><span></span></label>
 			<div class="menu-content">
 				<ul>
-					<li><a href="/D2/HomeServlet">ホーム</a></li>
-					<li><a href="/D2/CalendarServlet">カレンダー</a></li>
-					<li><a href="/D2/ParentsServlet">設定</a></li>
-					<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+					<li><img src="/D2/img/icon_home.png" alt="home icon"><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><img src="/D2/img/icon_calendar.png" alt="calendar icon"><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><img src="/D2/img/icon_setting.png" alt="setting icon"><a href="/D2/ParentsServlet">設定</a></li>
+					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet" onclick="return confirmLogout();">ログアウト</a></li>
 				</ul>
 			</div>
 		</div>
@@ -32,7 +32,7 @@
 		<h2>コメント設定</h2>
 		<p>毎日の「ありがとうコメント」を設定できます。</p>
 		<span id="error_message"></span><br><br>
-		
+
 		<form id="comment_form" method="post" action="/D2/ParentsServlet">
 			<div class=comment_setting>
 			<input type="hidden" name="action" value="comment_regist">
@@ -52,8 +52,8 @@
 				<br>
 				<div class=button>
 					<input type="submit" id="regist" name="submit" value="登録">
-					<input type="reset" name="reset" value="リセット"> 
-					
+					<input type="reset" name="reset" value="リセット">
+
 				</div>
 			</div>
 		</form>
@@ -61,9 +61,9 @@
 
 		<h2>家事設定</h2>
 		<p>家事に関する設定を行います。</p>
-		
+
 		<h3>家事項目の詳細設定</h3>
-		
+
 		<c:if test="${empty houseList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
@@ -83,16 +83,16 @@
 							</td>
 						</tr>
 						<tr>
-							<td><label>家事の内容 
+							<td><label>家事の内容
 							<input type="text" name="houseworkContents" value="${e.houseworkContents}">
 							</label></td>
 						</tr>
 						<tr>
 							<td><label>むずかしさ</label>
 								<nobr>
-									<span class="stars"> 
+									<span class="stars">
 										<input id="dufficulty3${vs.index}" type="radio" name="houseworkPoint" value="3" <c:if test = "${e.houseworkPoint == '3'}">checked</c:if>>
-										<label for="dufficulty3${vs.index}">★</label> 
+										<label for="dufficulty3${vs.index}">★</label>
 										<input id="dufficulty2${vs.index}" type="radio" name="houseworkPoint" value="2" <c:if test = "${e.houseworkPoint == '2'}">checked</c:if>>
 										<label for="dufficulty2${vs.index}">★</label>
 										<input id="dufficulty1${vs.index}" type="radio" name="houseworkPoint" value="1" <c:if test = "${e.houseworkPoint == '1'}">checked</c:if>>
@@ -103,7 +103,7 @@
 						</tr>
 					</table>
 					<div class=button>
-						<input type="submit" name="submit" value="更新"> 
+						<input type="submit" name="submit" value="更新">
 						<input type="reset" name="reset" value="リセット">
 					</div>
 				</div>
@@ -111,17 +111,17 @@
 			<br>
 		</c:forEach>
 		</div>
-		
+
 		<h3>間取り設定</h3>
 		<p>下記のボタンから間取り設定画面に遷移します</p>
-		
+
 		<div class = icon>
 		<a class = iconURL href = "/D2/IconServlet">間取り設定画面に移動する</a>
 		</div>
 
 		<h2>こどもアカウント設定</h2>
 		<p>子供のプロフィール設定を行います。</p>
-		
+
 		<form id="childprofile_form" method="post" action="/D2/ParentsServlet" enctype = "multipart/form-data">
 			<h3>新規登録</h3>
 			<span id="error_message2"></span><br><br>
@@ -185,7 +185,7 @@
 		<c:if test="${empty userList}">
 			<p>一致するデータはありません。</p>
 		</c:if>
-		
+
 		<c:forEach var="e" items="${userList}">
 			<form id="childprofile_form2" method="post"action="/D2/ParentsServlet" enctype = "multipart/form-data">
 				<div class=childprofile_setting_2>
@@ -218,9 +218,9 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<label>表示する文章 
+								<label>表示する文章
 									<input type="text" name="rewardText" value="${e.rewardText}">
-								</label> 
+								</label>
 							<br>
 							</td>
 						</tr>
@@ -244,11 +244,11 @@
 	        var today = y + "-" + m.toString().padStart(2,'0') + "-" + d.toString().padStart(2,'0');
 	        document.getElementById("datepicker").setAttribute("value",today);
 	    }
-	
+
 	    /*子供登録の処理*/
 	    let formObj = document.getElementById('childprofile_form');
 	    let errorMessageObj = document.getElementById('error_message2');
-	    
+
 	    /* [実行]ボタンをクリックしたときの処理 */
 	    formObj.onsubmit = function() {
 	        /* 氏名を必須入力項目とします */
@@ -256,15 +256,15 @@
 	            errorMessageObj.textContent = '※なまえは必ず入力してください！';
 	            return false;
 	        }
-	
+
 	        if (!window.confirm('この内容で登録します。よろしいですか？')) {
 	            window.alert('登録画面に戻ります。');
 	            return false;
 	        }
-	
+
 	        errorMessageObj.textContent = null;
 	    };
-	    
+
 	 // コメント登録フォームのJavaScript処理
 	    let commentFormObj = document.getElementById('comment_form');  // コメントフォームを取得
 	    let commentErrorMessageObj = document.getElementById('error_message');  // エラーメッセージ表示領域を取得
@@ -289,8 +289,13 @@
 
 	        commentErrorMessageObj.textContent = null;  // エラーメッセージをリセット
 	    };
-	    
-	    
+
+
+        function confirmLogout() {
+            return confirm("ログアウトしますか？");
+        }
+
+
 	</script>
 </body>
 </html>

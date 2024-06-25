@@ -19,7 +19,7 @@
 					<li><img src="/D2/img/icon_home.png" alt="home icon"><a href="/D2/HomeServlet">ホーム</a></li>
 					<li><img src="/D2/img/icon_calendar.png" alt="calendar icon"><a href="/D2/CalendarServlet">カレンダー</a></li>
 					<li><img src="/D2/img/icon_setting.png" alt="setting icon"><a href="/D2/ParentsServlet">設定</a></li>
-					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet">ログアウト</a></li>
+					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet" onclick="return confirmLogout();">ログアウト</a></li>
 				</ul>
 			</div>
 		</div>
@@ -64,6 +64,12 @@ const xyArray = [
 { x:${e.iconX}, y:${e.iconY} },
 </c:forEach>
 ];
+
+
+function confirmLogout() {
+    return confirm("ログアウトしますか？");
+}
+
 </script>
 
 <script src="./script/controlXY.js"></script>
