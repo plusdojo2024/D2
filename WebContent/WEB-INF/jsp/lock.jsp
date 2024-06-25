@@ -30,7 +30,7 @@
 
   <!-- ヘッダー（ここまで） -->
   <!-- メイン（ここから） -->
-  <h2><img src="/D2/img/big.png" width="100" height="100"alt="ビックリマーク">おうちのひとに、がめんをみせてね！</h2>
+  <h2><img src="/D2/img/big.png" width="20" height="20"alt="ビックリマーク">おうちのひとに、がめんをみせてね！</h2>
   <div class="box_css">
   <form id="login_form" method="post" action="/D2/LockServlet">
     <table>
