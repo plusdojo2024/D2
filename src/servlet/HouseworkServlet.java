@@ -53,6 +53,10 @@ public class HouseworkServlet extends HttpServlet {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
+        double avgReward = 0.0;
+        double sumHousework = 0.0;
+        String  clickChild = request.getParameter("childName");
+
         try {
             // H2 Databaseに接続
             Class.forName("org.h2.Driver");
@@ -63,7 +67,7 @@ public class HouseworkServlet extends HttpServlet {
             String clickDate = today.format(DateTimeFormatter.ISO_DATE);
 
             // セッションスコープからclickChildを取得
-            String  clickChild = request.getParameter("childName");
+            //String  clickChild = request.getParameter("childName");
             String saveToSessionParam = request.getParameter("saveToSession");
 
             if (saveToSessionParam != null && saveToSessionParam.equals("true")) {
@@ -85,16 +89,9 @@ public class HouseworkServlet extends HttpServlet {
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                double avgReward = rs.getDouble("avg_reward");
-                double sumHousework = rs.getDouble("sum_housework");
-
-                if (sumHousework > avgReward) {
-                    session.setAttribute("mw", true);
-                } else {
-                    session.setAttribute("mw", false);
-                }
+                avgReward = rs.getDouble("avg_reward");
+                sumHousework = rs.getDouble("sum_housework");
             }
-
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -107,13 +104,23 @@ public class HouseworkServlet extends HttpServlet {
             }
         }
 
-        String rewardtext = null;
-
         ChildDao cDao = new ChildDao();
         List<Child> userList = cDao.select(loginUser.getUserId());
         request.setAttribute("userList", userList);
-        request.setAttribute("rewardText", rewardtext);
+        request.setAttribute("mw", false);
+        request.setAttribute("ms","");
 
+        if (sumHousework > avgReward) {
+            for(Child c:userList) {
+            	if(c.getChildName().equals(clickChild)) {
+            		if(c.getRewardUmu().equalsIgnoreCase("TRUE")) {
+                        request.setAttribute("ms",c.getRewardText());
+                        request.setAttribute("mw", true);
+            		}
+            		break;
+            	}
+            }
+        }
         HouseworkDao hwDao = new HouseworkDao();
         List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
         request.setAttribute("cardList", cardList);

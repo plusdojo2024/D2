@@ -68,7 +68,7 @@
 				</nobr>
 				<div class="action">
 					<input type="submit" name="my_save" value="かくていする">
-					<c:if test="${sessionScope.mw == true}">
+					<c:if test="${mw == true}">
 						<a href="#" class="btn">おしてみてね！</a>
 					</c:if>
 				</div>
@@ -80,7 +80,7 @@
 		<div class="modal">
 			<div class="close">×</div>
 			<h2>おめでとう！</h2>
-			<p>○○ゲット！</p>
+			<p><c:out value="${ms}"/></p>
 		</div>
 	</form>
 </body>
