@@ -68,13 +68,21 @@
 				</nobr>
 				<div class="action">
 					<input type="submit" name="my_save" value="かくていする">
+					<c:if test="${sessionScope.mw == true}">
+						<a href="#" class="btn">おしてみてね！</a>
+					</c:if>
 				</div>
 			</div>
 		</div>
+		<div class="overlay"></div>
+
+		<!-- モーダルウィンドウ -->
+		<div class="modal">
+			<div class="close">×</div>
+			<h2>おめでとう！</h2>
+			<p>○○ゲット！</p>
+		</div>
 	</form>
-	<c:if test="${sessionScope.mw == true}">
-        <p>モーダルウィンドウ</p>
-    </c:if>
 </body>
 <script src="./script/HouseWork.js"></script>
 </html>

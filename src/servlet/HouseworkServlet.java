@@ -107,9 +107,12 @@ public class HouseworkServlet extends HttpServlet {
             }
         }
 
+        String rewardtext = null;
+
         ChildDao cDao = new ChildDao();
         List<Child> userList = cDao.select(loginUser.getUserId());
         request.setAttribute("userList", userList);
+        request.setAttribute("rewardText", rewardtext);
 
         HouseworkDao hwDao = new HouseworkDao();
         List<HouseWork> cardList = hwDao.select(loginUser.getUserId());
