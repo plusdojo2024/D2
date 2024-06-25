@@ -37,3 +37,7 @@ overlay.addEventListener('click', function() {
   modal.classList.remove('active');
   overlay.classList.remove('active');
 });
+
+function confirmLogout() {
+    return confirm("ログアウトしますか？");
+}
