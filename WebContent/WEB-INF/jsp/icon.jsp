@@ -16,11 +16,10 @@
 				for="menu-btn-check" class="menu-btn"><span></span></label>
 			<div class="menu-content">
 				<ul>
-					<li><a href="/D2/HomeServlet">ホーム</a></li>
-					<li><a href="/D2/CalendarServlet">カレンダー</a></li>
-					<li><a href="/D2/ParentsServlet">設定</a></li>
-					<li><a href="/D2/IconServlet">間取り</a></li>
-					<li><a href="/D2/LogoutServlet">ログアウト</a></li>
+					<li><img src="/D2/img/icon_home.png" alt="home icon"><a href="/D2/HomeServlet">ホーム</a></li>
+					<li><img src="/D2/img/icon_calendar.png" alt="calendar icon"><a href="/D2/CalendarServlet">カレンダー</a></li>
+					<li><img src="/D2/img/icon_setting.png" alt="setting icon"><a href="/D2/ParentsServlet">設定</a></li>
+					<li><img src="/D2/img/icon_logout.png" alt="logout icon"><a href="/D2/LogoutServlet">ログアウト</a></li>
 				</ul>
 			</div>
 		</div>
@@ -30,7 +29,7 @@
 
 		<div id='my_xy'>
 			<c:if test="${empty cardList}">
-				<p>カードリストは空です。</p>
+				<p></p>
 			</c:if>
 			<div class="madori">
 				<img src="/D2/img/madori.png">
