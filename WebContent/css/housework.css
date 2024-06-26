@@ -141,7 +141,7 @@ input[type="submit"] {
 .modal {
   max-width: 500px;
   width: 86%;
-  padding: 260px 150px;
+  padding: 260px 170px;
   background: #fff;
   /* 位置の調整(真ん中に表示) */
   position: fixed;
