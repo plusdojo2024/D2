@@ -79,8 +79,8 @@
 		<!-- モーダルウィンドウ -->
 		<div class="modal">
 			<div class="close">×</div>
-			<h2>おめでとう！</h2>
-			<p><c:out value="${ms}"/></p>
+			<div class="i"><img src="/D2/img/reward.png"/>
+			<p><c:out value="${ms}" /></p></div>
 		</div>
 	</form>
 </body>
