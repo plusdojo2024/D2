@@ -152,7 +152,7 @@ input[type="submit"] {
   opacity: 0;
   visibility: hidden;
   /* 表示の変化にかかる時間 */
-  transition: .3s;  
+  transition: .3s;
   background-image: url("/D2/img/reward.png");
   background-size: cover;
 	background-position: center;	/* 中央揃え */
@@ -177,8 +177,8 @@ input[type="submit"] {
   font-size: 20px;
 }
 
-.modal .i img {
- 
+.modal img {
+
   position: relative;
 }
 
@@ -186,10 +186,10 @@ input[type="submit"] {
 	padding:0 0 0 180px;
 	text-align:center;
 	color:#00CC99;
-	
+
 }
 
-.modal .i p {
+.modal p {
   position: absolute;
   font-size: 30px;
   margin: auto;
