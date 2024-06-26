@@ -55,7 +55,7 @@ body{
 
 .housework{
 	padding:10px;
-	max-width:600px;
+	max-width:850px;
 	min-height:260px;
 	background-color:#FFFFBA;
 	color:#000000;
@@ -63,7 +63,7 @@ body{
 }
 
 .houseworkTable{
-	width:500px;
+	width:600px;
 	margin:10px 0 20px 55px;
 }
 
@@ -80,10 +80,15 @@ body{
 	color:#5FE7A0;
 }
 
-img{
+img .pfp{
 	border-radius:25px;
 }
 
 td{
 	margin:20px;
+}
+
+.star{
+	border-radius:none;
+	margin:2px 0 2px 4px;
 }

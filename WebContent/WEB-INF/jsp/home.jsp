@@ -41,7 +41,7 @@
 				<table>
 					<tr>
 						<td>
-							<img src = "/D2/upload/${e.childPicture}" width="50" height="50">
+							<img src = "/D2/upload/${e.childPicture}" width="50" height="50" id=pfp>
 						</td>
 						<td>
 							<p class = child_name>${e.childName}</p>
@@ -58,13 +58,19 @@
 			<div >
 				<table class = houseworkTable>
 					<tr>
-						<td class = title>おてつだい</td>
+						
+						<td colspan="2" class = title>おてつだい</td>
 						<td class = title>&nbsp;&nbsp;やること</td>
 						<td class = title>おわっているか</td>
 					</tr>
-					<c:forEach var = "e" items = "${houseList}">
+					<c:forEach var="e" items="${houseList}" varStatus = "vs">
 						<tr>
 							<td class = work>${e.houseworkName}</td>
+							<td>
+							<c:if test = "${e.houseworkPoint == '3'}"><img src = "/D2/img/3star.png" width = 120 height = 27.3 class = star></c:if>
+							<c:if test = "${e.houseworkPoint == '2'}"><img src = "/D2/img/2star.png" width = 120 height = 27.3 class = star></c:if>
+							<c:if test = "${e.houseworkPoint == '1'}"><img src = "/D2/img/1star.png" width = 120 height = 27.3 class = star></c:if>
+							</td>
 							<td class = work>　${e.houseworkContents}</td>
 							<td class = work><c:if test ="${e.houseworkCheck == 'true'}">✔</c:if><c:if test ="${e.houseworkCheck == 'false'}"></c:if></td>
 						</tr>
