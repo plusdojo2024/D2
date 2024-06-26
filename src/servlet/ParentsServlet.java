@@ -93,7 +93,7 @@ public class ParentsServlet extends HttpServlet {
 	                        new Result("登録成功！", "本日のコメントを登録しました😊", "/D2/ParentsServlet"));
 	            } else {
 	                request.setAttribute("result",
-	                        new Result("登録失敗…", "コメントを登録できませんでした😢", "/D2/ParentsServlet"));
+	                        new Result("登録失敗…", "コメントを登録できませんでした😢コメントの登録は一日一回です。", "/D2/ParentsServlet"));
 	            }
 	        }
 		} else if (action.equals("housework_regist")){
