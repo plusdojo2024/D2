@@ -69,7 +69,7 @@
 			<p>一致するデータはありません。</p>
 		</c:if>
 
-		<div class = children>varStatus = "vs"
+		<div class = children>
 		<c:forEach var="e" items="${houseList}" varStatus = "vs">
 			<form id="housework_form" method="post" action="/D2/ParentsServlet">
 			<input type="hidden" name="action" value="housework_regist">
