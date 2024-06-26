@@ -141,7 +141,7 @@ input[type="submit"] {
 .modal {
   max-width: 500px;
   width: 86%;
-  padding: 50px;
+  padding: 260px 150px;
   background: #fff;
   /* 位置の調整(真ん中に表示) */
   position: fixed;
@@ -152,13 +152,20 @@ input[type="submit"] {
   opacity: 0;
   visibility: hidden;
   /* 表示の変化にかかる時間 */
-  transition: .3s;
+  transition: .3s;  
+  background-image: url("/D2/img/reward.png");
+  background-size: cover;
+	background-position: center;	/* 中央揃え */
+ 	font-size:1.8em;
 }
 
 /* activeクラスのついたモーダルウィンドウ */
 .modal.active {
   opacity: 1;
   visibility: visible;
+   width: 510px;
+  height:300;
+
 }
 
 /* モーダルウィンドウ内の閉じるボタン */
@@ -171,8 +178,15 @@ input[type="submit"] {
 }
 
 .modal .i img {
-  width: 510px;
+ 
   position: relative;
+}
+
+.mwp{
+	padding:0 0 0 180px;
+	text-align:center;
+	color:#00CC99;
+	
 }
 
 .modal .i p {

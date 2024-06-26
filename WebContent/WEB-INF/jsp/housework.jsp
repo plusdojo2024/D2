@@ -79,8 +79,8 @@
 		<!-- モーダルウィンドウ -->
 		<div class="modal">
 			<div class="close">×</div>
-			<div class="i"><img src="/D2/img/reward.png"/>
-			<p><c:out value="${ms}" /></p></div>
+			<div class="i" >
+			<p class = mwp><c:out value="${ms}" /></p></div>
 		</div>
 	</form>
 </body>
