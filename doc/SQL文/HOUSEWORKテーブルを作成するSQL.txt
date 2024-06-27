@@ -1,0 +1,27 @@
+/* Houseworkテーブルを作成するSQL文 */
+DROP TABLE Housework IF EXISTS;
+CREATE TABLE Housework (
+housework_name VARCHAR(20), 
+housework_contents VARCHAR(20), 
+housework_point VARCHAR(20),
+icon VARCHAR(20),
+icon_done VARCHAR(20),
+user_id VARCHAR(20),
+icon_x VARCHAR(20),
+icon_y VARCHAR(20),
+PRIMARY KEY  (housework_name) 
+); 
+
+/* Houseworkテーブルにテスト用のデータを登録するSQL文 */
+INSERT INTO Housework VALUES (
+'洗濯',
+'洗濯機をまわす',
+'1',
+'',
+'',
+'DOJO',
+'',
+''
+); 
+
+SELECT * FROM Housework;

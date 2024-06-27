@@ -1,0 +1,13 @@
+/* Commentテーブルを作成するSQL文 */
+DROP TABLE Comment IF EXISTS;
+CREATE TABLE Comment ( 
+date DATE(8), 
+user_id VARCHAR(20), 
+comment VARCHAR(20),
+PRIMARY KEY  (date,user_id)
+);
+
+/* Commentテーブルにテスト用のデータを登録するSQL文 */
+INSERT INTO Comment (date,user_id,comment) VALUES ('20240611','DOJO', 'ありがとう');
+
+SELECT * FROM Comment;
