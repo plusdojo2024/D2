@@ -79,7 +79,7 @@
 		<!-- モーダルウィンドウ -->
 		<div class="modal">
 			<div class="close">×</div>
-			<p class = mwp><c:out value="${ms}" /></p></div>
+			<p class = "mwp"><c:out value="${ms}" /></p></div>
 	</form>
 </body>
 <script src="./script/HouseWork.js"></script>
