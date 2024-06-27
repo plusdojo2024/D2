@@ -1,0 +1,13 @@
+/* Calendarテーブルを作成するSQL文 */
+DROP TABLE CALENDAR IF EXISTS;
+CREATE TABLE CALENDAR ( 
+date VARCHAR(20), 
+child_id VARCHAR(20), 
+housework_name VARCHAR(20),
+PRIMARY KEY  (date,child_id,housework_name)
+);
+
+/* Calendarテーブルにテスト用のデータを登録するSQL文 */
+INSERT INTO CALENDAR (date,child_id,housework_name) VALUES ('20240611','ABC', '洗濯');
+
+SELECT * FROM Calendar;

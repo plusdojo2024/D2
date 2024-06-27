@@ -1,0 +1,31 @@
+/* Childテーブルを作成するSQL文 */
+DROP TABLE Child IF EXISTS;
+CREATE TABLE Child (
+child_id INTEGER AUTO_INCREMENT(1), 
+child_name VARCHAR(20), 
+child_picture VARCHAR(20),
+child_age VARCHAR(20),
+child_favorite VARCHAR(20),
+child_school VARCHAR(20),
+user_id VARCHAR(20),
+reward_umu VARCHAR(20),
+reward_jouken VARCHAR(20),
+reward_text VARCHAR(60),
+PRIMARY KEY  (child_id) 
+); 
+
+/* Childテーブルにテスト用のデータを登録するSQL文 */
+INSERT INTO Child VALUES (
+'0001',
+'terakko',
+'',
+'10',
+'サッカー',
+'プラス道場小学校',
+'DOJO',
+'1',
+'10',
+'よくがんばりました！おかしゲット！'
+); 
+
+SELECT * FROM Child;

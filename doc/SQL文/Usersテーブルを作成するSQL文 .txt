@@ -1,0 +1,14 @@
+/* Usersテーブルを作成するSQL文 */
+DROP TABLE Users IF EXISTS;
+CREATE TABLE Users (
+user_id VARCHAR(20), 
+password VARCHAR(20), 
+passcord VARCHAR(20),
+PRIMARY KEY  (user_id) 
+); 
+
+
+/* Usersテーブルにテスト用のデータを登録するSQL文 */
+INSERT INTO Users (user_id, password, passcord) VALUES ('DOJO', 'password', 'passcord'); 
+
+SELECT * FROM Users;
